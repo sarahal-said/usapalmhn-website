@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive: #4a6b1a;
+    --olive-dark: #344d12;
+    --olive-deep: #28390d;
+    --olive-light: #eef3e6;
+    --red: #C8281A;
+    --red-dark: #9e1e13;
+    --navy: #1A3A6B;
+    --cream: #fdfcf8;
+    --cream-dark: #f3f0e8;
+    --white: #ffffff;
+    --text-dark: #1a1a14;
+    --text-mid: #3d4a2a;
+    --text-muted: #6b7a55;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.25; }
+  .serif-body { font-family: 'Source Serif 4', Georgia, serif; }
+
+  /* KEFFIYEH PATTERN */
+  .keffiyeh-bg {
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 12px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 12px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0, rgba(255,255,255,0.025) 2px, transparent 2px, transparent 24px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0, rgba(255,255,255,0.025) 2px, transparent 2px, transparent 24px);
+  }
+
+  /* NAV */
+  .nav-wrapper { position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.18); }
+  .nav-top {
+    background: var(--white);
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid rgba(74,107,26,0.15);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo-mark {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--olive);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 13px; letter-spacing: 0.5px;
+    font-family: 'DM Sans', sans-serif;
+    flex-shrink: 0;
+  }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--olive-dark); line-height: 1.2; font-weight: 600; }
+  .nav-org-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    text-align: center;
+    letter-spacing: 0.3px;
+    flex: 1;
+  }
+  .nav-top-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .lang-toggle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px 10px;
+    border: 1px solid rgba(74,107,26,0.3);
+    border-radius: 4px;
+    background: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .lang-toggle:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .btn-join {
+    background: var(--red);
+    color: white;
+    padding: 9px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    animation: pulse-join 3s ease-in-out infinite;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.3px;
+  }
+  @keyframes pulse-join {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200,40,26,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(200,40,26,0); }
+  }
+  .btn-join:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--olive); border-radius: 2px; transition: all 0.3s; }
+  .nav-bottom {
+    background: var(--olive);
+    padding: 0 40px;
+    display: flex;
+    align-items: stretch;
+  }
+  .nav-links { display: flex; align-items: stretch; gap: 0; list-style: none; flex: 1; }
+  .nav-links li a {
+    display: flex;
+    align-items: center;
+    padding: 13px 18px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .nav-links li a:hover,
+  .nav-links li a.active { color: white; border-bottom-color: white; background: rgba(255,255,255,0.07); }
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-top: 1px solid var(--olive-light);
+    flex-direction: column;
+  }
+  .mobile-menu a {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--olive-light);
+    color: var(--olive-dark);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .mobile-menu.open { display: flex; }
+
+  /* HERO */
+  #hero {
+    background: var(--olive-deep);
+    position: relative;
+    overflow: hidden;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-slides { flex: 1; display: flex; align-items: center; position: relative; }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 60px 60px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    pointer-events: none;
+  }
+  .hero-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5.5vw, 68px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    max-width: 860px;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(15px, 2vw, 19px);
+    color: rgba(255,255,255,0.72);
+    max-width: 620px;
+    margin-bottom: 44px;
+    font-style: italic;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn-white {
+    background: white;
+    color: var(--olive-dark);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    border: 2px solid white;
+    letter-spacing: 0.3px;
+  }
+  .btn-white:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .btn-red-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    border: 2px solid var(--red);
+  }
+  .btn-red-outline:hover { background: var(--red); }
+  .hero-dots { display: flex; gap: 10px; justify-content: center; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); }
+  .hero-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3);
+    cursor: pointer; transition: all 0.3s; border: none;
+  }
+  .hero-dot.active { background: white; transform: scale(1.3); }
+  .hero-stat-bar {
+    background: rgba(0,0,0,0.3);
+    padding: 16px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stat-bar span {
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-stat-bar span::before { content: '·'; color: rgba(255,255,255,0.35); font-size: 18px; }
+  .hero-stat-bar span:first-child::before { display: none; }
+
+  /* IMPACT BAND */
+  #impact {
+    background: var(--cream);
+    padding: 80px 60px;
+    border-bottom: 1px solid rgba(74,107,26,0.12);
+  }
+  .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+  .impact-item { text-align: center; }
+  .impact-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 700;
+    color: var(--olive-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .impact-label { font-size: 14px; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 16px; font-weight: 500; }
+  .impact-line { width: 48px; height: 3px; border-radius: 2px; margin: 0 auto; }
+  .il-green { background: var(--olive); }
+  .il-red { background: var(--red); }
+  .il-blue { background: var(--navy); }
+
+  /* MISSION */
+  #mission { background: white; padding: 90px 60px; }
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--olive); font-weight: 600; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
+  .section-sub { font-family: 'Source Serif 4', serif; font-size: 17px; color: var(--text-muted); max-width: 560px; margin-bottom: 56px; font-style: italic; }
+  .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .mission-card {
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 6px;
+    padding: 36px 32px;
+    background: white;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .mc-red::before { background: var(--red); }
+  .mc-green::before { background: var(--olive); }
+  .mc-blue::before { background: var(--navy); }
+  .mission-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .mission-icon { width: 52px; height: 52px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 22px; }
+  .mi-red { background: rgba(200,40,26,0.1); }
+  .mi-green { background: var(--olive-light); }
+  .mi-blue { background: rgba(26,58,107,0.1); }
+  .mission-card h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .mission-card p { font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
+  .link-arrow { color: var(--olive); font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; letter-spacing: 0.3px; }
+  .link-arrow:hover { gap: 10px; }
+
+  /* ABOUT */
+  #about { background: var(--cream); padding: 90px 60px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 420px; gap: 60px; max-width: 1140px; margin: 0 auto; align-items: start; }
+  .about-left {}
+  .about-left p { font-family: 'Source Serif 4', serif; font-size: 17px; color: #3a4a28; line-height: 1.8; margin-bottom: 20px; }
+  .btn-olive {
+    display: inline-block; background: var(--olive); color: white; padding: 13px 28px;
+    border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: 600;
+    transition: all 0.2s; margin-top: 12px; border: 2px solid var(--olive);
+    letter-spacing: 0.3px;
+  }
+  .btn-olive:hover { background: var(--olive-dark); border-color: var(--olive-dark); transform: translateY(-1px); }
+  .about-right {
+    background: var(--olive-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .about-right-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 10px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 10px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 20px);
+  }
+  .about-right-content { position: relative; z-index: 2; padding: 40px 32px 32px; }
+  .about-right h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: white; font-weight: 700; margin-bottom: 12px; }
+  .about-right p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 28px; font-family: 'Source Serif 4', serif; font-style: italic; }
+  .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.15); border-top: 1px solid rgba(255,255,255,0.15); }
+  .about-stat { background: rgba(0,0,0,0.25); padding: 18px 16px; text-align: center; }
+  .about-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 22px; color: white; font-weight: 700; }
+  .about-stat span { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* BREAKING NEWS */
+  #news { background: white; padding: 90px 60px; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .news-card {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  .news-card::before { content: ''; display: block; height: 5px; }
+  .nc-red::before { background: var(--red); }
+  .nc-green::before { background: var(--olive); }
+  .nc-blue::before { background: var(--navy); }
+  .news-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+  .news-card-body { padding: 24px; }
+  .news-badge {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 3px; margin-bottom: 12px;
+  }
+  .nb-red { background: rgba(200,40,26,0.1); color: var(--red); }
+  .nb-green { background: var(--olive-light); color: var(--olive-dark); }
+  .nb-blue { background: rgba(26,58,107,0.1); color: var(--navy); }
+  .news-date { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.3px; }
+  .news-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.35; }
+  .news-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; font-family: 'Source Serif 4', serif; }
+
+  /* DON'T GO */
+  #dont-go {
+    background: var(--olive-deep);
+    padding: 90px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #dont-go .keffiyeh-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0, rgba(255,255,255,0.018) 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0, rgba(255,255,255,0.018) 2px, transparent 2px, transparent 20px);
+  }
+  #dont-go > * { position: relative; z-index: 2; }
+  #dont-go .dg-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+  #dont-go h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 50px); font-weight: 700; color: white; max-width: 780px; margin: 0 auto 24px; line-height: 1.2; }
+  #dont-go p { font-family: 'Source Serif 4', serif; font-size: 18px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 44px; font-style: italic; line-height: 1.75; }
+  .dg-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn-white-outline {
+    background: transparent; color: rgba(255,255,255,0.85); padding: 14px 32px;
+    border: 2px solid rgba(255,255,255,0.35); border-radius: 4px; font-size: 14px;
+    font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-white-outline:hover { border-color: white; color: white; }
+
+  /* VOICES */
+  #voices { background: var(--olive-dark); padding: 90px 60px; }
+  .voices-header { text-align: center; margin-bottom: 56px; }
+  .voices-header .section-label { color: rgba(255,255,255,0.5); }
+  .voices-header h2 { color: white; }
+  .voices-header .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto; text-align: center; }
+  .voices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1000px; margin: 0 auto; }
+  .voice-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 4px solid var(--olive-light);
+    border-radius: 0 6px 6px 0;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .voice-card:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+  .voice-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .voice-cite { display: flex; align-items: center; gap: 12px; }
+  .voice-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; font-weight: 700; }
+  .voice-cite cite { font-size: 13px; color: rgba(255,255,255,0.6); font-style: normal; }
+  .voice-cite cite strong { display: block; color: rgba(255,255,255,0.85); font-size: 14px; }
+
+  /* RESOURCES */
+  #resources { background: var(--cream); padding: 90px 60px; }
+  .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 40px; }
+  .resource-card {
+    border: 1px solid rgba(74,107,26,0.18);
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.3s;
+  }
+  .resource-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
+  .resource-bar { height: 5px; }
+  .rb-green { background: var(--olive); }
+  .rb-red { background: var(--red); }
+  .rb-blue { background: var(--navy); }
+  .resource-body { padding: 28px; }
+  .resource-lock { font-size: 22px; margin-bottom: 14px; }
+  .resource-card h3 { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.35; }
+  .resource-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; font-family: 'Source Serif 4', serif; }
+  .resource-cta-banner {
+    background: var(--olive);
+    border-radius: 6px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .resource-cta-banner h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: white; font-weight: 700; }
+  .resource-cta-banner p { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+
+  /* GET INVOLVED */
+  #get-involved { background: white; padding: 90px 60px; }
+  .gi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .gi-card { text-align: center; padding: 40px 28px; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; transition: all 0.3s; }
+  .gi-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.09); background: var(--olive-light); }
+  .gi-icon { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 20px; }
+  .gi-icon-green { background: var(--olive-light); }
+  .gi-icon-red { background: rgba(200,40,26,0.1); }
+  .gi-icon-blue { background: rgba(26,58,107,0.1); }
+  .gi-card h3 { font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .gi-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; font-family: 'Source Serif 4', serif; }
+  .btn-olive-sm {
+    display: inline-block; background: var(--olive); color: white; padding: 10px 22px;
+    border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: 600;
+    transition: all 0.2s; border: 2px solid var(--olive); letter-spacing: 0.3px;
+  }
+  .btn-olive-sm:hover { background: var(--olive-dark); border-color: var(--olive-dark); }
+  .btn-navy-sm {
+    display: inline-block; background: var(--navy); color: white; padding: 10px 22px;
+    border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: 600;
+    transition: all 0.2s; letter-spacing: 0.3px;
+  }
+  .btn-navy-sm:hover { background: #122d54; }
+
+  /* NEWSLETTER */
+  #newsletter { background: var(--olive); padding: 70px 60px; text-align: center; }
+  #newsletter h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 36px); color: white; font-weight: 700; margin-bottom: 10px; }
+  #newsletter p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 32px; font-family: 'Source Serif 4', serif; font-style: italic; }
+  .newsletter-form { display: flex; gap: 0; max-width: 520px; margin: 0 auto 16px; }
+  .newsletter-form input {
+    flex: 1; padding: 14px 20px; border: none; border-radius: 4px 0 0 4px;
+    font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none;
+    background: rgba(255,255,255,0.97);
+    color: var(--text-dark);
+  }
+  .newsletter-form button {
+    background: var(--red); color: white; padding: 14px 28px; border: none;
+    border-radius: 0 4px 4px 0; cursor: pointer; font-size: 14px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s; white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+  .newsletter-form button:hover { background: var(--red-dark); }
+  #newsletter .fine-print { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--olive-deep); padding: 70px 60px 0; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-logo-mark { width: 40px; height: 40px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 11px; }
+  .footer-logo span { font-family: 'Playfair Display', serif; font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 600; line-height: 1.25; }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 24px; font-family: 'Source Serif 4', serif; font-style: italic; max-width: 260px; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 34px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 700;
+    transition: all 0.2s; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.2); color: white; }
+  .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; font-weight: 600; }
+  .footer-col a, .footer-col p { display: block; font-size: 14px; color: rgba(255,255,255,0.65); text-decoration: none; margin-bottom: 10px; line-height: 1.55; transition: color 0.2s; }
+  .footer-col a:hover { color: rgba(255,255,255,0.95); }
+  .footer-bar {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bar p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  .footer-bar-links { display: flex; gap: 20px; }
+  .footer-bar-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-bar-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* SECTION HEADER CENTERED */
+  .section-header-center { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .section-header-left { max-width: 740px; margin-bottom: 52px; }
+
+  /* ARABIC MODE */
+  [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  [dir="rtl"] .about-grid { direction: rtl; }
+  [dir="rtl"] .voice-card { border-left: 1px solid rgba(255,255,255,0.12); border-right: 4px solid var(--olive-light); border-radius: 6px 0 0 6px; }
+  [dir="rtl"] .link-arrow { flex-direction: row-reverse; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-right { min-height: 300px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-top { padding: 10px 20px; }
+    .nav-bottom { padding: 0 20px; }
+    .nav-org-name { font-size: 13px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    #hero { min-height: 80vh; }
+    .hero-slide { padding: 60px 24px 80px; }
+    .hero-stat-bar { padding: 14px 20px; gap: 16px; }
+    #impact, #mission, #about, #news, #dont-go, #voices, #resources, #get-involved, #newsletter, footer { padding-left: 24px; padding-right: 24px; }
+    .mission-grid, .news-grid, .resources-grid, .gi-grid { grid-template-columns: 1fr; }
+    .voices-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .resource-cta-banner { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .newsletter-form { flex-direction: column; border-radius: 4px; }
+    .newsletter-form input { border-radius: 4px; margin-bottom: 8px; }
+    .newsletter-form button { border-radius: 4px; }
+    .about-grid { gap: 32px; }
+    .footer-bar { flex-direction: column; text-align: center; }
+    .lang-toggle { display: none; }
+    .nav-org-name { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="#" class="nav-logo">
+    <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo" style="height: 44px; width: auto;">      
+    <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="#get-involved" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html" data-section="about">About</a></li>
+      <li><a href="#news" data-section="news">Breaking News</a></li>
+      <li><a href="#updates" data-section="updates">Updates</a></li>
+      <li><a href="campaigns.html" data-section="dont-go">"Don't Go"</a></li>
+      <li><a href="voices.html" data-section="voices">Voices</a></li>
+      <li><a href="resources.html" data-section="resources">Resources</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="get-involved.html#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="#news" onclick="toggleMenu()">Breaking News</a>
+    <a href="#updates" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slides" style="min-height: 75vh;">
+    <div class="hero-slide active" id="slide-0">
+      <div class="hero-eyebrow" data-en="USA Palestine Mental Health Network · usapalmhn.org" data-ar="شبكة الصحة النفسية الأمريكية الفلسطينية">USA Palestine Mental Health Network · usapalmhn.org</div>
+      <h1 class="hero-headline" data-en="Centering Palestinian Mental Health in U.S. Clinical Practice" data-ar="تمركز الصحة النفسية الفلسطينية في الممارسة السريرية الأمريكية">Centering Palestinian Mental Health in U.S. Clinical Practice</h1>
+      <p class="hero-sub" data-en="A national network of clinicians committed to culturally competent care, advocacy, and solidarity with Palestinian communities." data-ar="شبكة وطنية من الأطباء الملتزمين بالرعاية الثقافية المختصة والمناصرة والتضامن مع المجتمعات الفلسطينية.">A national network of clinicians committed to culturally competent care, advocacy, and solidarity with Palestinian communities.</p>
+      <div class="hero-ctas">
+        <a href="get-involved.html#join" class="btn-white" data-en="Join the Network" data-ar="انضم إلى الشبكة">Join the Network</a>
+        <a href="resources.html" class="btn-red-outline" data-en="Clinical Resources" data-ar="الموارد السريرية">Clinical Resources</a>
+      </div>
+    </div>
+    <div class="hero-slide" id="slide-1">
+      <div class="hero-eyebrow" data-en="Clinical Ethics · Professional Responsibility" data-ar="الأخلاقيات السريرية · المسؤولية المهنية">Clinical Ethics · Professional Responsibility</div>
+      <h1 class="hero-headline" data-en="Breaking the Silence — When Clinicians Speak Up" data-ar="كسر الصمت — عندما يتحدث الأطباء">Breaking the Silence — When Clinicians Speak Up</h1>
+      <p class="hero-sub" data-en="Mental health professionals have an ethical duty to name injustice. Our network provides the frameworks, resources, and community to do so with integrity." data-ar="يتحمل المتخصصون في الصحة النفسية واجبًا أخلاقيًا لتسمية الظلم. تقدم شبكتنا الأطر والموارد والمجتمع للقيام بذلك بنزاهة.">Mental health professionals have an ethical duty to name injustice. Our network provides the frameworks, resources, and community to do so with integrity.</p>
+      <div class="hero-ctas">
+        <a href="index.html#news" class="btn-white" data-en="Read Statements" data-ar="اقرأ البيانات">Read Statements</a>
+        <a href="voices.html" class="btn-red-outline" data-en="Clinician Voices" data-ar="أصوات الأطباء">Clinician Voices</a>
+      </div>
+    </div>
+    <div class="hero-slide" id="slide-2">
+      <div class="hero-eyebrow" data-en="Professional Advocacy · Justice-Centered Practice" data-ar="المناصرة المهنية · الممارسة القائمة على العدالة">Professional Advocacy · Justice-Centered Practice</div>
+      <h1 class="hero-headline" data-en="Solidarity Is a Clinical Act" data-ar="التضامن هو فعل سريري">Solidarity Is a Clinical Act</h1>
+      <p class="hero-sub" data-en="From curriculum integration to public statements, our members lead the profession in recognizing the mental health dimensions of displacement and occupation." data-ar="من دمج المناهج إلى البيانات العامة، يقود أعضاؤنا المهنة في الاعتراف بالأبعاد النفسية للتهجير والاحتلال.">From curriculum integration to public statements, our members lead the profession in recognizing the mental health dimensions of displacement and occupation.</p>
+      <div class="hero-ctas">
+        <a href="about.html#mission" class="btn-white" data-en="Our Mission" data-ar="مهمتنا">Our Mission</a>
+        <a href="get-involved.html" class="btn-red-outline" data-en="Get Involved" data-ar="شارك معنا">Get Involved</a>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goToSlide(0)"></button>
+      <button class="hero-dot" onclick="goToSlide(1)"></button>
+      <button class="hero-dot" onclick="goToSlide(2)"></button>
+    </div>
+  </div>
+  <div class="hero-stat-bar">
+    <span data-en="Founded 2016" data-ar="تأسست عام 2016">Founded 2016</span>
+    <span data-en="500+ Members" data-ar="500+ عضو">500+ Members</span>
+    <span data-en="50 States" data-ar="50 ولاية">50 States</span>
+    <span data-en="100% Volunteer-Led" data-ar="100% يقودها متطوعون">100% Volunteer-Led</span>
+  </div>
+</section>
+
+<!-- IMPACT NUMBERS -->
+<section id="impact">
+  <div class="impact-grid">
+    <div class="impact-item">
+      <div class="impact-number" data-target="500" data-suffix="+">0</div>
+      <div class="impact-label" data-en="Network Members" data-ar="أعضاء الشبكة">Network Members</div>
+      <div class="impact-line il-green"></div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-number" data-target="8" data-suffix="">0</div>
+      <div class="impact-label" data-en="Years Active" data-ar="سنوات نشطة">Years Active</div>
+      <div class="impact-line il-red"></div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-number" data-target="50" data-suffix="">0</div>
+      <div class="impact-label" data-en="States Represented" data-ar="الولايات الممثلة">States Represented</div>
+      <div class="impact-line il-blue"></div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-number" data-target="100" data-suffix="+">0</div>
+      <div class="impact-label" data-en="Clinical Resources" data-ar="موارد سريرية">Clinical Resources</div>
+      <div class="impact-line il-green"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <div class="section-header-left">
+    <div class="section-label" data-en="Our Pillars" data-ar="ركائزنا">Our Pillars</div>
+    <h2 class="section-title" data-en="Three Commitments That Define Our Work" data-ar="ثلاثة التزامات تحدد عملنا">Three Commitments That Define Our Work</h2>
+    <p class="section-sub" data-en="Founded by clinicians — bringing rigor, ethics, and solidarity to mental health advocacy." data-ar="تأسست من قبل الأطباء، للأطباء — تجلب الصرامة والأخلاق والتضامن إلى المناصرة الصحية النفسية.">Founded by clinicians — bringing rigor, ethics, and solidarity to mental health advocacy.</p>
+  </div>
+  <div class="mission-grid">
+    <div class="mission-card mc-red">
+      <div class="mission-icon mi-red">⚖</div>
+      <h3 data-en="Solidarity &amp; Advocacy" data-ar="التضامن والمناصرة">Solidarity &amp; Advocacy</h3>
+      <p data-en="We sign public statements, submit ethics commentaries, and stand alongside Palestinian communities — because silence is never a neutral clinical stance." data-ar="نوقع على البيانات العامة ونقدم تعليقات أخلاقية ونقف بجانب المجتمعات الفلسطينية — لأن الصمت ليس موقفًا سريريًا محايدًا أبدًا.">We sign public statements, submit ethics commentaries, and stand alongside Palestinian communities — because silence is never a neutral clinical stance.</p>
+      <a href="#" class="link-arrow" data-en="Learn more →" data-ar="اعرف أكثر →">Learn more →</a>
+    </div>
+    <div class="mission-card mc-green">
+      <div class="mission-icon mi-green">📚</div>
+      <h3 data-en="Education &amp; Training" data-ar="التعليم والتدريب">Education &amp; Training</h3>
+      <p data-en="We develop curriculum on settler-colonial trauma, forced displacement, and intergenerational grief for graduate programs, CEUs, and clinical supervision." data-ar="نطور مناهج حول صدمة الاستعمار الاستيطاني والتهجير القسري والحزن بين الأجيال للبرامج الدراسية ووحدات التعليم المستمر والإشراف السريري.">We develop curriculum on settler-colonial trauma, forced displacement, and intergenerational grief for graduate programs, CEUs, and clinical supervision.</p>
+      <a href="#" class="link-arrow" data-en="Learn more →" data-ar="اعرف أكثر →">Learn more →</a>
+    </div>
+    <div class="mission-card mc-blue">
+      <div class="mission-icon mi-blue">🤝</div>
+      <h3 data-en="Professional Community" data-ar="المجتمع المهني">Professional Community</h3>
+      <p data-en="A national peer network for clinicians navigating the personal and professional weight of this work — peer consultation, mentorship, and mutual support." data-ar="شبكة وطنية للأقران للأطباء الذين يتعاملون مع الثقل الشخصي والمهني لهذا العمل — استشارات الأقران والتوجيه والدعم المتبادل.">A national peer network for clinicians navigating the personal and professional weight of this work — peer consultation, mentorship, and mutual support.</p>
+      <a href="#" class="link-arrow" data-en="Learn more →" data-ar="اعرف أكثر →">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="section-label" data-en="About the Network" data-ar="عن الشبكة">About the Network</div>
+      <h2 class="section-title" data-en="A Network Born from Necessity and Conscience" data-ar="شبكة ولدت من الضرورة والضمير">A Network Born from Necessity and Conscience</h2>
+      <p data-en="In 2016, a group of U.S.-based psychologists, social workers, counselors, and psychiatrists came together around a shared recognition: Palestinian mental health was an underserved, often silenced dimension of both clinical practice and professional advocacy." data-ar="في عام 2016، اجتمعت مجموعة من علماء النفس والأخصائيين الاجتماعيين والمستشارين والأطباء النفسيين في الولايات المتحدة حول إدراك مشترك: كانت الصحة النفسية الفلسطينية بُعدًا غير مخدوم وصامتًا في كثير من الأحيان في كل من الممارسة السريرية والمناصرة المهنية.">In 2016, a group of U.S.-based psychologists, social workers, counselors, and psychiatrists came together around a shared recognition: Palestinian mental health was an underserved, often silenced dimension of both clinical practice and professional advocacy.</p>
+      <p data-en="Today, USA Palestine Mental Health Network (USAPALMHN) is a 100% volunteer-led professional network operating in all 50 states. We do not seek institutional neutrality — we seek clinical accuracy, which requires us to name the structural conditions that produce psychological harm." data-ar="اليوم، شبكة الصحة النفسية الأمريكية الفلسطينية (USAPALMHN) هي شبكة مهنية يقودها متطوعون بنسبة 100٪ تعمل في جميع الولايات الخمسين. نحن لا نسعى إلى الحياد المؤسسي — نحن نسعى إلى الدقة السريرية، والتي تتطلب منا تسمية الظروف الهيكلية التي تنتج الضرر النفسي.">Today, USA Palestine Mental Health Network (USAPALMHN) is a 100% volunteer-led professional network operating in all 50 states. We do not seek institutional neutrality — we seek clinical accuracy, which requires us to name the structural conditions that produce psychological harm.</p>
+      <a href="#" class="btn-olive" data-en="Meet the Steering Committee" data-ar="تعرف على لجنة التوجيه">Meet the Steering Committee</a>
+    </div>
+    <div class="about-right">
+      <div class="about-right-texture"></div>
+      <div class="about-right-content">
+        <h3 data-en="Grounded in Ethics. Rooted in Justice." data-ar="متجذر في الأخلاق. متجذر في العدالة.">Grounded in Ethics. Rooted in Justice.</h3>
+        <p data-en="Our steering committee includes licensed clinicians across psychology, social work, counseling, and psychiatry — all contributing pro bono to this shared mission." data-ar="تضم لجنة التوجيه لدينا أطباء مرخصين في علم النفس والعمل الاجتماعي والإرشاد النفسي والطب النفسي — جميعهم يساهمون بشكل مجاني في هذه المهمة المشتركة.">Our steering committee includes licensed clinicians across psychology, social work, counseling, and psychiatry — all contributing pro bono to this shared mission.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>2016</strong>
+            <span data-en="Founded" data-ar="تأسست">Founded</span>
+          </div>
+          <div class="about-stat">
+            <strong data-en="US-Wide" data-ar="على مستوى الولايات">US-Wide</strong>
+            <span data-en="Coverage" data-ar="التغطية">Coverage</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span data-en="Volunteer-Led" data-ar="يقودها متطوعون">Volunteer-Led</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BREAKING NEWS -->
+<section id="news">
+  <div class="section-header-left">
+    <div class="section-label" data-en="Breaking News &amp; Statements" data-ar="الأخبار العاجلة والبيانات">Breaking News &amp; Statements</div>
+    <h2 class="section-title" data-en="The Network Speaks" data-ar="الشبكة تتحدث">The Network Speaks</h2>
+    <p class="section-sub" data-en="Official statements, open letters, and commentary from the USAPALMHN steering committee and membership." data-ar="البيانات الرسمية والرسائل المفتوحة والتعليقات من لجنة توجيه USAPALMHN وعضويتها.">Official statements, open letters, and commentary from the USAPALMHN steering committee and membership.</p>
+  </div>
+  <div class="news-grid">
+    <div class="news-card nc-red">
+      <div class="news-card-body">
+        <span class="news-badge nb-red" data-en="Statement" data-ar="بيان">Statement</span>
+        <div class="news-date">December 2024</div>
+        <h3 data-en="USAPALMHN Statement on Mental Health Professionals and the Duty to Speak" data-ar="بيان USAPALMHN بشأن المتخصصين في الصحة النفسية وواجب التحدث">USAPALMHN Statement on Mental Health Professionals and the Duty to Speak</h3>
+        <p data-en="The Network's steering committee addresses the ethical obligations of U.S. clinicians in the face of documented psychological harm to civilians." data-ar="تتناول لجنة توجيه الشبكة الالتزامات الأخلاقية للأطباء الأمريكيين في مواجهة الضرر النفسي الموثق للمدنيين.">The Network's steering committee addresses the ethical obligations of U.S. clinicians in the face of documented psychological harm to civilians.</p>
+        <a href="#" class="link-arrow" data-en="Read →" data-ar="اقرأ →">Read →</a>
+      </div>
+    </div>
+    <div class="news-card nc-green">
+      <div class="news-card-body">
+        <span class="news-badge nb-green" data-en="Event" data-ar="حدث">Event</span>
+        <div class="news-date">January 2025</div>
+        <h3 data-en="Webinar: Trauma-Informed Care for Palestinian and Arab American Clients" data-ar="ندوة عبر الإنترنت: الرعاية المستنيرة بالصدمة للعملاء الفلسطينيين والأمريكيين من أصول عربية">Webinar: Trauma-Informed Care for Palestinian and Arab American Clients</h3>
+        <p data-en="A continuing education event featuring clinicians who specialize in working with Arab-American and Palestinian diaspora communities. 2.0 CE credits available." data-ar="حدث تعليمي مستمر يضم أطباء متخصصين في العمل مع مجتمعات الشتات العربية الأمريكية والفلسطينية. متاح 2.0 وحدة تعليمية.">A continuing education event featuring clinicians who specialize in working with Arab-American and Palestinian diaspora communities. 2.0 CE credits available.</p>
+        <a href="#" class="link-arrow" data-en="Read →" data-ar="اقرأ →">Read →</a>
+      </div>
+    </div>
+    <div class="news-card nc-blue">
+      <div class="news-card-body">
+        <span class="news-badge nb-blue" data-en="Resource" data-ar="مصدر">Resource</span>
+        <div class="news-date">November 2024</div>
+        <h3 data-en="New: Clinical Guide to Navigating Political Disclosure in the Therapeutic Frame" data-ar="جديد: دليل سريري للتعامل مع الإفصاح السياسي في الإطار العلاجي">New: Clinical Guide to Navigating Political Disclosure in the Therapeutic Frame</h3>
+        <p data-en="A practitioner guide developed by USAPALMHN for clinicians managing countertransference, disclosure decisions, and supervisory conversations." data-ar="دليل ممارس طورته USAPALMHN للأطباء الذين يديرون الانتقال المضاد وقرارات الإفصاح والمحادثات الإشرافية.">A practitioner guide developed by USAPALMHN for clinicians managing countertransference, disclosure decisions, and supervisory conversations.</p>
+        <a href="#" class="link-arrow" data-en="Read →" data-ar="اقرأ →">Read →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK UPDATES -->
+<section id="updates" style="background: var(--cream); padding: 90px 60px;">
+  <div style="max-width: 1140px; margin: 0 auto;">
+    <div class="section-header-left">
+      <div class="section-label" data-en="Steering Committee" data-ar="لجنة التوجيه">Steering Committee</div>
+      <h2 class="section-title" data-en="Network Updates" data-ar="تحديثات الشبكة">Network Updates</h2>
+      <p class="section-sub" data-en="Monthly dispatches from the USA-PalMHN Steering Committee to our Outreach Representatives." data-ar="رسائل شهرية من لجنة توجيه USA-PalMHN إلى ممثلينا في التواصل.">Monthly dispatches from the USA-PalMHN Steering Committee to our Outreach Representatives.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <!-- APRIL 2026 -->
+      <div class="news-card nc-green">
+        <div class="news-card-body">
+          <span class="news-badge nb-green">April 2026</span>
+          <div class="news-date">Sent April 15, 2026</div>
+          <h3 data-en="One Thousand White Coats, Balata Health Center &amp; More" data-ar="ألف معطف أبيض على التل، مركز بلاطة الصحي والمزيد">One Thousand White Coats, Balata Health Center &amp; More</h3>
+          <p data-en="DAG Hill Day advocacy, Café Palestine music therapy programme, 'We Besiege Our Siege with Madness' webinar fundraiser for Balata Health Center, Eyewitness Palestine 25th anniversary benefit, and Drop NASW campaign update." data-ar="مناصرة يوم DAG على التل، برنامج العلاج بالموسيقى في كافيه فلسطين، ندوة 'نحاصر حصارنا بالجنون' لجمع التبرعات لمركز بلاطة الصحي، حفل ذكرى شهود عيان فلسطين الـ25، وتحديث حملة Drop NASW.">DAG Hill Day advocacy, Café Palestine music therapy programme, "We Besiege Our Siege with Madness" webinar fundraiser for Balata Health Center, Eyewitness Palestine 25th anniversary benefit, and Drop NASW campaign update.</p>
+          <a href="#" class="link-arrow" data-en="Read Full Update →" data-ar="اقرأ التحديث الكامل →">Read Full Update →</a>
+        </div>
+      </div>
+
+      <!-- MARCH 2026 -->
+      <div class="news-card nc-red">
+        <div class="news-card-body">
+          <span class="news-badge nb-red">March 2026</span>
+          <div class="news-date">Sent March 12, 2026</div>
+          <h3 data-en="&ldquo;Health Under Siege,&rdquo; Reading Circles &amp; UK-PalMHN Events" data-ar="'الصحة تحت الحصار' ودوائر القراءة وفعاليات UK-PalMHN">&ldquo;Health Under Siege,&rdquo; Reading Circles &amp; UK-PalMHN Events</h3>
+          <p data-en="Recap of the 'Exiled but Not Erased' film series ($1,735 raised for Badil), JVP 'Health Under Siege' webinar co-sponsorship, Drop NASW campaign, and rescheduled 'Besiege Your Siege with Madness' event." data-ar="ملخص سلسلة أفلام 'منفيون لكن غير ممحوين' (1,735 دولار جُمعت لصالح بديل)، رعاية مشتركة لندوة JVP 'الصحة تحت الحصار'، حملة Drop NASW، وفعالية 'حاصر حصارك بالجنون' المعاد جدولتها.">Recap of the "Exiled but Not Erased" film series ($1,735 raised for Badil), JVP "Health Under Siege" webinar co-sponsorship, Drop NASW campaign, and rescheduled "Besiege Your Siege with Madness" event.</p>
+          <a href="#" class="link-arrow" data-en="Read Full Update →" data-ar="اقرأ التحديث الكامل →">Read Full Update →</a>
+        </div>
+      </div>
+
+      <!-- FEBRUARY 2026 -->
+      <div class="news-card nc-blue">
+        <div class="news-card-body">
+          <span class="news-badge nb-blue">February 2026</span>
+          <div class="news-date">Sent February 10, 2026</div>
+          <h3 data-en="Film Series Launch, Do No Harm Campaign &amp; Reading Circles" data-ar="إطلاق سلسلة الأفلام وحملة 'لا تضر' ودوائر القراءة">Film Series Launch, Do No Harm Campaign &amp; Reading Circles</h3>
+          <p data-en="'Exiled but Not Erased' film series with Badil Resource Center, Do No Harm campaign against the Henri Parens Symposium, five active reading circles, and Expel the IUSW campaign via Social Work for Palestine." data-ar="سلسلة أفلام 'منفيون لكن غير ممحوين' مع مركز بديل للموارد، حملة 'لا تضر' ضد ندوة هنري بارنز، خمس دوائر قراءة نشطة، وحملة طرد IUSW عبر العمل الاجتماعي من أجل فلسطين.">"Exiled but Not Erased" film series with Badil Resource Center, Do No Harm campaign against the Henri Parens Symposium, five active reading circles, and Expel the IUSW campaign via Social Work for Palestine.</p>
+          <a href="#" class="link-arrow" data-en="Read Full Update →" data-ar="اقرأ التحديث الكامل →">Read Full Update →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#" class="btn-olive" data-en="View All Updates" data-ar="عرض جميع التحديثات">View All Updates</a>
+    </div>
+  </div>
+</section>
+
+<!-- DON'T GO -->
+<section id="dont-go">
+  <div class="keffiyeh-overlay"></div>
+  <div class="dg-label" data-en="Campaign" data-ar="حملة">Campaign</div>
+  <h2 data-en="Don't Go. Stand With Palestine." data-ar="لا تذهب. قف مع فلسطين.">Don't Go. Stand With Palestine.</h2>
+  <p data-en="In solidarity with the Palestinian Union of Social Workers and Psychologists and their 20,000 members, we urge mental health professionals worldwide to decline participation in conferences held in Israel. When our Palestinian colleagues ask us to stand with them, that is a clinical and ethical imperative." data-ar="تضامنًا مع اتحاد الأخصائيين الاجتماعيين وعلماء النفس الفلسطينيين وأعضائه البالغ عددهم 20,000 عضو، ندعو متخصصي الصحة النفسية في جميع أنحاء العالم إلى رفض المشاركة في المؤتمرات المُقامة في إسرائيل. عندما يطلب منا زملاؤنا الفلسطينيون الوقوف معهم، فذلك واجب سريري وأخلاقي لا تنازل عنه.">In solidarity with the Palestinian Union of Social Workers and Psychologists and their 20,000 members, we urge mental health professionals worldwide to decline participation in conferences held in Israel. When our Palestinian colleagues ask us to stand with them, that is a clinical and ethical imperative.</p>
+  <div class="dg-ctas">
+    <a href="#" class="btn-white" data-en="Read the Full Guidance" data-ar="اقرأ التوجيهات الكاملة">Read the Full Guidance</a>
+    <a href="#" class="btn-white-outline" data-en="Download PDF" data-ar="تحميل PDF">Download PDF</a>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section id="voices">
+  <div class="voices-header">
+    <div class="section-label" data-en="Voices on Mental Health" data-ar="أصوات حول الصحة النفسية">Voices on Mental Health</div>
+    <h2 class="section-title" style="color:white;" data-en="From Clinicians in the Network" data-ar="من أطباء في الشبكة">From Clinicians in the Network</h2>
+    <p class="section-sub" data-en="What it means to practice in solidarity." data-ar="ما يعنيه الممارسة بالتضامن.">What it means to practice in solidarity.</p>
+  </div>
+  <div class="voices-grid">
+    <div class="voice-card">
+      <blockquote data-en='"My Palestinian clients don't need me to pretend that what's happening to their families is a "political controversy." They need me to be clinically honest about what structural violence does to the psyche."' data-ar='"عملائي الفلسطينيون لا يحتاجون مني أن أتظاهر بأن ما يحدث لعائلاتهم هو 'جدل سياسي'. إنهم يحتاجون مني أن أكون صادقًا سريريًا بشأن ما تفعله العنف الهيكلي للنفسية."'>"My Palestinian clients don't need me to pretend that what's happening to their families is a 'political controversy.' They need me to be clinically honest about what structural violence does to the psyche."</blockquote>
+      <div class="voice-cite">
+        <div class="voice-avatar">SR</div>
+        <cite><strong>Dr. Sara Rahim, PhD</strong> Clinical Psychologist, Chicago, IL</cite>
+      </div>
+    </div>
+    <div class="voice-card">
+      <blockquote data-en='"Joining this network gave me language for what I was already feeling — that our professional code of ethics doesn't end at the therapy room door. Justice is a clinical value."' data-ar='"الانضمام إلى هذه الشبكة أعطاني لغة لما كنت أشعر به بالفعل — أن قواعدنا الأخلاقية المهنية لا تنتهي عند باب غرفة العلاج. العدالة قيمة سريرية."'>"Joining this network gave me language for what I was already feeling — that our professional code of ethics doesn't end at the therapy room door. Justice is a clinical value."</blockquote>
+      <div class="voice-cite">
+        <div class="voice-avatar">MN</div>
+        <cite><strong>Marcus Nasser, LCSW</strong> Therapist &amp; Supervisor, New York, NY</cite>
+      </div>
+    </div>
+    <div class="voice-card">
+      <blockquote data-en='"We are trained to recognize moral injury, vicarious trauma, and collective grief. What we are witnessing in Gaza meets every clinical criterion. Our silence is its own symptom."' data-ar='"نحن مدربون للتعرف على الأذى الأخلاقي والصدمة الغيرية والحزن الجماعي. ما نشهده في غزة يستوفي كل معيار سريري. صمتنا هو أعراضه الخاصة."'>"We are trained to recognize moral injury, vicarious trauma, and collective grief. What we are witnessing in Gaza meets every clinical criterion. Our silence is its own symptom."</blockquote>
+      <div class="voice-cite">
+        <div class="voice-avatar">LA</div>
+        <cite><strong>Dr. Layla Abboud, PsyD</strong> Professor &amp; Clinician, Los Angeles, CA</cite>
+      </div>
+    </div>
+    <div class="voice-card">
+      <blockquote data-en='"I train social work students to identify systems of oppression. The inability to name what is happening in Palestine in our classrooms is itself a clinical ethics problem."' data-ar='"أدرب طلاب العمل الاجتماعي لتحديد أنظمة القمع. عدم القدرة على تسمية ما يحدث في فلسطين في فصولنا الدراسية هو في حد ذاته مشكلة أخلاقيات سريرية."'>"I train social work students to identify systems of oppression. The inability to name what is happening in Palestine in our classrooms is itself a clinical ethics problem."</blockquote>
+      <div class="voice-cite">
+        <div class="voice-avatar">TK</div>
+        <cite><strong>Prof. Tariq Khalil, MSW</strong> Social Work Faculty, Boston, MA</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="section-header-left">
+    <div class="section-label" data-en="Member Resources" data-ar="موارد الأعضاء">Member Resources</div>
+    <h2 class="section-title" data-en="Clinical Tools for Justice-Centered Practice" data-ar="أدوات سريرية للممارسة القائمة على العدالة">Clinical Tools for Justice-Centered Practice</h2>
+    <p class="section-sub" data-en="Evidence-informed resources developed by and for mental health professionals." data-ar="موارد مستندة إلى الأدلة طورها متخصصو الصحة النفسية وللمتخصصين فيها.">Evidence-informed resources developed by and for mental health professionals.</p>
+  </div>
+  <div class="resources-grid">
+    <div class="resource-card">
+      <div class="resource-bar rb-green"></div>
+      <div class="resource-body">
+        <div class="resource-lock">🔒</div>
+        <h3 data-en="Culturally-Informed Assessment: Working with Palestinian Clients" data-ar="التقييم المستنير ثقافيًا: العمل مع العملاء الفلسطينيين">Culturally-Informed Assessment: Working with Palestinian Clients</h3>
+        <p data-en="A comprehensive guide covering cultural formulation, language considerations, and trauma-informed assessment frameworks for Palestinian-heritage clients." data-ar="دليل شامل يغطي الصياغة الثقافية واعتبارات اللغة وأطر التقييم المستنيرة بالصدمة للعملاء من التراث الفلسطيني.">A comprehensive guide covering cultural formulation, language considerations, and trauma-informed assessment frameworks for Palestinian-heritage clients.</p>
+        <a href="#get-involved" class="link-arrow" data-en="Join to access →" data-ar="انضم للوصول →">Join to access →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-bar rb-red"></div>
+      <div class="resource-body">
+        <div class="resource-lock">🔒</div>
+        <h3 data-en="Navigating Countertransference Around Political Conflict" data-ar="التعامل مع الانتقال المضاد حول النزاع السياسي">Navigating Countertransference Around Political Conflict</h3>
+        <p data-en="A practitioner guide and supervisory framework for managing personal reactions to geopolitical trauma narratives in the clinical setting." data-ar="دليل ممارس وإطار إشرافي لإدارة ردود الفعل الشخصية على روايات الصدمة الجيوسياسية في البيئة السريرية.">A practitioner guide and supervisory framework for managing personal reactions to geopolitical trauma narratives in the clinical setting.</p>
+        <a href="#get-involved" class="link-arrow" data-en="Join to access →" data-ar="انضم للوصول →">Join to access →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-bar rb-blue"></div>
+      <div class="resource-body">
+        <div class="resource-lock">🔒</div>
+        <h3 data-en="Collective Grief and Diasporic Mourning: A Curriculum Module" data-ar="الحزن الجماعي والحداد في الشتات: وحدة منهجية">Collective Grief and Diasporic Mourning: A Curriculum Module</h3>
+        <p data-en="A 90-minute CEU-eligible curriculum module on collective grief, ambiguous loss, and intergenerational trauma in displaced populations." data-ar="وحدة منهجية مدتها 90 دقيقة مؤهلة لوحدات التعليم المستمر حول الحزن الجماعي والخسارة الغامضة والصدمة عبر الأجيال في المجتمعات المهجرة.">A 90-minute CEU-eligible curriculum module on collective grief, ambiguous loss, and intergenerational trauma in displaced populations.</p>
+        <a href="#get-involved" class="link-arrow" data-en="Join to access →" data-ar="انضم للوصول →">Join to access →</a>
+      </div>
+    </div>
+  </div>
+  <div class="resource-cta-banner">
+    <div>
+      <h3 data-en="Become a Member — Unlock All Clinical Resources" data-ar="كن عضوًا — افتح جميع الموارد السريرية">Become a Member — Unlock All Clinical Resources</h3>
+      <p data-en="Free membership for licensed clinicians, trainees, and mental health professionals." data-ar="عضوية مجانية للأطباء المرخصين والمتدربين والمتخصصين في الصحة النفسية.">Free membership for licensed clinicians, trainees, and mental health professionals.</p>
+    </div>
+    <a href="#get-involved" class="btn-white" data-en="Join Free Today" data-ar="انضم مجانًا اليوم">Join Free Today</a>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="get-involved">
+  <div class="section-header-center">
+    <div class="section-label" data-en="Get Involved" data-ar="شارك معنا">Get Involved</div>
+    <h2 class="section-title" data-en="Ways to Contribute" data-ar="طرق المساهمة">Ways to Contribute</h2>
+    <p class="section-sub" data-en="Whether you're a seasoned clinician, a student, or a department chair — there's a place for you in this network." data-ar="سواء كنت طبيبًا متمرسًا أو طالبًا أو رئيس قسم — هناك مكان لك في هذه الشبكة.">Whether you're a seasoned clinician, a student, or a department chair — there's a place for you in this network.</p>
+  </div>
+  <div class="gi-grid">
+    <div class="gi-card">
+      <div class="gi-icon gi-icon-green">🌐</div>
+      <h3 data-en="Join the Network" data-ar="انضم إلى الشبكة">Join the Network</h3>
+      <p data-en="Free membership for all licensed mental health professionals, graduate students, and trainees. Access resources, statements, and peer community." data-ar="عضوية مجانية لجميع متخصصي الصحة النفسية المرخصين وطلاب الدراسات العليا والمتدربين. الوصول إلى الموارد والبيانات ومجتمع الأقران.">Free membership for all licensed mental health professionals, graduate students, and trainees. Access resources, statements, and peer community.</p>
+      <a href="get-involved.html#join" class="btn-olive-sm" data-en="Join Now" data-ar="انضم الآن">Join Now</a>
+    </div>
+    <div class="gi-card">
+      <div class="gi-icon gi-icon-red">✊</div>
+      <h3 data-en="Volunteer as a Clinician" data-ar="تطوع كطبيب">Volunteer as a Clinician</h3>
+      <p data-en="Contribute your clinical expertise to our resource development, webinar facilitation, statements committee, or supervision support programs." data-ar="ساهم بخبرتك السريرية في تطوير مواردنا أو تيسير الندوات عبر الإنترنت أو لجنة البيانات أو برامج دعم الإشراف.">Contribute your clinical expertise to our resource development, webinar facilitation, statements committee, or supervision support programs.</p>
+      <a href="#" class="btn-join" style="animation:none;" data-en="Volunteer" data-ar="تطوع">Volunteer</a>
+    </div>
+    <div class="gi-card">
+      <div class="gi-icon gi-icon-blue">🎓</div>
+      <h3 data-en="Start a University Chapter" data-ar="أسس فصلًا جامعيًا">Start a University Chapter</h3>
+      <p data-en="Bring USAPALMHN to your graduate program or department. We provide chapter support, curriculum resources, and faculty liaison guidance." data-ar="أحضر USAPALMHN إلى برنامجك الدراسي أو قسمك. نقدم دعم الفصل وموارد المناهج وإرشاد ارتباط أعضاء هيئة التدريس.">Bring USAPALMHN to your graduate program or department. We provide chapter support, curriculum resources, and faculty liaison guidance.</p>
+      <a href="#" class="btn-navy-sm" data-en="Start a Chapter" data-ar="أسس فصلًا">Start a Chapter</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2 data-en="Stay Connected with the Network" data-ar="ابق على تواصل مع الشبكة">Stay Connected with the Network</h2>
+  <p data-en="Clinical updates, new resources, and network statements — delivered to your inbox." data-ar="التحديثات السريرية والموارد الجديدة وبيانات الشبكة — يتم تسليمها إلى بريدك الوارد.">Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button" data-en="Subscribe" data-ar="اشترك">Subscribe</button>
+  </div>
+  <p class="fine-print" data-en="You can unsubscribe anytime. We respect your privacy." data-ar="يمكنك إلغاء الاشتراك في أي وقت. نحن نحترم خصوصيتك.">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px; font-weight:700; font-family:'DM Sans',sans-serif; color:white; line-height:1.2; text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline" data-en="A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016." data-ar="شبكة يقودها متطوعون بنسبة 100٪ من متخصصي الصحة النفسية الأمريكيين في تضامن مع المجتمعات الفلسطينية منذ 2016.">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn" title="Twitter/X">𝕏</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn" title="Facebook">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn" title="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Navigate" data-ar="تصفح">Navigate</h4>
+      <a href="about.html" data-en="About" data-ar="عن">About</a>
+      <a href="#news" data-en="Breaking News" data-ar="أخبار عاجلة">Breaking News</a>
+      <a href="#updates" data-en="Updates" data-ar="التحديثات">Updates</a>
+      <a href="campaigns.html" data-en=""Don't Go" Campaigns" data-ar="حملة 'لا تذهب'">"Don't Go" Campaigns</a>
+      <a href="voices.html" data-en="Voices on Mental Health" data-ar="أصوات حول الصحة النفسية">Voices on Mental Health</a>
+      <a href="resources.html" data-en="Resources" data-ar="الموارد">Resources</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Get Involved" data-ar="شارك معنا">Get Involved</h4>
+      <a href="get-involved.html#join" data-en="Join the Network" data-ar="انضم إلى الشبكة">Join the Network</a>
+      <a href="get-involved.html#delegations" data-en="Travel to Palestine" data-ar="السفر إلى فلسطين">Travel to Palestine</a>
+      <a href="get-involved.html#reading-circles" data-en="Reading Circles" data-ar="دوائر القراءة">Reading Circles</a>
+      <a href="get-involved.html#donate" data-en="Donate" data-ar="تبرع">Donate</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Contact" data-ar="اتصل بنا">Contact</h4>
+      <a href="mailto:info@usapalmhn.org">info@usapalmhn.org</a>
+      <p data-en="USA Palestine Mental Health Network" data-ar="شبكة الصحة النفسية الأمريكية الفلسطينية">USA Palestine Mental Health Network</p>
+      <p>usapalmhn.org</p>
+      <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,0.4);" data-en="Registered 501(c)(3) nonprofit organization" data-ar="منظمة غير ربحية مسجلة 501(c)(3)">Registered 501(c)(3) nonprofit organization</p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // HERO SLIDER
+  let currentSlide = 0;
+  const totalSlides = 3;
+  let autoAdvance;
+
+  function goToSlide(n) {
+    document.getElementById('slide-' + currentSlide).classList.remove('active');
+    document.querySelectorAll('.hero-dot')[currentSlide].classList.remove('active');
+    currentSlide = n;
+    document.getElementById('slide-' + currentSlide).classList.add('active');
+    document.querySelectorAll('.hero-dot')[currentSlide].classList.add('active');
+    resetAuto();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }
+
+  function resetAuto() {
+    clearInterval(autoAdvance);
+    autoAdvance = setInterval(nextSlide, 5000);
+  }
+
+  resetAuto();
+
+  // IMPACT COUNT-UP
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function step(ts) {
+      const elapsed = ts - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const impactObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        impactObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.impact-number').forEach(el => impactObserver.observe(el));
+
+  // ACTIVE NAV ON SCROLL
+  const sections = ['about', 'news', 'updates', 'dont-go', 'voices', 'resources'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const match = document.querySelector(`.nav-links a[data-section="${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObserver.observe(el);
+  });
+
+  // MOBILE MENU
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+  }
+
+  // LANGUAGE TOGGLE
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+
+    if (isArabic) {
+      html.setAttribute('dir', 'rtl');
+      html.setAttribute('lang', 'ar');
+      btn.textContent = 'عربي | EN';
+      document.querySelectorAll('[data-ar]').forEach(el => {
+        el.textContent = el.dataset.ar;
+      });
+    } else {
+      html.setAttribute('dir', 'ltr');
+      html.setAttribute('lang', 'en');
+      btn.textContent = 'EN | عربي';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.dataset.en;
+      });
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"Don't Go" Campaigns — USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .campaigns-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 72px 60px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .camp-sidebar {
+    position: sticky;
+    top: 100px;
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .camp-sidebar-header {
+    background: var(--olive-dark);
+    padding: 14px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+  .camp-sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(74,107,26,0.07);
+    transition: all 0.2s;
+  }
+  .camp-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .camp-sidebar a.active { background: var(--olive-light); color: var(--olive-dark); font-weight: 600; border-left: 3px solid var(--olive); }
+  .camp-sidebar a:last-child { border-bottom: none; }
+
+  /* Content */
+  .camp-content { display: flex; flex-direction: column; gap: 72px; }
+
+  /* Section header */
+  .camp-section-header {
+    display: flex; align-items: center; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 28px;
+  }
+  .csh-icon {
+    width: 48px; height: 48px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .cshi-green { background: var(--olive-light); }
+  .cshi-red { background: rgba(200,40,26,0.08); }
+  .cshi-blue { background: rgba(26,58,107,0.08); }
+  .cshi-cream { background: var(--cream-dark); }
+  .camp-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--text-dark);
+  }
+  .camp-section-header p {
+    font-size: 14px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic; margin-top: 4px;
+  }
+
+  /* About block */
+  .about-block {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .about-block .kef-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .about-block > * { position: relative; z-index: 1; }
+  .about-block h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; font-weight: 700; margin-bottom: 16px; }
+  .about-block p { font-family: 'Source Serif 4', serif; font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 16px; }
+  .about-block p:last-of-type { margin-bottom: 24px; }
+
+  /* Campaign card */
+  .campaign-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+  }
+  .campaign-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .cc-top { height: 5px; }
+  .cc-red { background: var(--red); }
+  .cc-green { background: var(--olive); }
+  .cc-blue { background: var(--navy); }
+  .cc-body { padding: 24px 28px; }
+  .cc-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
+  }
+  .ct-red { background: rgba(200,40,26,0.1); color: var(--red); }
+  .ct-green { background: var(--olive-light); color: var(--olive-dark); }
+  .ct-blue { background: rgba(26,58,107,0.1); color: var(--navy); }
+  .campaign-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .campaign-card p {
+    font-size: 14px; color: var(--text-muted); line-height: 1.7;
+    margin-bottom: 18px; font-family: 'Source Serif 4', serif;
+  }
+
+  /* Sub-documents list inside campaign card */
+  .sub-docs { border-top: 1px solid rgba(74,107,26,0.1); padding-top: 16px; margin-top: 4px; }
+  .sub-docs-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 12px; font-family: 'DM Sans', sans-serif;
+  }
+  .sub-doc {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px;
+    background: var(--cream);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(74,107,26,0.1);
+  }
+  .sub-doc:hover { background: var(--olive-light); border-color: rgba(74,107,26,0.3); }
+  .sub-doc-icon { font-size: 14px; flex-shrink: 0; }
+  .sub-doc span { font-size: 13px; color: var(--olive-dark); font-weight: 500; line-height: 1.4; }
+
+  /* Do No Harm banner */
+  .do-no-harm-banner {
+    background: var(--red);
+    border-radius: 8px;
+    padding: 36px 44px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .do-no-harm-banner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0,rgba(255,255,255,0.04) 1px,transparent 1px,transparent 10px);
+  }
+  .do-no-harm-banner > * { position: relative; z-index: 1; }
+  .do-no-harm-banner h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: white; font-weight: 700; margin-bottom: 12px; }
+  .do-no-harm-banner p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 20px; font-family: 'Source Serif 4', serif; }
+  .do-no-harm-banner .dnh-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Campaign grid 2-col */
+  .camp-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  @media (max-width: 1024px) {
+    .campaigns-layout { grid-template-columns: 1fr; gap: 32px; }
+    .camp-sidebar { position: static; }
+    .camp-grid-2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .campaigns-layout { padding: 48px 24px; }
+    .about-block { padding: 28px 24px; }
+    .do-no-harm-banner { padding: 28px 24px; }
+    .cc-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
+      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#news">Breaking News</a></li>
+      <li><a href="index.html#updates">Updates</a></li>
+      <li><a href="campaigns.html" class="active">"Don't Go"</a></li>
+      <li><a href="voices.html">Voices</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="get-involved.html#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
+    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="keffiyeh-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Cultural Boycott · Professional Ethics · Solidarity</div>
+    <h1>"Don't Go" Campaigns</h1>
+    <p>In solidarity with the Palestinian Union of Social Workers and Psychologists and their 20,000 members, USAPALMHN urges mental health professionals worldwide to decline participation in conferences held in Israel. When our Palestinian colleagues ask us to stand with them, that is a clinical and ethical imperative.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>"Don't Go" Campaigns
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="campaigns-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="camp-sidebar">
+    <div class="camp-sidebar-header">Campaign Archive</div>
+    <a href="#about" class="active"><span>📖</span> About "Don't Go"</a>
+    <a href="#do-no-harm"><span>🚫</span> Do No Harm</a>
+    <a href="#iarpp"><span>📋</span> IARPP</a>
+    <a href="#iasgop"><span>📋</span> IASGOP</a>
+    <a href="#isps"><span>📋</span> ISPS</a>
+    <a href="#nls"><span>📋</span> NLS</a>
+    <a href="#world-mediation"><span>📋</span> World Mediation Summit</a>
+    <a href="#copelfi"><span>📋</span> COPELFI</a>
+    <a href="#enmesh"><span>📋</span> ENMESH</a>
+    <a href="#dr-akhtar"><span>📋</span> Dr. Akhtar</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="camp-content">
+
+    <!-- ABOUT DON'T GO -->
+    <section id="about">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-green">📖</div>
+        <div>
+          <h2>About "Don't Go"</h2>
+          <p>The ethical and professional basis for our cultural boycott campaigns.</p>
+        </div>
+      </div>
+      <div class="about-block">
+        <div class="kef-overlay"></div>
+        <h3>Why We Say "Don't Go"</h3>
+        <p>The USA-Palestine Mental Health Network respects the position articulated by our colleagues in Palestine through the Palestinian Union of Social Workers and Psychologists (PUSWP), asking for international support in their declaration of October 2, 2018. The PUSWP represents approximately 20,000 mental health professionals in Palestine.</p>
+        <p>Consistent with the PUSWP position, the USA-PalMHN has taken a public stand urging mental health organizations and clinicians not to go to Israel. We have approached individual international mental health organizations planning to hold meetings and conferences in Israel, asking them to reconsider and hold their meetings elsewhere.</p>
+        <p>The USA-PalMHN wishes to thank our sibling organization, the UK-Palestine Mental Health Network, and the advocacy organization Jewish Voice for Peace, for their tremendous support in waging these campaigns.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://usapalmhn.org/about-dont-go/" target="_blank" class="btn-white">Read Full Statement</a>
+          <a href="https://www.facebook.com/PUSWP.Palestine/posts/902274599967730" target="_blank" class="btn-white-outline">PUSWP Declaration →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DO NO HARM -->
+    <section id="do-no-harm">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-red">🚫</div>
+        <div>
+          <h2>Do No Harm Campaign</h2>
+          <p>Demanding mental health organizations uphold the foundational ethical principle.</p>
+        </div>
+      </div>
+      <div class="do-no-harm-banner">
+        <h3>Do No Harm</h3>
+        <p>The Do No Harm Campaign calls on mental health professional organizations to refuse participation in events that normalize Israeli apartheid and the ongoing ethnic cleansing of Palestinians — in direct violation of our profession's most foundational ethical principle.</p>
+        <div class="dnh-ctas">
+          <a href="https://usapalmhn.org/portfolio-item/the-do-no-harm-campaign/" target="_blank" class="btn-white">About the Campaign</a>
+          <a href="https://usapalmhn.org/portfolio-item/do-no-harm/" target="_blank" class="btn-white-outline">Do No Harm Resources</a>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-red"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-red">Active — 2026</span>
+          <h3>Henri Parens Symposium — Do No Harm Campaign</h3>
+          <p>In February 2026, USAPALMHN launched a Do No Harm Campaign in response to the Henri Parens Symposium scheduled for March 7, 2026, titled "Resilience in Response to Violence & War." The symposium featured Dr. Merav Roth, an Israeli clinician, framing the conflict as a "symmetrical trauma" — which USAPALMHN condemned as clinically inaccurate and politically harmful.</p>
+          <a href="https://usapalmhn.org/portfolio-item/the-do-no-harm-campaign/" target="_blank" class="link-arrow">Read the Campaign →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IARPP -->
+    <section id="iarpp">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-red">📋</div>
+        <div>
+          <h2>IARPP Campaign</h2>
+          <p>International Association for Relational Psychoanalysis and Psychotherapy.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-red"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-red">Campaign Archive</span>
+          <h3>Don't Go to the IARPP Conference in Israel</h3>
+          <p>One of USAPALMHN's most sustained campaigns, opposing the International Association for Relational Psychoanalysis and Psychotherapy's decision to hold its conference in Israel. The campaign generated significant international support and media attention.</p>
+          <div class="sub-docs">
+            <div class="sub-docs-label">Documents & Resources</div>
+            <a href="https://usapalmhn.org/portfolio-item/palestinian-clinicians-back-cultural-boycott-of-iarpp-conference/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Palestinian Clinicians Condemn IARPP Meeting</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/israeli-professionals-oppose-iarpp-meeting/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Israeli Professionals Oppose IARPP Meeting</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/assoc-of-arab-clinicians-in-israel/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Palestinian-Israeli Clinicians Oppose IARPP Conference</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/voices-on-palestine-forum/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">🎤</span>
+              <span>"Voices on Palestine" Forum — June 15, 2018</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/sign-petition-no-conference-in-israel/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">✍️</span>
+              <span>Sign Petition to IARPP: No Conference in Israel</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/iarpp-attempts-twice/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>IARPP Attempts Twice to Squelch NYC Meeting on Palestine</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/peoples-health-movement/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>People's Health Movement Opposes IARPP Conference</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/uk-union-supports-palestinian-condemnation-of-iarpp-conference/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>UK Union Condemns IARPP Conference</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/media-reports-on-the-iarpp-protest/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📰</span>
+              <span>Media Reports on the IARPP Protest</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/protest-letters-to-iarpp-from-individuals/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">✉️</span>
+              <span>Protest Letters to IARPP from Individuals</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/networks-letter-to-conference-speakers/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">✉️</span>
+              <span>Networks' Letter to Conference Speakers</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IASGOP -->
+    <section id="iasgop">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-blue">📋</div>
+        <div>
+          <h2>IASGOP Campaign</h2>
+          <p>Israeli Association for the Study of Group and Organizational Processes.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-blue"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-blue">Campaign Archive</span>
+          <h3>Don't Go to the "Recalculating" Conference in Israel</h3>
+          <p>USAPALMHN campaigned against attendance at the "Recalculating" conference organized by the Israeli Association for the Study of Group and Organizational Processes, urging mental health professionals to respect the Palestinian call for cultural boycott.</p>
+          <a href="https://usapalmhn.org/portfolio-item/dont-go-to-the-recalculating-conference-in-israel/" target="_blank" class="link-arrow">Read the Campaign →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISPS -->
+    <section id="isps">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-blue">📋</div>
+        <div>
+          <h2>ISPS Campaign</h2>
+          <p>International Society for Psychological and Social Approaches to Psychosis.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-blue"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-blue">Campaign Archive</span>
+          <h3>Don't Go to the ISPS Conference in Israel</h3>
+          <p>USAPALMHN opposed the International Society for Psychological and Social Approaches to Psychosis hosting its conference in Israel, coordinating with Palestinian clinicians and international networks to pressure the organization.</p>
+          <div class="sub-docs">
+            <div class="sub-docs-label">Documents</div>
+            <a href="https://usapalmhn.org/portfolio-item/isps/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>ISPS Campaign Overview</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/intl-society-for-psychological-and-social-approaches-to-psychosis/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Int'l Society for Psychological and Social Approaches to Psychosis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NLS -->
+    <section id="nls">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-blue">📋</div>
+        <div>
+          <h2>NLS Campaign</h2>
+          <p>The New Lacanian School of Psychoanalysis.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-blue"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-blue">Campaign Archive</span>
+          <h3>Don't Go to the New Lacanian School Conference in Tel Aviv</h3>
+          <p>USAPALMHN opposed the New Lacanian School of Psychoanalysis hosting its conference in Tel Aviv, urging psychoanalytic clinicians to respect the Palestinian call for boycott.</p>
+          <div class="sub-docs">
+            <div class="sub-docs-label">Documents</div>
+            <a href="https://usapalmhn.org/portfolio-item/nls/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>NLS Campaign Overview</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/the-new-lacanian-school-of-psychoanalysis-conference-in-tel-aviv/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>New Lacanian School Conference — Tel Aviv</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORLD MEDIATION SUMMIT -->
+    <section id="world-mediation">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-green">📋</div>
+        <div>
+          <h2>World Mediation Summit Campaign</h2>
+          <p>Opposing the World Mediation Summit held in Israel.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-green"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-green">Campaign Archive</span>
+          <h3>Don't Go to the World Mediation Summit in Israel</h3>
+          <p>USAPALMHN campaigned against the World Mediation Summit being held in Israel, coordinating with international organizations and writing directly to summit organizers.</p>
+          <div class="sub-docs">
+            <div class="sub-docs-label">Documents</div>
+            <a href="https://usapalmhn.org/portfolio-item/world-mediation-summit/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>World Mediation Summit Campaign Overview</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/synopsis-of-wms-campaign/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Synopsis of the WMS Campaign</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/letter-to-professor-tal-and-mr-brown/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">✉️</span>
+              <span>Letter to Professor Tal and Mr. Brown</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COPELFI -->
+    <section id="copelfi">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-green">📋</div>
+        <div>
+          <h2>COPELFI at Rennes Campaign</h2>
+          <p>Opposing COPELFI's conference planned for Rennes with Israeli institutional involvement.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-green"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-green">Campaign Archive</span>
+          <h3>COPELFI at Rennes</h3>
+          <p>USAPALMHN organized against COPELFI's conference at Rennes in France, which involved Israeli institutional participation, in solidarity with the Palestinian call for cultural boycott.</p>
+          <div class="sub-docs">
+            <div class="sub-docs-label">Documents</div>
+            <a href="https://usapalmhn.org/portfolio-item/copelfi-at-rennes/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>COPELFI at Rennes — Campaign Overview</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/synopsis-of-copelfi-campaign/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">📄</span>
+              <span>Synopsis of the COPELFI Campaign</span>
+            </a>
+            <a href="https://usapalmhn.org/portfolio-item/petition-in-english/" target="_blank" class="sub-doc">
+              <span class="sub-doc-icon">✍️</span>
+              <span>Petition in English</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENMESH -->
+    <section id="enmesh">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-blue">📋</div>
+        <div>
+          <h2>ENMESH Campaign</h2>
+          <p>European Network for Mental Health Service Evaluation.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-blue"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-blue">Campaign Archive</span>
+          <h3>Don't Go to the ENMESH Conference in Israel</h3>
+          <p>USAPALMHN opposed the European Network for Mental Health Service Evaluation hosting its conference in Israel, contributing to the international pressure on professional mental health organizations to respect the Palestinian cultural boycott.</p>
+          <a href="https://usapalmhn.org/portfolio-item/enmesh/" target="_blank" class="link-arrow">Read the Campaign →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DR. AKHTAR -->
+    <section id="dr-akhtar">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-cream">📋</div>
+        <div>
+          <h2>Dr. Akhtar Campaign</h2>
+          <p>Addressing an individual clinician's participation in events in Israel.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-green"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-green">Campaign Archive</span>
+          <h3>Dr. Akhtar — Don't Go</h3>
+          <p>USAPALMHN addressed Dr. Akhtar's planned participation in a professional event in Israel, urging him and other prominent clinicians to stand in solidarity with the Palestinian call for cultural boycott.</p>
+          <a href="https://usapalmhn.org/portfolio-item/dr-akhtar/" target="_blank" class="link-arrow">Read the Campaign →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IPA RESIGN CAMPAIGN -->
+    <section id="ipa">
+      <div class="camp-section-header">
+        <div class="csh-icon cshi-red">📋</div>
+        <div>
+          <h2>Resign IPA Campaign</h2>
+          <p>Calling on members of the International Psychoanalytic Association to resign.</p>
+        </div>
+      </div>
+      <div class="campaign-card">
+        <div class="cc-top cc-red"></div>
+        <div class="cc-body">
+          <span class="cc-tag ct-red">Active — 2026</span>
+          <h3>Call to Resign from the International Psychoanalytic Association</h3>
+          <p>In 2026, the Palestine Mental Health Networks issued a call for members of the International Psychoanalytic Association (IPA) to resign due to the organization's ongoing refusal to acknowledge the genocide in Gaza. USAPALMHN endorses and amplifies this call.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2>Stay Connected with the Network</h2>
+  <p>Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button">Subscribe</button>
+  </div>
+  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn">𝕏</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Campaigns</h4>
+      <a href="campaigns.html#about">About "Don't Go"</a>
+      <a href="campaigns.html#do-no-harm">Do No Harm</a>
+      <a href="campaigns.html#iarpp">IARPP</a>
+      <a href="campaigns.html#isps">ISPS</a>
+      <a href="campaigns.html#ipa">Resign IPA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="about.html">About</a>
+      <a href="voices.html">Voices on Mental Health</a>
+      <a href="resources.html">Resources</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="index.html#updates">Updates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="get-involved.html#join">Join the Network</a>
+      <a href="get-involved.html#delegations">Travel to Palestine</a>
+      <a href="get-involved.html#how-to-help">How to Help</a>
+      <a href="get-involved.html#donate">Donate</a>
+      <a href="about.html#contact">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  const sections = document.querySelectorAll('section[id]');
+  const sideLinks = document.querySelectorAll('.camp-sidebar a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    sideLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+    if (isArabic) { html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN'; }
+    else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي'; }
+  }
+</script>
+</body>
+</html>

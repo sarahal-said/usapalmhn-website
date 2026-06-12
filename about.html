@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .about-page { max-width: 1140px; margin: 0 auto; padding: 80px 60px; }
+
+  /* Mission section */
+  .mission-block {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 48px 52px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--olive);
+  }
+  .mission-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+  .mission-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    color: #3a4a28;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  /* Aims list */
+  .aims-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .aims-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    background: var(--olive-light);
+    border-radius: 6px;
+    border-left: 4px solid var(--olive);
+  }
+  .aims-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--olive); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .aims-list li p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin: 0; font-family: 'Source Serif 4', serif; }
+
+  /* Section headers */
+  .about-section { margin-bottom: 72px; }
+  .about-section-header {
+    display: flex; align-items: center; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 32px;
+  }
+  .ash-icon {
+    width: 48px; height: 48px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .ashi-green { background: var(--olive-light); }
+  .ashi-blue { background: rgba(26,58,107,0.1); }
+  .ashi-red { background: rgba(200,40,26,0.08); }
+  .ashi-cream { background: var(--cream-dark); }
+  .about-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--text-dark);
+  }
+  .about-section-header p {
+    font-size: 14px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic; margin-top: 4px;
+  }
+
+  /* Steering committee cards */
+  .sc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .sc-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .sc-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
+  .sc-avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--olive);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: white;
+    margin: 0 auto 16px; font-family: 'DM Sans', sans-serif;
+  }
+  .sc-card h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; line-height: 1.3; }
+  .sc-card p { font-size: 13px; color: var(--text-muted); line-height: 1.55; font-family: 'Source Serif 4', serif; }
+  .sc-card a { font-size: 12px; color: var(--olive); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 10px; }
+
+  /* Affiliates grid */
+  .affiliates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .affiliate-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 26px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: all 0.3s;
+  }
+  .affiliate-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .affiliate-flag { font-size: 28px; }
+  .affiliate-card h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+  .affiliate-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-family: 'Source Serif 4', serif; }
+  .affiliate-card a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; margin-top: auto; }
+  .affiliate-card a:hover { text-decoration: underline; }
+
+  /* Anti-semitism statement block */
+  .statement-block {
+    background: var(--cream-dark);
+    border: 1px solid rgba(74,107,26,0.15);
+    border-left: 5px solid var(--navy);
+    border-radius: 0 8px 8px 0;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+  }
+  .statement-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 12px; }
+  .statement-block p { font-size: 15px; color: var(--text-mid); line-height: 1.75; font-family: 'Source Serif 4', serif; }
+
+  /* Contact section */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .contact-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .contact-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+  .contact-card a.email { font-size: 15px; color: var(--olive); font-weight: 600; text-decoration: none; }
+
+  @media (max-width: 1024px) {
+    .sc-grid { grid-template-columns: repeat(2, 1fr); }
+    .affiliates-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .about-page { padding: 48px 24px; }
+    .mission-block { padding: 32px 24px; }
+    .sc-grid { grid-template-columns: repeat(2, 1fr); }
+    .affiliates-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
+      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#news">Breaking News</a></li>
+      <li><a href="index.html#updates">Updates</a></li>
+      <li><a href="campaigns.html">"Don't Go"</a></li>
+      <li><a href="voices.html">Voices</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="get-involved.html#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
+    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="keffiyeh-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Founded 2016 · 100% Volunteer-Led · All 50 States</div>
+    <h1>About USAPALMHN</h1>
+    <p>Mental health workers in the USA who have come together to support the people of Palestine in their struggle to achieve justice — and to name the structural conditions that produce psychological harm.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>About
+</div>
+
+<div class="about-page">
+
+  <!-- OUR MISSION -->
+  <section id="mission" class="about-section">
+    <div class="mission-block">
+      <h2>Our Mission</h2>
+      <p>We are mental health workers in the USA who have come together to support the people of Palestine in their struggle to achieve justice. As human beings, we deplore the military, economic and social oppression, and human rights violations imposed on the Palestinian people through the Israeli occupation.</p>
+      <p>Beyond this, as mental health professionals, we identify the occupation as the specific cause of great harm to the well-being and mental health of both the Palestinian and the Israeli public. We believe that the mental health community, both locally and globally, must do more to address the deep links between our professional ethical responsibilities, public health, and human rights.</p>
+      <p>To accomplish this goal, we work in conjunction with other national and international organizations to provide information informing public debate about Palestine/Israel. The Network sponsors English-language delegations of mental health workers to East Jerusalem and the West Bank, as well as speaking tours, film screenings, scholarly articles, and media presentations. We lead campaigns supporting open discussion of Palestine/Israel within mental health organizations around the world.</p>
+    </div>
+
+    <div class="about-section-header">
+      <div class="ash-icon ashi-green">🎯</div>
+      <div>
+        <h2>Our Aims</h2>
+        <p>The five pillars of our work as a network.</p>
+      </div>
+    </div>
+    <ul class="aims-list">
+      <li>
+        <div class="aims-num">1</div>
+        <p>To contribute to raising the level of understanding and the breadth of discussion regarding Palestine; to articulate concerns with international law, with universal human rights, and with social, political, ideological, military, and public health realities that impact the Palestinian people.</p>
+      </li>
+      <li>
+        <div class="aims-num">2</div>
+        <p>To link these concerns with the ethical standards of our professions as mental health workers and to bring these concerns to the attention of professional organizations, of health care service providers, and of the public.</p>
+      </li>
+      <li>
+        <div class="aims-num">3</div>
+        <p>To foster solidarity through personal and professional relationships with our colleagues in Palestine and, while relying upon their leadership, to develop an agenda for constructive change based on their experiences in the Palestinian context.</p>
+      </li>
+      <li>
+        <div class="aims-num">4</div>
+        <p>As consistent with our individual situations, to consider direct action such as arranging public meetings, letter-writing campaigns, working with human rights organizations, initiating public advocacy programs, and responding to the Palestinian call for boycott, divestment, and sanctions (BDS).</p>
+      </li>
+      <li>
+        <div class="aims-num">5</div>
+        <p>To dedicate our expertise as professionals — regarding trauma, family cohesion, racism, equity in health care, the ideological roots of oppression, the impact of oppression on all involved parties, and the process of reconciliation between communities — to the service of advancing human rights in Palestine.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- STEERING COMMITTEE -->
+  <section id="steering-committee" class="about-section">
+    <div class="about-section-header">
+      <div class="ash-icon ashi-green">👥</div>
+      <div>
+        <h2>Steering Committee</h2>
+        <p>100% volunteer clinicians leading the network.</p>
+      </div>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-card">
+        <div class="sc-avatar">VA</div>
+        <h3>Vivian AbouAllol</h3>
+        <p>Steering Committee Member<br>Social Media & Outreach</p>
+        <a href="mailto:abouallol@usapalmhn.org">abouallol@usapalmhn.org</a>
+      </div>
+      <div class="sc-card">
+        <div class="sc-avatar">BG</div>
+        <h3>Ben Goldstein</h3>
+        <p>Steering Committee Member<br>Reading Circles & Programming</p>
+        <a href="mailto:goldstein@usapalmhn.org">goldstein@usapalmhn.org</a>
+      </div>
+      <div class="sc-card">
+        <div class="sc-avatar">CQ</div>
+        <h3>Cheryl Qamar</h3>
+        <p>Steering Committee Member<br>Outreach Representatives</p>
+        <a href="mailto:qamar@usapalmhn.org">qamar@usapalmhn.org</a>
+      </div>
+      <div class="sc-card">
+        <div class="sc-avatar">CS</div>
+        <h3>Christine Schmidt</h3>
+        <p>Steering Committee Member<br>Outreach Representatives</p>
+        <a href="mailto:schmidt@usapalmhn.org">schmidt@usapalmhn.org</a>
+      </div>
+      <div class="sc-card">
+        <div class="sc-avatar">CA</div>
+        <h3>Chris Akel</h3>
+        <p>Steering Committee Member</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVISORY COUNCIL -->
+  <section id="advisory-council" class="about-section">
+    <div class="about-section-header">
+      <div class="ash-icon ashi-blue">🎓</div>
+      <div>
+        <h2>Advisory Council</h2>
+        <p>Distinguished mental health professionals guiding our work.</p>
+      </div>
+    </div>
+    <div class="statement-block" style="border-left-color: var(--olive);">
+      <h3>Our Advisory Council</h3>
+      <p>The USA-Palestine Mental Health Network works closely with the members of our Advisory Council — a distinguished group of mental health professionals, scholars, and advocates who provide guidance on our clinical, ethical, and advocacy work.</p>
+    </div>
+    <a href="https://usapalmhn.org/portfolio-item/advisory-council/" target="_blank" class="btn-olive">View Advisory Council</a>
+  </section>
+
+  <!-- AFFILIATES & PARTNER NETWORKS -->
+  <section id="affiliates" class="about-section">
+    <div class="about-section-header">
+      <div class="ash-icon ashi-blue">🌐</div>
+      <div>
+        <h2>Affiliate Organizations & Partner Networks</h2>
+        <p>The global movement we are part of.</p>
+      </div>
+    </div>
+    <div class="affiliates-grid">
+      <div class="affiliate-card">
+        <div class="affiliate-flag">🇵🇸</div>
+        <h3>Palestine Global Mental Health Network</h3>
+        <p>USAPALMHN took its initial inspiration from our Palestinian colleagues who founded the PGMHN. The global anchor of all our sister networks.</p>
+        <a href="https://www.pgmhn.org/" target="_blank">Visit PGMHN →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-flag">🇬🇧</div>
+        <h3>UK-Palestine Mental Health Network</h3>
+        <p>A sister organization and close collaborator. Co-hosts the Café Palestine webinar series and supports our "Don't Go" campaigns.</p>
+        <a href="https://ukpalmhn.com/" target="_blank">Visit UK-PalMHN →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-flag">🇮🇪</div>
+        <h3>Ireland-Palestine Mental Health Network</h3>
+        <p>Irish mental health professionals in solidarity with Palestine, coordinating with the global network of sister organizations.</p>
+        <a href="https://ipmhn.com/" target="_blank">Visit Ireland-PalMHN →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-flag">🇫🇷</div>
+        <h3>France-Palestine Mental Health Network</h3>
+        <p>French mental health professionals coordinating with the international Palestine mental health solidarity movement.</p>
+        <a href="https://www.facebook.com/frpalmhn/" target="_blank">Visit France-PalMHN →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-flag">🇺🇸</div>
+        <h3>US Campaign for Palestinian Rights (USCPR)</h3>
+        <p>USAPALMHN is an affiliate member of USCPR — the umbrella organization coordinating U.S.-based advocacy for Palestinian rights.</p>
+        <a href="https://uscpr.org/" target="_blank">Visit USCPR →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-flag">✡️</div>
+        <h3>Jewish Voice for Peace — Health Advisory Council</h3>
+        <p>A close partner organization. Co-sponsors health-focused advocacy and the "Health Under Siege" webinar series with USAPALMHN.</p>
+        <a href="https://jewishvoiceforpeace.org/stories/health-advisory-council/" target="_blank">Visit JVP Health →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTI-SEMITISM STATEMENT -->
+  <section id="antisemitism" class="about-section">
+    <div class="about-section-header">
+      <div class="ash-icon ashi-cream">📜</div>
+      <div>
+        <h2>Statement on Anti-Semitism</h2>
+        <p>Our position on the distinction between anti-Zionism and antisemitism.</p>
+      </div>
+    </div>
+    <div class="statement-block">
+      <h3>Our Statement on Anti-Semitism</h3>
+      <p>USAPALMHN unequivocally opposes antisemitism and all forms of racism and ethnic hatred. We invite all readers to read our full statement, which clarifies the distinction between opposition to Zionism as a political ideology and antisemitism as a form of racial and ethnic hatred directed at Jewish people.</p>
+    </div>
+    <a href="https://usapalmhn.org/statement-on-anti-semitism/" target="_blank" class="btn-olive">Read the Full Statement</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="about-section">
+    <div class="about-section-header">
+      <div class="ash-icon ashi-green">✉️</div>
+      <div>
+        <h2>Contact Us</h2>
+        <p>Get in touch with the steering committee.</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>General Inquiries</h3>
+        <p>For general questions, suggestions, resources, upcoming events, or information about the network.</p>
+        <a href="mailto:info@usapalmhn.org" class="email">info@usapalmhn.org</a>
+      </div>
+      <div class="contact-card">
+        <h3>Outreach Representatives</h3>
+        <p>Questions about your role as an Outreach Representative, or interest in joining the outreach program, should be directed to Christine Schmidt and Cheryl Qamar.</p>
+        <a href="mailto:sc@usapalmhn.org" class="email">sc@usapalmhn.org</a>
+      </div>
+      <div class="contact-card">
+        <h3>Social Media</h3>
+        <p>Follow us on Instagram at @us_pmhn. Questions about social media content or suggestions should be directed to Vivian AbouAllol.</p>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="email">@us_pmhn on Instagram</a>
+      </div>
+      <div class="contact-card">
+        <h3>Reading Circles</h3>
+        <p>Outreach Representatives interested in co-facilitating a reading circle should contact Christine Schmidt or Ben Goldstein.</p>
+        <a href="mailto:sc@usapalmhn.org" class="email">sc@usapalmhn.org</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2>Stay Connected with the Network</h2>
+  <p>Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button">Subscribe</button>
+  </div>
+  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn" title="Twitter/X">𝕏</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn" title="Facebook">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn" title="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="about.html#mission">Our Mission</a>
+      <a href="about.html#steering-committee">Steering Committee</a>
+      <a href="about.html#advisory-council">Advisory Council</a>
+      <a href="about.html#affiliates">Partner Networks</a>
+      <a href="about.html#contact">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="index.html#news">Breaking News</a>
+      <a href="campaigns.html">"Don't Go" Campaigns</a>
+      <a href="voices.html">Voices on Mental Health</a>
+      <a href="resources.html">Resources</a>
+      <a href="get-involved.html">Get Involved</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="get-involved.html#join">Join the Network</a>
+      <a href="get-involved.html#delegations">Travel to Palestine</a>
+      <a href="get-involved.html#how-to-help">How to Help</a>
+      <a href="get-involved.html#donate">Donate</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+    if (isArabic) {
+      html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN';
+    } else {
+      html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voices on Mental Health — USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .voices-page-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 72px 60px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .voices-sidebar {
+    position: sticky;
+    top: 100px;
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .voices-sidebar-header {
+    background: var(--olive-dark);
+    padding: 14px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .voices-sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(74,107,26,0.07);
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .voices-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .voices-sidebar a.active {
+    background: var(--olive-light);
+    color: var(--olive-dark);
+    font-weight: 600;
+    border-left: 3px solid var(--olive);
+  }
+  .voices-sidebar a:last-child { border-bottom: none; }
+
+  /* Content area */
+  .voices-content { display: flex; flex-direction: column; gap: 72px; }
+
+  /* Section header */
+  .voices-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 32px;
+  }
+  .vsh-icon {
+    width: 48px; height: 48px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .vsh-green { background: var(--olive-light); }
+  .vsh-red { background: rgba(200,40,26,0.08); }
+  .vsh-blue { background: rgba(26,58,107,0.08); }
+  .vsh-dark { background: var(--olive-deep); }
+  .vsh-cream { background: var(--cream-dark); }
+  .voices-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+  .voices-section-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* Voice article card */
+  .voice-article {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .voice-article:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .va-accent { height: 4px; }
+  .va-green { background: var(--olive); }
+  .va-red { background: var(--red); }
+  .va-blue { background: var(--navy); }
+  .va-body { padding: 24px; }
+  .va-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
+  }
+  .vt-green { background: var(--olive-light); color: var(--olive-dark); }
+  .vt-red { background: rgba(200,40,26,0.1); color: var(--red); }
+  .vt-blue { background: rgba(26,58,107,0.1); color: var(--navy); }
+  .vt-dark { background: rgba(40,57,13,0.12); color: var(--olive-deep); }
+  .va-date { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.3px; }
+  .voice-article h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .voice-article p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+  .va-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(74,107,26,0.1);
+    margin-top: 4px;
+  }
+  .va-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .av-green { background: var(--olive); }
+  .av-red { background: var(--red); }
+  .av-blue { background: var(--navy); }
+  .va-author-info { font-size: 12px; color: var(--text-muted); }
+  .va-author-info strong { display: block; font-size: 13px; color: var(--text-dark); font-weight: 600; }
+
+  /* Articles grid */
+  .voices-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .voices-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  /* Statement list item */
+  .statement-item {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    transition: all 0.2s;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .statement-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
+  .statement-item.red { border-left-color: var(--red); }
+  .statement-item.blue { border-left-color: var(--navy); }
+  .si-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .si-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .si-body p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-family: 'Source Serif 4', serif; }
+  .si-body a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 6px; }
+  .si-body a:hover { text-decoration: underline; }
+  .si-tag {
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+    background: var(--olive-light); color: var(--olive-dark); margin-bottom: 6px;
+  }
+  .si-tag.red { background: rgba(200,40,26,0.1); color: var(--red); }
+
+  /* Featured quote block */
+  .featured-quote {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+  }
+  .featured-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .fq-cite { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+  .fq-avatar {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--olive);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .fq-cite cite { font-style: normal; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .fq-cite cite strong { display: block; color: rgba(255,255,255,0.88); font-size: 14px; margin-bottom: 2px; }
+
+  /* Pledge banner */
+  .pledge-banner {
+    background: var(--red);
+    border-radius: 8px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .pledge-banner-icon { font-size: 36px; flex-shrink: 0; }
+  .pledge-banner h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; font-weight: 700; margin-bottom: 6px; }
+  .pledge-banner p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+  .pledge-btn { margin-left: auto; flex-shrink: 0; }
+
+  /* Psychoanalytic Activist */
+  .activist-card {
+    background: var(--olive-dark);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .activist-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .activist-card > * { position: relative; z-index: 1; }
+  .activist-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; margin-bottom: 12px; }
+  .activist-card p { font-size: 15px; color: rgba(255,255,255,0.72); font-family: 'Source Serif 4', serif; font-style: italic; line-height: 1.75; margin-bottom: 24px; }
+
+  /* We Are Not Numbers */
+  .wann-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.18);
+    border-radius: 8px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .wann-icon { font-size: 48px; flex-shrink: 0; }
+  .wann-body h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
+  .wann-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+
+  @media (max-width: 1024px) {
+    .voices-page-layout { grid-template-columns: 1fr; gap: 32px; }
+    .voices-sidebar { position: static; }
+    .voices-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .voices-page-layout { padding: 48px 24px; }
+    .voices-grid-3, .voices-grid-2 { grid-template-columns: 1fr; }
+    .pledge-banner { flex-direction: column; text-align: center; }
+    .pledge-btn { margin-left: 0; }
+    .wann-card { flex-direction: column; gap: 16px; }
+    .featured-quote { padding: 28px 24px; }
+    .featured-quote blockquote { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
+      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#news">Breaking News</a></li>
+      <li><a href="index.html#updates">Updates</a></li>
+      <li><a href="campaigns.html">"Don't Go"</a></li>
+      <li><a href="voices.html" class="active">Voices</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="get-involved.html#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
+    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="keffiyeh-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Testimony · Witness · Solidarity</div>
+    <h1>Voices on Mental Health</h1>
+    <p>First-person accounts, clinical reflections, statements, and testimonies from Palestinians, clinicians, and advocates — bearing witness to the psychological dimensions of occupation and resistance.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  Voices on Mental Health
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="voices-page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="voices-sidebar">
+    <div class="voices-sidebar-header">Voices Library</div>
+    <a href="#about-voices" class="active"><span>📖</span> About</a>
+    <a href="#gaza"><span>🇵🇸</span> Voices on Gaza</a>
+    <a href="#west-bank"><span>🏔️</span> West Bank</a>
+    <a href="#diaspora"><span>🌍</span> Diaspora</a>
+    <a href="#may-2021"><span>📅</span> May 2021</a>
+    <a href="#psychoanalytic"><span>🧠</span> Psychoanalytic Activist</a>
+    <a href="#we-are-not-numbers"><span>✊</span> We Are Not Numbers</a>
+    <a href="#pledge"><span>📜</span> MH Workers Pledge</a>
+    <a href="#statements"><span>📢</span> Statements</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="voices-content">
+
+    <!-- ABOUT VOICES -->
+    <section id="about-voices">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-green">📖</div>
+        <div>
+          <h2>About Voices on Mental Health</h2>
+          <p>Why these testimonies matter for clinical practice and professional ethics.</p>
+        </div>
+      </div>
+      <div class="featured-quote">
+        <blockquote>"We are trained to recognize moral injury, vicarious trauma, and collective grief. What we are witnessing meets every clinical criterion. Our silence is its own symptom."</blockquote>
+        <div class="fq-cite">
+          <div class="fq-avatar">LA</div>
+          <cite><strong>Dr. Layla Abboud, PsyD</strong>Professor & Clinician, Los Angeles, CA</cite>
+        </div>
+      </div>
+      <div class="statement-item">
+        <div class="si-icon">📖</div>
+        <div class="si-body">
+          <h4>About Voices on Mental Health</h4>
+          <p>An introduction to this section — why USAPALMHN collects and publishes first-person testimonies, and how clinicians can use them to inform culturally competent, justice-oriented practice.</p>
+          <a href="https://usapalmhn.org/portfolio-item/about-voices-on-mental-health/" target="_blank">Read Introduction →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOICES ON GAZA -->
+    <section id="gaza">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-red">🇵🇸</div>
+        <div>
+          <h2>Voices on Gaza</h2>
+          <p>First-person testimonies from journalists, writers, and civilians in Gaza documenting the psychological reality of siege and bombardment.</p>
+        </div>
+      </div>
+      <div class="voices-grid-3">
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">December 2024</div>
+            <h3>Even the Longest Winters End</h3>
+            <p>"I hold onto hope the way you hold a candle in the wind — carefully, desperately, because the darkness is too heavy otherwise."</p>
+            <a href="https://usapalmhn.org/portfolio-item/even-the-longest-winters-end-december-2024/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">SH</div>
+              <div class="va-author-info"><strong>Sara Hegy</strong>Journalist, displaced to Nuseirat refugee camp</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">November 2024</div>
+            <h3>There Is Always Hope</h3>
+            <p>"As a writer, I strive to convey the stories of my people in a unique way — because our stories deserve to be told."</p>
+            <a href="https://usapalmhn.org/portfolio-item/there-is-always-hope/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">SA</div>
+              <div class="va-author-info"><strong>Shahd Ahmad Alnaami</strong>Student, Islamic University of Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">January 2024</div>
+            <h3>Reflections from a Journalist in Gaza</h3>
+            <p>"On February 19, I am going to turn 23. I'm anxious that the day will come and the war will still be ongoing — but I'm not entirely sure I will live long enough to see it."</p>
+            <a href="https://usapalmhn.org/portfolio-item/reflections-from-a-journalist-in-gaza-january-2024/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">GJ</div>
+              <div class="va-author-info"><strong>Anonymous</strong>Journalist, Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-dark">In Memoriam</span>
+            <div class="va-date">October 14, 2023</div>
+            <h3>In Memoriam: Yousef Mahar Dawas</h3>
+            <p>A tribute to Yousef Mahar Dawas, killed on October 14, 2023 — shared through We Are Not Numbers and members of the USAPALMHN steering committee.</p>
+            <a href="https://usapalmhn.org/portfolio-item/in-memoriam-yousef-mahar-dawas/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">WN</div>
+              <div class="va-author-info"><strong>We Are Not Numbers</strong>Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">October 26, 2023</div>
+            <h3>A Voice from a Young Journalist in Gaza</h3>
+            <p>An audio recording received by a USAPALMHN Steering Committee member from a young journalist documenting conditions in Gaza in the early weeks of the bombardment.</p>
+            <a href="https://usapalmhn.org/portfolio-item/a-voice-from-a-young-journalist-in-gaza-october-26-2023/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">GJ</div>
+              <div class="va-author-info"><strong>Anonymous</strong>Journalist, Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">2023</div>
+            <h3>Close Calls with Death</h3>
+            <p>"It was just before midnight on 10 October. I was in the living room with my family. We were worried about the explosions we were hearing. Israel's warplanes were flying above us..."</p>
+            <a href="https://usapalmhn.org/portfolio-item/close-calls-with-death/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">GV</div>
+              <div class="va-author-info"><strong>Gaza Resident</strong>Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Gaza</span>
+            <div class="va-date">2023</div>
+            <h3>A Romance, a Birthplace Destroyed: Memories of Gaza's Ahli Hospital</h3>
+            <p>Over 80 years ago, Hammam Farah's grandparents met at al-Ahli Arab Hospital. Years later, Farah himself was born there. Now it is rubble.</p>
+            <a href="https://usapalmhn.org/portfolio-item/a-romance-a-birthplace-destroyed-memories-of-gazas-bombed-ahli-hospital-israel-palestine-conflict/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">HF</div>
+              <div class="va-author-info"><strong>Hammam Farah</strong>Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-red"></div>
+          <div class="va-body">
+            <span class="va-tag vt-red">Children</span>
+            <div class="va-date">2023</div>
+            <h3>Under Siege & Under Bombs: Children's Mental Health in Gaza</h3>
+            <p>A clinical and testimonial account of the devastating psychological impact of prolonged siege, bombardment, and displacement on Gaza's children.</p>
+            <a href="https://usapalmhn.org/portfolio-item/under-siege-childrens-mental-health-in-gaza/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-red">CL</div>
+              <div class="va-author-info"><strong>Clinical Account</strong>Gaza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-blue"></div>
+          <div class="va-body">
+            <span class="va-tag vt-blue">Letters</span>
+            <div class="va-date">2018–present</div>
+            <h3>Letters from Gaza by Hanan Abubasheer</h3>
+            <p>A collection of letters written from Gaza over several years — documenting life, loss, survival, and resistance under blockade.</p>
+            <a href="https://usapalmhn.org/portfolio-item/a-letter-from-gaza-june-2018-by-hanan-bashir/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-blue">HA</div>
+              <div class="va-author-info"><strong>Hanan Abubasheer</strong>Gaza</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="margin-top:28px;">
+        <a href="https://usapalmhn.org/voices-on-gaza/" target="_blank" class="btn-olive">View All Gaza Voices</a>
+      </div>
+    </section>
+
+    <!-- VOICES FROM THE WEST BANK -->
+    <section id="west-bank">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-green">🏔️</div>
+        <div>
+          <h2>Voices from the West Bank</h2>
+          <p>Testimonies from clinicians, educators, and community members living under occupation in the West Bank.</p>
+        </div>
+      </div>
+      <div class="voices-grid-2">
+
+        <div class="voice-article">
+          <div class="va-accent va-green"></div>
+          <div class="va-body">
+            <span class="va-tag vt-green">West Bank</span>
+            <div class="va-date">2024</div>
+            <h3>"All That's Left of You" — Not Just a Film, But an Experience Worth Watching</h3>
+            <p>"The film speaks directly to those of us born in refugee camps, who grew up in narrow alleys and inherited memory without having lived the first moment of the Nakba itself."</p>
+            <a href="https://usapalmhn.org/portfolio-item/all-thats-left-of-you-not-just-a-film-but-an-experience-worth-watching/" target="_blank" class="link-arrow">Read →</a>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-green"></div>
+          <div class="va-body">
+            <span class="va-tag vt-green">West Bank</span>
+            <div class="va-date">2023</div>
+            <h3>Nakba 2023</h3>
+            <p>"More than 2,300 people — children, women, elderly men, and young men — were arrested in the last month, and 90% ended up in administrative detention with no charges against them."</p>
+            <a href="https://usapalmhn.org/portfolio-item/nakba-2023/" target="_blank" class="link-arrow">Read →</a>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-green"></div>
+          <div class="va-body">
+            <span class="va-tag vt-green">West Bank</span>
+            <div class="va-date">October 16, 2023</div>
+            <h3>Update from Palestine — October 16, 2023</h3>
+            <p>"The situation here gets worse and worse. We are under complete lockdown in the West Bank. There is lack of food, the internet keeps cutting off. Above all, settlers are attacking us."</p>
+            <a href="https://usapalmhn.org/portfolio-item/update-from-palestine-october-16-2023/" target="_blank" class="link-arrow">Read →</a>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-green"></div>
+          <div class="va-body">
+            <span class="va-tag vt-green">Clinical</span>
+            <div class="va-date">2023</div>
+            <h3>Resistance as a Path to Healing: The Quest for Mental Health in Palestine</h3>
+            <p>A Palestinian psychologist reflects on attending a mental health conference where a lecture titled "An Israeli in the Psychotherapy Room" sparks a reckoning with occupation and clinical identity.</p>
+            <a href="https://usapalmhn.org/portfolio-item/resistance-as-a-path-to-healing-the-quest-for-mental-health-in-palestine/" target="_blank" class="link-arrow">Read →</a>
+          </div>
+        </div>
+
+        <div class="voice-article">
+          <div class="va-accent va-green"></div>
+          <div class="va-body">
+            <span class="va-tag vt-green">West Bank</span>
+            <div class="va-date">2023</div>
+            <h3>Once upon a Time in Palestine</h3>
+            <p>Saed Zboun, an Arabic teacher and advocate, reflects on the cultural and psychological life of Aida refugee camp, Bethlehem, and the meaning of memory under occupation.</p>
+            <a href="https://usapalmhn.org/portfolio-item/once-upon-a-time-in-palestine/" target="_blank" class="link-arrow">Read →</a>
+            <div class="va-author">
+              <div class="va-avatar av-green">SZ</div>
+              <div class="va-author-info"><strong>Saed Zboun</strong>Bethlehem University / Aida Camp</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="margin-top:28px;">
+        <a href="https://usapalmhn.org/voices-from-the-west-bank/" target="_blank" class="btn-olive">View All West Bank Voices</a>
+      </div>
+    </section>
+
+    <!-- VOICES FROM THE DIASPORA -->
+    <section id="diaspora">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-blue">🌍</div>
+        <div>
+          <h2>Voices from the Diaspora</h2>
+          <p>Palestinian clinicians, scholars, and community members speaking from the diaspora about identity, grief, and solidarity.</p>
+        </div>
+      </div>
+      <div class="statement-item blue">
+        <div class="si-icon">🌍</div>
+        <div class="si-body">
+          <h4>Voices from the Diaspora — Full Collection</h4>
+          <p>Reflections and essays from Palestinians living outside Palestine — on inherited trauma, professional advocacy, dual belonging, and the experience of watching from a distance while family and homeland are under siege.</p>
+          <a href="https://usapalmhn.org/portfolio-item/voices-from-the-diaspora/" target="_blank">Explore the Collection →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAY 2021 -->
+    <section id="may-2021">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-red">📅</div>
+        <div>
+          <h2>May 2021 Assault on Palestine</h2>
+          <p>Testimonies and clinical responses collected during the May 2021 escalation in Gaza, the West Bank, and among Palestinian citizens of Israel.</p>
+        </div>
+      </div>
+      <div class="statement-item red">
+        <div class="si-icon">📅</div>
+        <div class="si-body">
+          <div class="si-tag red">2021</div>
+          <h4>May 2021 Assault on Palestine — Archive</h4>
+          <p>A collection of testimonies, clinical reflections, and network responses gathered during and after the May 2021 assault. Includes voices from Gaza, the West Bank, Palestinian citizens of Israel, and the diaspora.</p>
+          <a href="https://usapalmhn.org/may-2021-assault-on-palestine/" target="_blank">View Archive →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PSYCHOANALYTIC ACTIVIST -->
+    <section id="psychoanalytic">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-dark">🧠</div>
+        <div>
+          <h2>Psychoanalytic Activist</h2>
+          <p>At the intersection of clinical theory and political responsibility.</p>
+        </div>
+      </div>
+      <div class="activist-card">
+        <h3>The Psychoanalytic Activist</h3>
+        <p>A curated series exploring the ethical and theoretical dimensions of practicing psychoanalysis in solidarity with oppressed communities. Contributors engage with questions of countertransference, neutrality, moral injury, and the clinician's role in bearing witness to structural violence.</p>
+        <a href="https://usapalmhn.org/portfolio-item/psychoanalytic-activist/" target="_blank" class="btn-white">Explore Series</a>
+      </div>
+    </section>
+
+    <!-- WE ARE NOT NUMBERS -->
+    <section id="we-are-not-numbers">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-red">✊</div>
+        <div>
+          <h2>We Are Not Numbers</h2>
+          <p>Amplifying the individual stories behind the statistics of Palestinian suffering.</p>
+        </div>
+      </div>
+      <div class="wann-card">
+        <div class="wann-icon">✊</div>
+        <div class="wann-body">
+          <h3>We Are Not Numbers</h3>
+          <p>A partnership with the We Are Not Numbers project — a Gaza-based initiative pairing young Palestinian writers with international mentors to tell the human stories behind the statistics. USAPALMHN curates and amplifies these narratives to help mental health professionals understand the individual faces of collective trauma.</p>
+          <a href="https://usapalmhn.org/portfolio-item/we-are-not-numbers/" target="_blank" class="btn-olive-sm">Read the Stories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLEDGE -->
+    <section id="pledge">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-red">📜</div>
+        <div>
+          <h2>Mental Health Workers Pledge for Palestine</h2>
+          <p>A collective statement and call to action by mental health professionals.</p>
+        </div>
+      </div>
+      <div class="pledge-banner">
+        <div class="pledge-banner-icon">📜</div>
+        <div>
+          <h3>Sign the Mental Health Workers Pledge for Palestine</h3>
+          <p>Mental health professionals across the U.S. and globally have pledged to uphold the ethical duty to name and oppose the structural conditions causing harm to the Palestinian people. Add your name.</p>
+        </div>
+        <div class="pledge-btn">
+          <a href="https://usapalmhn.org/portfolio-item/mental-health-workers-pledge-for-palestine/" target="_blank" class="btn-white">Sign the Pledge</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATEMENTS -->
+    <section id="statements">
+      <div class="voices-section-header">
+        <div class="vsh-icon vsh-blue">📢</div>
+        <div>
+          <h2>Official Statements</h2>
+          <p>Formal statements issued by USAPALMHN on key political and human rights developments affecting Palestine.</p>
+        </div>
+      </div>
+
+      <div class="statement-item red">
+        <div class="si-icon">📢</div>
+        <div class="si-body">
+          <div class="si-tag red">Statement</div>
+          <h4>Statement on Israeli Annexation</h4>
+          <p>USAPALMHN's formal statement condemning Israeli moves toward annexation of Palestinian territory and their psychological and human rights implications.</p>
+          <a href="https://usapalmhn.org/portfolio-item/statement-on-israeli-annexation/" target="_blank">Read Statement →</a>
+        </div>
+      </div>
+
+      <div class="statement-item red">
+        <div class="si-icon">📢</div>
+        <div class="si-body">
+          <div class="si-tag red">Statement</div>
+          <h4>Statement on Israeli Raid of Defence for Children International (DCI)</h4>
+          <p>USAPALMHN condemns the Israeli military raid on the offices of Defence for Children International — Palestine, one of the world's leading children's rights organizations.</p>
+          <a href="https://usapalmhn.org/portfolio-item/statement-on-israeli-raid-of-dci/" target="_blank">Read Statement →</a>
+        </div>
+      </div>
+
+      <div class="statement-item red">
+        <div class="si-icon">📢</div>
+        <div class="si-body">
+          <div class="si-tag red">Statement</div>
+          <h4>Statement Condemning the Invasion of Birzeit University</h4>
+          <p>USAPALMHN joins international mental health organizations in condemning the Israeli military's invasion of Birzeit University, a leading Palestinian academic institution.</p>
+          <a href="https://usapalmhn.org/portfolio-item/statement-condemning-the-invasion-of-birzeit/" target="_blank">Read Statement →</a>
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="si-icon">📢</div>
+        <div class="si-body">
+          <div class="si-tag">Statement</div>
+          <h4>Statement on Anti-Semitism</h4>
+          <p>USAPALMHN's statement clarifying the distinction between anti-Zionism and antisemitism, and affirming the network's commitment to opposing all forms of racial and ethnic hatred.</p>
+          <a href="https://usapalmhn.org/statement-on-anti-semitism/" target="_blank">Read Statement →</a>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2 data-en="Stay Connected with the Network" data-ar="ابق على تواصل مع الشبكة">Stay Connected with the Network</h2>
+  <p data-en="Clinical updates, new resources, and network statements — delivered to your inbox." data-ar="التحديثات السريرية والموارد الجديدة وبيانات الشبكة — يتم تسليمها إلى بريدك الوارد.">Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button">Subscribe</button>
+  </div>
+  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn" title="Twitter/X">𝕏</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn" title="Facebook">f</a>
+        <a href="#" class="social-btn" title="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="about.html">About</a>
+      <a href="index.html#news">Breaking News</a>
+      <a href="index.html#updates">Updates</a>
+      <a href="campaigns.html">"Don't Go" Campaigns</a>
+      <a href="voices.html">Voices on Mental Health</a>
+    </div>
+    <div class="footer-col">
+      <h4>Voices</h4>
+      <a href="voices.html#gaza">Voices on Gaza</a>
+      <a href="voices.html#west-bank">Voices from the West Bank</a>
+      <a href="voices.html#diaspora">Voices from the Diaspora</a>
+      <a href="voices.html#pledge">MH Workers Pledge</a>
+      <a href="voices.html#statements">Statements</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="get-involved.html#join">Join the Network</a>
+      <a href="get-involved.html#delegations">Travel to Palestine</a>
+      <a href="get-involved.html#how-to-help">How to Help</a>
+      <a href="get-involved.html#donate">Donate</a>
+      <a href="about.html#contact">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Sidebar active on scroll
+  const headings = document.querySelectorAll('section[id]');
+  const sideLinks = document.querySelectorAll('.voices-sidebar a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    headings.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 140) current = s.id;
+    });
+    sideLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+    if (isArabic) {
+      html.setAttribute('dir', 'rtl'); html.setAttribute('lang', 'ar');
+      btn.textContent = 'عربي | EN';
+      document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = el.dataset.ar; });
+    } else {
+      html.setAttribute('dir', 'ltr'); html.setAttribute('lang', 'en');
+      btn.textContent = 'EN | عربي';
+      document.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset.en; });
+    }
+  }
+</script>
+</body>
+</html>

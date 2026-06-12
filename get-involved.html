@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Involved — USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .gi-page { max-width: 1140px; margin: 0 auto; padding: 80px 60px; }
+
+  /* Section header */
+  .gi-section { margin-bottom: 80px; }
+  .gi-section-header {
+    display: flex; align-items: center; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 36px;
+  }
+  .gsh-icon {
+    width: 52px; height: 52px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .gshi-green { background: var(--olive-light); }
+  .gshi-red { background: rgba(200,40,26,0.08); }
+  .gshi-blue { background: rgba(26,58,107,0.08); }
+  .gshi-cream { background: var(--cream-dark); }
+  .gi-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: var(--text-dark);
+  }
+  .gi-section-header p {
+    font-size: 15px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic; margin-top: 4px;
+  }
+
+  /* Quick action cards at top */
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .qa-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 32px 28px;
+    text-align: center;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .qa-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.09); }
+  .qa-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .qa-green { background: var(--olive-light); }
+  .qa-red { background: rgba(200,40,26,0.08); }
+  .qa-blue { background: rgba(26,58,107,0.08); }
+  .qa-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: var(--text-dark);
+  }
+  .qa-card p {
+    font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    font-family: 'Source Serif 4', serif; flex: 1;
+  }
+
+  /* Join section */
+  .join-grid { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start; }
+  .join-left p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px;
+  }
+  .join-form-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .jfc-header {
+    background: var(--olive);
+    padding: 20px 28px;
+  }
+  .jfc-header h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: white; font-weight: 700; }
+  .jfc-header p { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .jfc-body { padding: 28px; }
+  .form-field { margin-bottom: 16px; }
+  .form-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+  .form-field input, .form-field select {
+    width: 100%; padding: 10px 14px;
+    border: 1px solid rgba(74,107,26,0.3);
+    border-radius: 4px; font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-field input:focus, .form-field select:focus { border-color: var(--olive); }
+  .form-submit {
+    width: 100%; background: var(--olive); color: white;
+    padding: 13px; border: none; border-radius: 4px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s;
+    letter-spacing: 0.3px; margin-top: 4px;
+  }
+  .form-submit:hover { background: var(--olive-dark); }
+  .form-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; }
+
+  /* Who can join list */
+  .who-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+  .who-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; background: var(--olive-light);
+    border-radius: 6px; font-size: 14px; color: var(--text-mid);
+    font-weight: 500;
+  }
+  .who-item span { font-size: 18px; }
+
+  /* Reading circles */
+  .rc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .rc-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 24px;
+    transition: all 0.3s;
+  }
+  .rc-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .rc-status {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
+  }
+  .rcs-active { background: rgba(74,107,26,0.12); color: var(--olive-dark); }
+  .rcs-completed { background: var(--cream-dark); color: var(--text-muted); }
+  .rc-card h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.35; }
+  .rc-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-family: 'Source Serif 4', serif; }
+
+  /* Delegation card */
+  .delegation-card {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: center;
+  }
+  .delegation-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .delegation-card > * { position: relative; z-index: 1; }
+  .delegation-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: white; font-weight: 700; margin-bottom: 16px; }
+  .delegation-card p { font-family: 'Source Serif 4', serif; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 20px; }
+  .del-details { display: flex; flex-direction: column; gap: 10px; }
+  .del-detail {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .del-detail-icon { font-size: 18px; flex-shrink: 0; }
+  .del-detail-text strong { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 2px; }
+  .del-detail-text span { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  /* Donate section */
+  .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .donate-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .donate-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+  .donate-card h3 { font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+  .donate-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-family: 'Source Serif 4', serif; }
+
+  /* How to help steps */
+  .help-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .help-step {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .help-step:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .help-step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--olive); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; margin: 0 auto 16px;
+  }
+  .help-step h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+  .help-step p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+
+  /* Social links */
+  .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .social-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .social-card:hover { background: var(--olive-light); border-color: rgba(74,107,26,0.3); transform: translateY(-2px); }
+  .social-card-icon { font-size: 28px; flex-shrink: 0; }
+  .social-card h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+  .social-card p { font-size: 13px; color: var(--text-muted); }
+
+  /* NaTakallam */
+  .natakallam-card {
+    background: var(--cream-dark);
+    border: 1px solid rgba(74,107,26,0.15);
+    border-left: 5px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 28px 32px;
+    display: flex; gap: 24px; align-items: flex-start;
+  }
+  .natakallam-icon { font-size: 40px; flex-shrink: 0; }
+  .natakallam-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+  .natakallam-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; font-family: 'Source Serif 4', serif; }
+
+  @media (max-width: 1024px) {
+    .join-grid { grid-template-columns: 1fr; }
+    .delegation-card { grid-template-columns: 1fr; }
+    .quick-actions { grid-template-columns: repeat(2, 1fr); }
+    .rc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .gi-page { padding: 48px 24px; }
+    .quick-actions, .rc-grid, .help-steps, .donate-grid, .social-grid { grid-template-columns: 1fr; }
+    .delegation-card { padding: 28px 24px; }
+    .natakallam-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
+      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="#join" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#news">Breaking News</a></li>
+      <li><a href="index.html#updates">Updates</a></li>
+      <li><a href="campaigns.html">"Don't Go"</a></li>
+      <li><a href="voices.html">Voices</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="get-involved.html" class="active">Get Involved</a></li>
+      <li><a href="#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
+    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="keffiyeh-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Join · Act · Donate · Travel</div>
+    <h1>Get Involved</h1>
+    <p>Whether you are a seasoned clinician, a graduate student, or a department chair — there is a place for you in this network. Here is how to take action.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>Get Involved
+</div>
+
+<div class="gi-page">
+
+  <!-- QUICK ACTIONS -->
+  <div class="quick-actions">
+    <div class="qa-card">
+      <div class="qa-icon qa-green">🌐</div>
+      <h3>Join the Network</h3>
+      <p>Free membership for all licensed mental health professionals, graduate students, and trainees. Access resources, statements, and peer community.</p>
+      <a href="#join" class="btn-olive-sm">Join Now</a>
+    </div>
+    <div class="qa-card">
+      <div class="qa-icon qa-red">✊</div>
+      <h3>Sign the Pledge</h3>
+      <p>Add your name to the Mental Health Workers Pledge for Palestine — a public commitment to naming structural violence in our professional work.</p>
+      <a href="https://usapalmhn.org/portfolio-item/mental-health-workers-pledge-for-palestine/" target="_blank" class="btn-red-sm">Sign Now</a>
+    </div>
+    <div class="qa-card">
+      <div class="qa-icon qa-blue">💛</div>
+      <h3>Donate</h3>
+      <p>Support USAPALMHN's 100% volunteer-led work and help fund delegations, events, and advocacy campaigns. All donations are tax-deductible.</p>
+      <a href="#donate" class="btn-navy-sm">Donate</a>
+    </div>
+  </div>
+
+  <!-- JOIN THE NETWORK -->
+  <section id="join" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-green">🌐</div>
+      <div>
+        <h2>Join the Network</h2>
+        <p>Free, open to all mental health professionals and students.</p>
+      </div>
+    </div>
+    <div class="join-grid">
+      <div class="join-left">
+        <p>The USA-Palestine Mental Health Network is a 100% volunteer-led professional network open to all U.S.-based mental health workers who share our anti-Zionist perspective and our mission for justice in Palestine. Membership is free.</p>
+        <p>As a member you will receive our monthly steering committee updates, invitations to reading circles and webinars, access to clinical resources, and the opportunity to connect with over 170 Outreach Representatives across the country.</p>
+        <div class="who-list">
+          <div class="who-item"><span>🧠</span>Licensed psychologists, social workers, counselors, and psychiatrists</div>
+          <div class="who-item"><span>🎓</span>Graduate students and trainees in mental health fields</div>
+          <div class="who-item"><span>🏫</span>Faculty and department chairs in mental health programs</div>
+          <div class="who-item"><span>🌍</span>International colleagues aligned with our mission</div>
+        </div>
+        <p>If you know mental health workers who share our perspective, invite them to consider joining. The network grows through peer invitation and shared values.</p>
+      </div>
+      <div class="join-form-card">
+        <div class="jfc-header">
+          <h3>Join Our Mailing List</h3>
+          <p>Get network updates, events, and resources delivered to your inbox.</p>
+        </div>
+        <div class="jfc-body">
+          <div class="form-field">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name" />
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name" />
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-field">
+            <label>Profession</label>
+            <select>
+              <option value="">Select your profession</option>
+              <option>Psychologist</option>
+              <option>Social Worker</option>
+              <option>Counselor / Therapist</option>
+              <option>Psychiatrist</option>
+              <option>Graduate Student</option>
+              <option>Faculty / Academic</option>
+              <option>Other Mental Health Professional</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>State</label>
+            <input type="text" placeholder="Your state" />
+          </div>
+          <button class="form-submit" onclick="window.location.href='https://usapalmhn.org/join-our-mailing-list/'">
+            Join the Network
+          </button>
+          <p class="form-note">Free membership. You can unsubscribe at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTREACH REPRESENTATIVES -->
+  <section id="outreach" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-green">📣</div>
+      <div>
+        <h2>Become an Outreach Representative</h2>
+        <p>Take a more active role in the network's advocacy work.</p>
+      </div>
+    </div>
+    <div style="background:white; border:1px solid rgba(74,107,26,0.15); border-radius:8px; padding:36px 40px; margin-bottom:24px;">
+      <p style="font-family:'Source Serif 4',serif; font-size:16px; color:var(--text-mid); line-height:1.85; margin-bottom:20px;">The network currently has <strong>170 Outreach Representatives</strong> across the United States. Outreach Representatives are active network members who help organize local events, co-facilitate reading circles, coordinate with Doctors Against Genocide Hill Days, and represent USAPALMHN in their professional communities.</p>
+      <p style="font-family:'Source Serif 4',serif; font-size:16px; color:var(--text-mid); line-height:1.85; margin-bottom:24px;">If you are interested in becoming an Outreach Representative or co-facilitating a reading circle, please contact Christine Schmidt or Cheryl Qamar.</p>
+      <a href="mailto:sc@usapalmhn.org" class="btn-olive">Contact the Steering Committee</a>
+    </div>
+  </section>
+
+  <!-- READING CIRCLES -->
+  <section id="reading-circles" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-blue">📚</div>
+      <div>
+        <h2>Reading Circles</h2>
+        <p>Six-session facilitated reading groups on key texts in Palestinian mental health.</p>
+      </div>
+    </div>
+    <p style="font-family:'Source Serif 4',serif; font-size:16px; color:var(--text-mid); line-height:1.8; margin-bottom:28px;">USAPALMHN hosts ongoing reading circles for network members and Outreach Representatives. Each circle runs for six sessions and is facilitated by steering committee members or trained Outreach Representatives. Reading circles deepen clinical and political understanding of the issues at the heart of our work.</p>
+    <div class="rc-grid">
+      <div class="rc-card">
+        <div class="rc-status rcs-active">Active — 2026</div>
+        <h3>Incarcerated Childhood and the Politics of Unchilding</h3>
+        <p>Explores the systematic deprivation of childhood for Palestinian youth under occupation and its psychological consequences.</p>
+      </div>
+      <div class="rc-card">
+        <div class="rc-status rcs-completed">Completed — Early 2026</div>
+        <h3>Psychoanalysis Under Occupation</h3>
+        <p>The practice of psychoanalysis and psychotherapy in the context of Israeli occupation — clinical, ethical, and political dimensions.</p>
+      </div>
+      <div class="rc-card">
+        <div class="rc-status rcs-completed">Completed — Early 2026</div>
+        <h3>Boycott, Divestment, and Sanctions</h3>
+        <p>A foundational text on the BDS movement and its implications for professional organizations in mental health and civil society.</p>
+      </div>
+    </div>
+    <div style="margin-top:24px; padding:20px 24px; background:var(--olive-light); border-radius:6px; font-size:14px; color:var(--text-mid);">
+      <strong>Interested in facilitating a future reading circle?</strong> Contact Christine Schmidt or Ben Goldstein at <a href="mailto:sc@usapalmhn.org" style="color:var(--olive); font-weight:600;">sc@usapalmhn.org</a>
+    </div>
+  </section>
+
+  <!-- TRAVEL TO PALESTINE -->
+  <section id="delegations" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-green">✈️</div>
+      <div>
+        <h2>Travel to Palestine — Mental Health Study Delegations</h2>
+        <p>A unique opportunity for U.S. mental health professionals to witness conditions firsthand.</p>
+      </div>
+    </div>
+    <div class="delegation-card">
+      <div>
+        <h3>Spring 2027 Mental Health Study Delegation</h3>
+        <p>The USA-Palestine Mental Health Network presents a unique 10-day study delegation to occupied Palestine, facilitated by a professional company with experience providing alternative tours to the Occupied Palestinian Territory. The delegation provides a rare opportunity to learn directly from Palestinian colleagues about the mental health impact of occupation.</p>
+        <p><strong style="color:rgba(255,255,255,0.9);">You will learn about:</strong></p>
+        <ul style="color:rgba(255,255,255,0.75); font-size:14px; line-height:2; padding-left:20px; margin-bottom:24px; font-family:'Source Serif 4',serif;">
+          <li>The mental health impact of occupation on everyday life</li>
+          <li>Trauma within families and how it affects women and children</li>
+          <li>Violence against children, including imprisonment and intergenerational trauma</li>
+          <li>Perspectives on the mental health crisis from Palestinian professional colleagues</li>
+        </ul>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="mailto:info@usapalmhn.org" class="btn-white">Send Statement of Interest</a>
+          <a href="https://usapalmhn.org/portfolio-item/mental-health-study-delegations-to-palestine/" target="_blank" class="btn-white-outline">Learn More →</a>
+        </div>
+      </div>
+      <div class="del-details">
+        <div class="del-detail">
+          <div class="del-detail-icon">📅</div>
+          <div class="del-detail-text">
+            <strong>Dates</strong>
+            <span>10 days in March or April 2027</span>
+          </div>
+        </div>
+        <div class="del-detail">
+          <div class="del-detail-icon">📍</div>
+          <div class="del-detail-text">
+            <strong>Locations</strong>
+            <span>Bethlehem, Nazareth, Jerusalem, Hebron, Ramallah, Nablus, Jaffa/Tel Aviv, Haifa</span>
+          </div>
+        </div>
+        <div class="del-detail">
+          <div class="del-detail-icon">🏨</div>
+          <div class="del-detail-text">
+            <strong>Accommodation</strong>
+            <span>Hotels in Bethlehem and Nazareth with daily travel by private coach</span>
+          </div>
+        </div>
+        <div class="del-detail">
+          <div class="del-detail-icon">📋</div>
+          <div class="del-detail-text">
+            <strong>Applications</strong>
+            <span>Available in 2026. Space is limited — send statement of interest now.</span>
+          </div>
+        </div>
+        <div class="del-detail">
+          <div class="del-detail-icon">🌿</div>
+          <div class="del-detail-text">
+            <strong>2027 Eyewitness Palestine Delegation</strong>
+            <span>A USAPALMHN delegation via Eyewitness Palestine is also planned for 2027.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO HELP -->
+  <section id="how-to-help" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-red">✊</div>
+      <div>
+        <h2>How to Help Right Now</h2>
+        <p>Actions you can take today to advance justice for Palestine.</p>
+      </div>
+    </div>
+    <div class="help-steps">
+      <div class="help-step">
+        <div class="help-step-num">1</div>
+        <h3>Sign the Pledge</h3>
+        <p>Add your name to the Mental Health Workers Pledge for Palestine — a public, professional commitment to naming and opposing structural violence.</p>
+        <a href="https://usapalmhn.org/portfolio-item/mental-health-workers-pledge-for-palestine/" target="_blank" class="btn-red-sm">Sign Now</a>
+      </div>
+      <div class="help-step">
+        <div class="help-step-num">2</div>
+        <h3>Donate</h3>
+        <p>Support the network's 100% volunteer-led work — delegations, events, campaigns, and resources all depend on community funding.</p>
+        <a href="#donate" class="btn-olive-sm">Donate Now</a>
+      </div>
+      <div class="help-step">
+        <div class="help-step-num">3</div>
+        <h3>Join Hill Days</h3>
+        <p>Join USAPALMHN Outreach Representatives and Doctors Against Genocide on monthly Capitol Hill advocacy days to demand elected representatives stop funding genocide.</p>
+        <a href="https://doctorsagainstgenocide.org/" target="_blank" class="btn-navy-sm">DAG Hill Day</a>
+      </div>
+      <div class="help-step">
+        <div class="help-step-num">4</div>
+        <h3>Follow & Share</h3>
+        <p>Follow us on social media and share our content with colleagues, students, and professional networks. Every share expands our reach.</p>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="btn-olive-sm">@us_pmhn</a>
+      </div>
+      <div class="help-step">
+        <div class="help-step-num">5</div>
+        <h3>Drop NASW</h3>
+        <p>Join the Drop NASW campaign by Social Work for Palestine, in response to NASW's endorsement of the Israeli Union of Social Workers despite their denial of genocide.</p>
+        <a href="#" class="btn-red-sm">Learn More</a>
+      </div>
+      <div class="help-step">
+        <div class="help-step-num">6</div>
+        <h3>Bring It to Your Institution</h3>
+        <p>Start a university chapter, bring a USAPALMHN speaker to your department, or propose a reading circle at your workplace or training program.</p>
+        <a href="mailto:sc@usapalmhn.org" class="btn-navy-sm">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Social links -->
+    <div style="margin-top:48px;">
+      <div class="gi-section-header" style="margin-bottom:20px;">
+        <div class="gsh-icon gshi-blue">📱</div>
+        <div><h2>Follow Us</h2><p>Stay connected and spread the word.</p></div>
+      </div>
+      <div class="social-grid">
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-card">
+          <div class="social-card-icon">📸</div>
+          <div><h4>Instagram</h4><p>@us_pmhn</p></div>
+        </a>
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-card">
+          <div class="social-card-icon">𝕏</div>
+          <div><h4>Twitter / X</h4><p>@UsaPalMhn</p></div>
+        </a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-card">
+          <div class="social-card-icon">f</div>
+          <div><h4>Facebook</h4><p>USA Palestine Mental Health Network</p></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NaTakallam -->
+    <div style="margin-top:48px;">
+      <div class="natakallam-card">
+        <div class="natakallam-icon">🗣️</div>
+        <div>
+          <h3>Learn Arabic — Support NaTakallam</h3>
+          <p>NaTakallam is a social enterprise that connects refugees and displaced people for remote work opportunities in the language sector. Several USAPALMHN Steering Committee members and Outreach Representatives have been learning Arabic through their program. We encourage you to consider their offerings as a way to both learn the language and directly support displaced communities.</p>
+          <a href="https://natakallam.com/" target="_blank" class="btn-olive-sm">Explore NaTakallam</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="gi-section">
+    <div class="gi-section-header">
+      <div class="gsh-icon gshi-red">💛</div>
+      <div>
+        <h2>Donate</h2>
+        <p>Support our 100% volunteer-led work. All contributions are tax-deductible.</p>
+      </div>
+    </div>
+    <div class="donate-grid">
+      <div class="donate-card">
+        <h3>Support USAPALMHN</h3>
+        <p>Your donation supports the network's advocacy work, events, publications, and reading circles. USAPALMHN is a registered 501(c)(3) nonprofit and all contributions are tax-deductible.</p>
+        <a href="https://usapalmhn.org/donate/" target="_blank" class="btn-red-sm">Make a Donation</a>
+      </div>
+      <div class="donate-card">
+        <h3>Support the Balata Health Center</h3>
+        <p>The Balata Health Center in Nablus has been unable to provide services for months due to lack of funds. USAPALMHN regularly raises money for the center through events and webinars. Donate directly to support their operations.</p>
+        <a href="https://usapalmhn.org/donate/" target="_blank" class="btn-olive-sm">Donate to Balata</a>
+      </div>
+      <div class="donate-card">
+        <h3>Support Badil Resource Center</h3>
+        <p>Badil is a resource center for Palestinian residency and refugee rights. They produce documented reports with evidence and data supporting discourse about Palestinian rights. Support their work directly.</p>
+        <a href="https://www.badil.org/" target="_blank" class="btn-navy-sm">Support Badil</a>
+      </div>
+      <div class="donate-card">
+        <h3>Support Eyewitness Palestine</h3>
+        <p>Eyewitness Palestine organizes delegations that help Americans witness conditions firsthand. Your donation helps fund future delegations, including the USAPALMHN delegation planned for 2027.</p>
+        <a href="#" class="btn-olive-sm">Support Eyewitness Palestine</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2>Stay Connected with the Network</h2>
+  <p>Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button">Subscribe</button>
+  </div>
+  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn">𝕏</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="#join">Join the Network</a>
+      <a href="#outreach">Outreach Representatives</a>
+      <a href="#reading-circles">Reading Circles</a>
+      <a href="#delegations">Travel to Palestine</a>
+      <a href="#donate">Donate</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="about.html">About</a>
+      <a href="index.html#news">Breaking News</a>
+      <a href="campaigns.html">"Don't Go" Campaigns</a>
+      <a href="voices.html">Voices on Mental Health</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@usapalmhn.org">info@usapalmhn.org</a>
+      <a href="about.html#contact">Contact the Steering Committee</a>
+      <a href="https://usapalmhn.org/donate/" target="_blank">Make a Donation</a>
+      <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);">Registered 501(c)(3) nonprofit organization</p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+    if (isArabic) { html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN'; }
+    else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي'; }
+  }
+</script>
+</body>
+</html>
