@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crisis Resources — USA Palestine Mental Health Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  /* ── PAGE LAYOUT ── */
+  .cr-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 72px 60px;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  .cr-sidebar {
+    position: sticky;
+    top: 100px;
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .cr-sidebar-header {
+    background: var(--olive-dark);
+    padding: 14px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cr-sidebar a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(74,107,26,0.07);
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cr-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .cr-sidebar a.active { background: var(--olive-light); color: var(--olive-dark); font-weight: 600; border-left: 3px solid var(--olive); }
+  .cr-sidebar a:last-child { border-bottom: none; }
+
+  /* ── CONTENT ── */
+  .cr-content { display: flex; flex-direction: column; gap: 64px; }
+
+  /* ── HOTLINE BANNER ── */
+  .hotline-banner {
+    background: var(--red);
+    border-radius: 8px;
+    padding: 36px 44px;
+  }
+  .hotline-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .hotline-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .hotline-number-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 18px 22px;
+  }
+  .hotline-number-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .hotline-number-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .hotline-number-card .note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+  .hotline-banner p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+
+  /* ── SECTION HEADER ── */
+  .cr-section-header {
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 28px;
+  }
+  .cr-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .cr-section-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+
+  /* ── RESOURCE LIST ITEMS (matching shared.css .resource-list-item pattern) ── */
+  .cr-list { display: flex; flex-direction: column; gap: 12px; }
+  .cr-item {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 24px;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .cr-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
+  .cr-item.red { border-left-color: var(--red); }
+  .cr-item.blue { border-left-color: var(--navy); }
+  .cr-item h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .cr-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'Source Serif 4', serif;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .cr-item .source {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── TWO-COL GRID ── */
+  .cr-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── SECTION DIVIDER ── */
+  .cr-divider {
+    border: none;
+    border-top: 2px solid var(--olive-light);
+    margin: 0;
+  }
+
+  /* ── STATEMENT BLOCK ── */
+  .cr-statement {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 44px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cr-statement::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+  }
+  .cr-statement > * { position: relative; z-index: 1; }
+  .cr-statement blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .cr-statement cite {
+    font-style: normal;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Sans', sans-serif;
+    display: block;
+    margin-bottom: 28px;
+  }
+  .cr-statement .doc-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ── ACTION BANNER ── */
+  .cr-action-banner {
+    background: var(--olive);
+    border-radius: 8px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .cr-action-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .cr-action-banner p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .cr-layout { grid-template-columns: 1fr; }
+    .cr-sidebar { position: static; }
+    .cr-grid-2 { grid-template-columns: 1fr; }
+    .hotline-numbers { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .cr-layout { padding: 48px 24px; }
+    .hotline-banner { padding: 28px 24px; }
+    .cr-statement { padding: 32px 24px; }
+    .cr-action-banner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav-top">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
+      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
+    </a>
+    <div class="nav-org-name">USA Palestine Mental Health Network</div>
+    <div class="nav-top-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
+      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="nav-bottom">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="breaking-news.html">Breaking News</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="campaigns.html">"Don't Go"</a></li>
+      <li><a href="voices.html">Voices</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="crisis-resources.html" class="active">Crisis Resources</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="get-involved.html#donate">Donate</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="breaking-news.html" onclick="toggleMenu()">Breaking News</a>
+    <a href="updates.html" onclick="toggleMenu()">Updates</a>
+    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
+    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="crisis-resources.html" onclick="toggleMenu()">Crisis Resources</a>
+    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
+    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="keffiyeh-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Support · Safety · Solidarity</div>
+    <h1>Crisis Resources</h1>
+    <p>Resources for those who need help — and those who want to help. Legal aid, psychological support, and tools for clinicians working with Palestinian and Arab-American communities.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>Crisis Resources
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="cr-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="cr-sidebar">
+    <div class="cr-sidebar-header">On This Page</div>
+    <a href="#hotlines" class="active">Emergency Hotlines</a>
+    <a href="#legal">Legal Help</a>
+    <a href="#psychological">Psychological Support</a>
+    <a href="#children">Resources for Children</a>
+    <a href="#providers">For MH Providers</a>
+    <a href="#action">Take Action</a>
+    <a href="#statement">Our Statement</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="cr-content">
+
+    <!-- EMERGENCY HOTLINES -->
+    <section id="hotlines">
+      <div class="hotline-banner">
+        <h3>If You Are in Immediate Crisis</h3>
+        <div class="hotline-numbers">
+          <div class="hotline-number-card">
+            <div class="label">988 Crisis Lifeline</div>
+            <div class="number">988</div>
+            <div class="note">Call or text — free & confidential, 24/7</div>
+          </div>
+          <div class="hotline-number-card">
+            <div class="label">Disaster Distress Helpline</div>
+            <div class="number">800-985-5990</div>
+            <div class="note">Call or text — trained counselors, 24/7</div>
+          </div>
+        </div>
+        <p>Arabic-speaking counselors are available. Both lines are free, confidential, and available around the clock.</p>
+      </div>
+    </section>
+
+    <!-- LEGAL HELP -->
+    <section id="legal">
+      <div class="cr-section-header">
+        <h2>Legal Help</h2>
+        <p>Know your rights — legal resources for Palestinians, Arab-Americans, and student activists.</p>
+      </div>
+      <div class="cr-list">
+        <a href="https://palestinelegal.org/kyr-video-series" target="_blank" class="cr-item blue">
+          <h4>Palestine Legal — Know Your Rights Video Series</h4>
+          <div class="source">palestinelegal.org</div>
+        </a>
+        <a href="https://palestinelegal.org/know-your-rights" target="_blank" class="cr-item blue">
+          <h4>Palestine Legal — Know Your Rights Student Handbook</h4>
+          <div class="source">palestinelegal.org</div>
+        </a>
+        <a href="https://adc.org/" target="_blank" class="cr-item blue">
+          <h4>Arab-American Anti-Discrimination League (ADC) — Advocate, Defend, Connect</h4>
+          <div class="source">adc.org</div>
+        </a>
+        <a href="https://www.nlg.org/wp-content/uploads/2022/06/Know-Your-Rights-Booklet-2022.pdf" target="_blank" class="cr-item blue">
+          <h4>National Lawyers Guild — Know Your Rights: A Guide for Protestors</h4>
+          <div class="source">nlg.org — PDF download</div>
+        </a>
+        <a href="https://www.cair.com/" target="_blank" class="cr-item blue">
+          <h4>Council on American-Islamic Relations (CAIR)</h4>
+          <div class="source">cair.com</div>
+        </a>
+        <a href="https://www.nlg.org/" target="_blank" class="cr-item blue">
+          <h4>National Lawyers Guild</h4>
+          <div class="source">nlg.org</div>
+        </a>
+        <a href="https://righttobe.org/events/bystander-intervention-to-stop-islamophobic-and-xenophobic-harassment-2/" target="_blank" class="cr-item blue">
+          <h4>Bystander Intervention to Stop Islamophobic and Xenophobic Harassment</h4>
+          <div class="source">righttobe.org</div>
+        </a>
+        <a href="https://ccrjustice.org/israel-s-unfolding-crime-genocide-palestinian-people-us-failure-prevent-and-complicity-genocide" target="_blank" class="cr-item blue">
+          <h4>Israel's Unfolding Crime of Genocide — Center for Constitutional Rights</h4>
+          <div class="source">ccrjustice.org</div>
+        </a>
+        <a href="https://www.cunyclear.org/know-your-rights" target="_blank" class="cr-item blue">
+          <h4>CUNY Know Your Rights</h4>
+          <div class="source">cunyclear.org</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- PSYCHOLOGICAL SUPPORT -->
+    <section id="psychological">
+      <div class="cr-section-header">
+        <h2>Psychological Support</h2>
+        <p>Mental health services, apps, and community support for individuals and families.</p>
+      </div>
+      <div class="cr-list">
+        <a href="https://healthy.kaiserpermanente.org/southern-california/health-wellness/mental-health/tools-resources/digital" target="_blank" class="cr-item red">
+          <h4>Free Wellness Apps — Calm, Ginger, My Strength</h4>
+          <p>A curated list of free digital mental health tools.</p>
+          <div class="source">Kaiser Permanente — Southern California</div>
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/14GvPKPxIuZ5zYfu8Nrk_7-1lgEP0L-v-VpsVPObhFNA/edit#gid=0" target="_blank" class="cr-item red">
+          <h4>Meditation and Stress Relief Apps</h4>
+          <p>A community-maintained list of apps for managing acute stress and grief.</p>
+          <div class="source">Google Sheets — curated resource</div>
+        </a>
+        <a href="https://amaly.org/" target="_blank" class="cr-item red">
+          <h4>Amaly Psychotherapy Services</h4>
+          <p>Psychotherapy services for residents of California.</p>
+          <div class="source">amaly.org</div>
+        </a>
+        <a href="https://maristan.org/" target="_blank" class="cr-item red">
+          <h4>Maristan Mental Health Services</h4>
+          <div class="source">maristan.org</div>
+        </a>
+        <a href="https://www.inclusivetherapists.com/resources" target="_blank" class="cr-item red">
+          <h4>Mental Health Resources for Therapists, Students, and Learners — Inclusive Therapists</h4>
+          <div class="source">inclusivetherapists.com</div>
+        </a>
+        <a href="https://www.wafahouse.org/" target="_blank" class="cr-item red">
+          <h4>Wafa House</h4>
+          <p>For residents of New Jersey.</p>
+          <div class="source">wafahouse.org</div>
+        </a>
+        <a href="http://www.redclinic.org" target="_blank" class="cr-item red">
+          <h4>Red Clinic</h4>
+          <div class="source">redclinic.org</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CHILDREN -->
+    <section id="children">
+      <div class="cr-section-header">
+        <h2>Resources for Children</h2>
+        <p>Guidance for parents and caregivers talking with children about war and conflict.</p>
+      </div>
+      <div class="cr-grid-2">
+        <a href="https://www.nctsn.org/sites/default/files/resources/fact-sheet/talking-to-children-about-war.pdf" target="_blank" class="cr-item">
+          <h4>Talking to Children About War</h4>
+          <div class="source">National Child Traumatic Stress Network (NCTSN)</div>
+        </a>
+        <a href="https://www.unicef.org/parenting/how-talk-your-children-about-conflict-and-war" target="_blank" class="cr-item">
+          <h4>How to Talk With Your Children About Conflict and War</h4>
+          <div class="source">UNICEF — unicef.org</div>
+        </a>
+        <a href="https://www.apa.org/topics/resilience/kids-war" target="_blank" class="cr-item">
+          <h4>Resilience in a Time of War</h4>
+          <div class="source">American Psychological Association — apa.org</div>
+        </a>
+        <a href="https://www.verywellfamily.com/how-to-talk-to-kids-about-war-4147597" target="_blank" class="cr-item">
+          <h4>Talking to Your Kids About War</h4>
+          <div class="source">Very Well Family — verywellfamily.com</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOR MH PROVIDERS -->
+    <section id="providers">
+      <div class="cr-section-header">
+        <h2>For Mental Health Providers</h2>
+        <p>Tools, community, and clinical guidance for clinicians supporting Palestinian and Arab-American clients.</p>
+      </div>
+      <div class="cr-list">
+        <a href="https://www.facebook.com/groups/arabmhproviders" target="_blank" class="cr-item">
+          <h4>Arab Mental Health Providers Community</h4>
+          <p>A peer support group for Arab and Arab-American mental health providers.</p>
+          <div class="source">Facebook Group</div>
+        </a>
+        <a href="https://www.inclusivetherapists.com/events/speaking-our-vision-a-support-group-for-southwest-asian-north-african-women-diaspora-in-pa-nj-de-and-fl" target="_blank" class="cr-item">
+          <h4>Support Group — Southwest Asian and North African Women Diaspora</h4>
+          <p>For residents of PA, NJ, DE, and FL.</p>
+          <div class="source">Inclusive Therapists</div>
+        </a>
+        <a href="https://mayflybooks.org/curcums-trees/" target="_blank" class="cr-item">
+          <h4>A Decolonial Health Guide for Palestinian Community Health Workers</h4>
+          <div class="source">mayflybooks.org</div>
+        </a>
+        <a href="https://usapalmhn.org/wp-content/uploads/2023/10/AMENA-Psy-Guidelines-for-Working-with-MENA-Students-1.pdf" target="_blank" class="cr-item">
+          <h4>Guidelines for Working with Arab and MENA Students</h4>
+          <p>Developed by AMENA-Psy for mental health practitioners working in academic settings.</p>
+          <div class="source">AMENA-Psy — PDF download</div>
+        </a>
+        <a href="https://forms.gle/nKYVfCg8GHJcFTsz7" target="_blank" class="cr-item">
+          <h4>Pro-Bono Providers for Palestine</h4>
+          <p>Sign up to offer pro-bono mental health services to Palestinian and Arab-American clients.</p>
+          <div class="source">Google Forms</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- TAKE ACTION -->
+    <section id="action">
+      <div class="cr-section-header">
+        <h2>Take Action</h2>
+        <p>Ways to act in solidarity — from advocacy to joining the network.</p>
+      </div>
+      <div class="cr-list">
+        <a href="https://www.jewishvoiceforpeace.org/resource/urgent-tell-congress-to-stop-fueling-violence/" target="_blank" class="cr-item red">
+          <h4>Demand Ceasefire Now</h4>
+          <p>Tell Congress to stop fueling violence in Gaza and the West Bank.</p>
+          <div class="source">Jewish Voice for Peace — jewishvoiceforpeace.org</div>
+        </a>
+        <a href="https://uscpr.org/campaigns/end-u-s-military-funding-to-israel/" target="_blank" class="cr-item red">
+          <h4>End US Military Funding to Israel</h4>
+          <div class="source">US Campaign for Palestinian Rights — uscpr.org</div>
+        </a>
+        <a href="https://palestinianfeministcollective.org/" target="_blank" class="cr-item red">
+          <h4>Palestinian Feminist Collective</h4>
+          <div class="source">palestinianfeministcollective.org</div>
+        </a>
+        <a href="https://forms.gle/WqFWimox7aKW7HzM9" target="_blank" class="cr-item">
+          <h4>Join the USAPALMHN Mailing List</h4>
+          <p>Stay informed and connected with the network's updates, events, and resources.</p>
+          <div class="source">USA-Palestine Mental Health Network</div>
+        </a>
+        <a href="get-involved.html" class="cr-item">
+          <h4>More Ways to Get Involved</h4>
+          <p>Sign the Pledge, donate, join Hill Days, or travel to Palestine on a mental health study delegation.</p>
+          <div class="source">get-involved.html</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section id="statement">
+      <div class="cr-section-header">
+        <h2>Our Statement</h2>
+        <p>Justice as the foundation of mental health — the network's guiding philosophy.</p>
+      </div>
+      <div class="cr-statement">
+        <blockquote>
+          "As we see it, the principle of justice is the core of mental health. This is true regarding what is happening in Palestine and it is true everywhere. 'Coping' with injustice means first understanding it, and then taking responsible action to address it. Our potential for mental well-being is undermined by our ignorance, powerlessness, and passivity in the face of injustice. But through our empathy with human beings who are being destroyed, humiliated, injured, and killed, we have the opportunity to participate in the restoration of their human dignity."
+        </blockquote>
+        <cite>— USA-Palestine Mental Health Network Steering Committee</cite>
+        <div class="doc-links">
+          <a href="https://usapalmhn.org/wp-content/uploads/2023/10/December-8-Genocide-in-Gaza-statement.pdf" target="_blank" class="btn-white">Statement on the Genocide in Gaza</a>
+          <a href="https://usapalmhn.org/wp-content/uploads/2023/10/Dear-Mental-Health-Professionals-5.pdf" target="_blank" class="btn-white-outline">Letter to Mental Health Professionals in Gaza →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2>Stay Connected with the Network</h2>
+  <p>Clinical updates, new resources, and network statements — delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <button type="button">Subscribe</button>
+  </div>
+  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
+        <span>USA Palestine<br>Mental Health Network</span>
+      </div>
+      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn">X</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Crisis Resources</h4>
+      <a href="crisis-resources.html#hotlines">Emergency Hotlines</a>
+      <a href="crisis-resources.html#legal">Legal Help</a>
+      <a href="crisis-resources.html#psychological">Psychological Support</a>
+      <a href="crisis-resources.html#children">Resources for Children</a>
+      <a href="crisis-resources.html#providers">For MH Providers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="about.html">About</a>
+      <a href="breaking-news.html">Breaking News</a>
+      <a href="campaigns.html">"Don't Go" Campaigns</a>
+      <a href="voices.html">Voices on Mental Health</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="get-involved.html#join">Join the Network</a>
+      <a href="get-involved.html#delegations">Travel to Palestine</a>
+      <a href="get-involved.html#how-to-help">How to Help</a>
+      <a href="get-involved.html#donate">Donate</a>
+      <a href="about.html#contact">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
+    <div class="footer-bar-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  const sections = document.querySelectorAll('section[id]');
+  const sideLinks = document.querySelectorAll('.cr-sidebar a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    sideLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  let isArabic = false;
+  function toggleLang() {
+    isArabic = !isArabic;
+    const html = document.documentElement;
+    const btn = document.querySelector('.lang-toggle');
+    if (isArabic) { html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN'; }
+    else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي'; }
+  }
+</script>
+</body>
+</html>
