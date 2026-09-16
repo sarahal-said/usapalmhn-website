@@ -46,9 +46,6 @@ python3 -m http.server 3000
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-> **Note for macOS users:** Port 7000 is often occupied by a system process (Control Center), so port 3000 is recommended.
-
-Alternatively, you can simply open `index.html` directly in a browser, though a local server is recommended for the most accurate preview.
 
 ## Editing Content
 

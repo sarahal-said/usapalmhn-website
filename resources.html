@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/logo.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources — USA Palestine Mental Health Network</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,43 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/shared.css">
 <style>
-  /* Page-specific layout */
-  .resources-page { max-width: 1140px; margin: 0 auto; padding: 80px 60px; }
-
-  /* Category section */
-  .resource-category { margin-bottom: 80px; }
-  .resource-category-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--olive-light);
-  }
-  .rci-green { background: var(--olive-light); }
-  .rci-red { background: rgba(200,40,26,0.1); }
-  .rci-blue { background: rgba(26,58,107,0.1); }
-  .rci-cream { background: var(--cream-dark); }
-  .resource-category-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-  .resource-category-header p {
-    font-size: 14px;
-    color: var(--text-muted);
-    font-family: 'Source Serif 4', serif;
-    font-style: italic;
-    margin-top: 4px;
+  .res-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 72px 60px;
+    align-items: start;
   }
 
-  /* 3-col grid for cards */
-  .res-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .res-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-
-  /* Sidebar layout for categories with many items */
-  .res-layout { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  /* Sidebar */
   .res-sidebar {
     position: sticky;
     top: 100px;
@@ -55,73 +30,142 @@
     overflow: hidden;
   }
   .res-sidebar-header {
-    background: var(--olive);
-    padding: 16px 20px;
-    font-size: 11px;
+    background: var(--olive-dark);
+    padding: 14px 18px;
+    font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: rgba(255,255,255,0.8);
     font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
   }
   .res-sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 13px 20px;
+    display: block;
+    padding: 11px 18px;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    border-bottom: 1px solid rgba(74,107,26,0.08);
+    border-bottom: 1px solid rgba(74,107,26,0.07);
     transition: all 0.2s;
   }
   .res-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
   .res-sidebar a.active { background: var(--olive-light); color: var(--olive-dark); font-weight: 600; border-left: 3px solid var(--olive); }
-  .res-sidebar a span { font-size: 16px; }
+  .res-sidebar a:last-child { border-bottom: none; }
 
-  /* International networks card */
-  .network-card {
+  /* Content */
+  .res-content { display: flex; flex-direction: column; gap: 64px; }
+
+  /* Section header */
+  .res-section-header {
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 28px;
+  }
+  .res-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .res-section-header p {
+    font-size: 14px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic;
+  }
+
+  /* Resource list item — matches shared.css pattern */
+  .rli { display: flex; flex-direction: column; gap: 10px; }
+  .rli-item {
     background: white;
-    border: 1px solid rgba(74,107,26,0.18);
-    border-radius: 8px;
-    padding: 28px;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 22px;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
   }
-  .network-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
-  .network-card-flag { font-size: 32px; }
-  .network-card h3 { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
-  .network-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; font-family: 'Source Serif 4', serif; }
+  .rli-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
+  .rli-item.red { border-left-color: var(--red); }
+  .rli-item.blue { border-left-color: var(--navy); }
+  .rli-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 3px; line-height: 1.35; }
+  .rli-item p { font-size: 13px; color: var(--text-muted); font-family: 'Source Serif 4', serif; line-height: 1.6; margin: 0; }
+  .rli-item .author { font-size: 12px; color: var(--olive-dark); font-weight: 600; margin-top: 4px; font-family: 'DM Sans', sans-serif; }
 
-  /* Crisis banner */
-  .crisis-banner {
-    background: var(--red);
-    border-radius: 8px;
-    padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 60px;
-    flex-wrap: wrap;
+  /* Book sub-category label */
+  .sub-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--olive); font-family: 'DM Sans', sans-serif;
+    padding-bottom: 10px; border-bottom: 1px solid var(--olive-light);
+    margin-bottom: 12px; margin-top: 28px;
   }
-  .crisis-banner-icon { font-size: 36px; flex-shrink: 0; }
-  .crisis-banner h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; font-weight: 700; margin-bottom: 6px; }
-  .crisis-banner p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
-  .crisis-banner-cta { margin-left: auto; flex-shrink: 0; }
+  .sub-label:first-child { margin-top: 0; }
+
+  /* Why We Need Info intro block */
+  .intro-block {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 40px 44px;
+    position: relative; overflow: hidden;
+  }
+  .intro-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .intro-block > * { position: relative; z-index: 1; }
+  .intro-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.85;
+    margin-bottom: 16px;
+  }
+  .intro-block p:last-of-type { margin-bottom: 0; }
+
+  /* Bissalameh block */
+  .bissalameh-block {
+    background: var(--cream-dark);
+    border: 1px solid rgba(74,107,26,0.15);
+    border-left: 5px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 32px 36px;
+  }
+  .bissalameh-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
+  .bissalameh-block p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+
+  /* Network cards grid */
+  .net-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .net-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 24px;
+    transition: all 0.3s;
+  }
+  .net-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .net-card h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.3; }
+  .net-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; font-family: 'Source Serif 4', serif; }
+  .net-card a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; }
+  .net-card a:hover { text-decoration: underline; }
+
+  /* Orgs grouped */
+  .org-group { margin-bottom: 32px; }
+  .org-group-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--olive-light);
+  }
 
   @media (max-width: 1024px) {
     .res-layout { grid-template-columns: 1fr; }
     .res-sidebar { position: static; }
-    .res-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .net-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .resources-page { padding: 48px 24px; }
-    .res-grid-3, .res-grid-2 { grid-template-columns: 1fr; }
-    .crisis-banner { flex-direction: column; text-align: center; }
-    .crisis-banner-cta { margin-left: 0; }
-    .resource-category-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .res-layout { padding: 48px 24px; }
+    .intro-block { padding: 28px 24px; }
+    .bissalameh-block { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -146,24 +190,26 @@
   <nav class="nav-bottom">
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="index.html#news">Breaking News</a></li>
-      <li><a href="index.html#updates">Updates</a></li>
+      <li><a href="breaking-news.html">Breaking News</a></li>
+      <li><a href="updates.html">Updates</a></li>
       <li><a href="campaigns.html">"Don't Go"</a></li>
       <li><a href="voices.html">Voices</a></li>
       <li><a href="resources.html" class="active">Resources</a></li>
+      <li><a href="crisis-resources.html">Crisis Resources</a></li>
       <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="get-involved.html#donate">Donate</a></li>
+      <li><a href="donate.html">Donate</a></li>
     </ul>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="about.html" onclick="toggleMenu()">About</a>
-    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
-    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
+    <a href="breaking-news.html" onclick="toggleMenu()">Breaking News</a>
+    <a href="updates.html" onclick="toggleMenu()">Updates</a>
     <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
     <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
     <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="crisis-resources.html" onclick="toggleMenu()">Crisis Resources</a>
     <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
-    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
+    <a href="donate.html" onclick="toggleMenu()">Donate</a>
   </div>
 </div>
 
@@ -179,21 +225,18 @@
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="index.html">Home</a>
-  <span>›</span>
-  Resources
+  <a href="index.html">Home</a><span>›</span>Resources
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="res-layout" style="max-width:1140px; margin:0 auto; padding:80px 60px; align-items:start;">
+<!-- MAIN LAYOUT -->
+<div class="res-layout">
 
-  <!-- SIDEBAR NAV -->
+  <!-- SIDEBAR -->
   <aside class="res-sidebar">
     <div class="res-sidebar-header">Resource Library</div>
-    <a href="#crisis" class="active">Crisis Resources</a>
-    <a href="#why">Why We Need Information</a>
+    <a href="#why" class="active">Why We Need Information</a>
     <a href="#international">International Networks</a>
-    <a href="#cafe-palestine">Café Palestine Webinars</a>
+    <a href="#cafe">Café Palestine Webinars</a>
     <a href="#books">Books</a>
     <a href="#journals">Journal Articles</a>
     <a href="#opinion">Opinion Pieces</a>
@@ -204,319 +247,486 @@
   </aside>
 
   <!-- CONTENT -->
-  <main>
-
-    <!-- CRISIS RESOURCES -->
-    <section id="crisis" class="resource-category">
-      <div class="crisis-banner">
-        <div>
-          <h3>Crisis Resources</h3>
-          <p>If you or someone you know is in crisis, please reach out immediately. Below are resources for mental health professionals and the Palestinian community during this ongoing emergency.</p>
-        </div>
-        <div class="crisis-banner-cta">
-          <a href="crisis-resources.html" target="_blank" class="btn-white">View Crisis Resources</a>
-        </div>
-      </div>
-      <div class="resource-list">
-        <div class="resource-list-item red-accent">
-          <div class="rli-body">
-            <div class="rli-tag">Hotline</div>
-            <h4>988 Suicide & Crisis Lifeline</h4>
-            <p>Call or text 988. Available 24/7. Arabic-speaking counselors available.</p>
-          </div>
-        </div>
-        <div class="resource-list-item red-accent">
-          <div class="rli-body">
-            <div class="rli-tag">Collective Trauma</div>
-            <h4>Resources for Clinicians Working with Collective Trauma</h4>
-            <p>Guidance for mental health professionals supporting clients experiencing vicarious and collective trauma related to the ongoing situation in Palestine.</p>
-            <a href="https://usapalmhn.org/portfolio-item/crisis-resources/" target="_blank">Access Resources →</a>
-          </div>
-        </div>
-        <div class="resource-list-item red-accent">
-          <div class="rli-body">
-            <div class="rli-tag">Self-Care</div>
-            <h4>Clinician Self-Care During Vicarious Trauma</h4>
-            <p>Tools and frameworks for mental health workers experiencing secondary traumatic stress while supporting Palestinian and Arab-American clients.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <main class="res-content">
 
     <!-- WHY WE NEED INFORMATION -->
-    <section id="why" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Why We Need Information</h2>
-          <p>Understanding the context behind our clinical and advocacy work.</p>
-        </div>
+    <section id="why">
+      <div class="res-section-header">
+        <h2>Why We Need Information</h2>
+        <p>Understanding the context behind our clinical and advocacy work.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <h4>A Brief Explanation: Why Mental Health Workers Need to Be Informed</h4>
-            <p>An introduction to why understanding the political, historical, and social context of Palestine is essential for ethical clinical practice in the U.S.</p>
-            <a href="https://usapalmhn.org/portfolio-item/why-we-need-information-a-brief-explanation/" target="_blank">Read Article →</a>
-          </div>
-        </div>
+      <div class="intro-block">
+        <p>The resources on this page are organized to assist mental health workers in understanding the historical, political, and social context of Palestine — context that is essential for ethical, justice-oriented clinical practice.</p>
+        <p>The state of Israel maintains extensive institutional organizations with the goal of discrediting criticism of Zionism, justifying its policies, and spreading its ideology as "public diplomacy" through HASBARA — literally (in Hebrew) "explanation." Some foundational planks of Zionist propaganda assert that Israel represents the best interests of Jewish people worldwide, and that Israel is a vibrant democracy reluctantly forced to adopt security measures that outsiders have no right to criticize.</p>
+        <p>The resources below offer evidence-based, clinically grounded alternatives to these narratives — drawing on international law, peer-reviewed research, journalism, film, and firsthand testimony.</p>
       </div>
     </section>
 
     <!-- INTERNATIONAL NETWORKS -->
-    <section id="international" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>International Networks</h2>
-          <p>Sister organizations advancing Palestinian mental health globally.</p>
-        </div>
+    <section id="international">
+      <div class="res-section-header">
+        <h2>International Networks</h2>
+        <p>Sister organizations advancing Palestinian mental health globally.</p>
       </div>
-      <div class="res-grid-3">
-        <div class="network-card">
+      <div class="net-grid">
+        <div class="net-card">
           <h3>Palestine Global Mental Health Network</h3>
-          <p>A global coalition of mental health professionals advocating for Palestinian rights and psychological wellbeing worldwide.</p>
-          <a href="https://usapalmhn.org/portfolio-item/palestine-global-mental-health-network/" target="_blank" class="link-arrow">Visit Network →</a>
+          <p>USAPALMHN took its initial inspiration from our Palestinian colleagues who founded the PGMHN. The global anchor of all our sister networks.</p>
+          <a href="https://www.pgmhn.org/" target="_blank">Visit PGMHN →</a>
         </div>
-        <div class="network-card">
-          <h3>UK Palestine Mental Health Network</h3>
-          <p>UK-based network of mental health professionals in solidarity with Palestine. Hosts the acclaimed Café Palestine webinar series.</p>
-          <a href="https://ukpalmhn.com/" target="_blank" class="link-arrow">Visit UK-PalMHN →</a>
+        <div class="net-card">
+          <h3>UK-Palestine Mental Health Network</h3>
+          <p>A sister organization and close collaborator. Hosts the acclaimed Café Palestine webinar series and supports our "Don't Go" campaigns.</p>
+          <a href="https://ukpalmhn.com/" target="_blank">Visit UK-PalMHN →</a>
         </div>
-        <div class="network-card">
-          <h3>Australia Palestine Mental Health Network</h3>
-          <p>Australian mental health professionals advocating for Palestinian rights, including the "Storytelling as Resistance" webinar series.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
+        <div class="net-card">
+          <h3>Ireland-Palestine Mental Health Network</h3>
+          <p>Irish mental health professionals in solidarity with Palestine, coordinating with the global network of sister organizations.</p>
+          <a href="https://ipmhn.com/" target="_blank">Visit Ireland-PalMHN →</a>
         </div>
-        <div class="network-card">
-          <h3>Ireland Palestine Mental Health Network</h3>
-          <p>Irish mental health professionals working in solidarity with Palestine, including the "Why Wars? Voices of Women" webinar series.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-        <div class="network-card">
-          <h3>About International Networks</h3>
-          <p>Learn how global mental health networks coordinate to advance Palestinian rights and support clinicians worldwide.</p>
-          <a href="https://usapalmhn.org/portfolio-item/about-international-networks/" target="_blank" class="link-arrow">Read More →</a>
+        <div class="net-card">
+          <h3>France-Palestine Mental Health Network</h3>
+          <p>French mental health professionals coordinating with the international Palestine mental health solidarity movement.</p>
+          <a href="https://www.facebook.com/frpalmhn/" target="_blank">Visit France-PalMHN →</a>
         </div>
       </div>
     </section>
 
-    <!-- CAFÉ PALESTINE WEBINARS -->
-    <section id="cafe-palestine" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Café Palestine Webinars</h2>
-          <p>A long-running webinar series hosted by the UK-Palestine Mental Health Network.</p>
-        </div>
+    <!-- CAFÉ PALESTINE -->
+    <section id="cafe">
+      <div class="res-section-header">
+        <h2>Café Palestine Webinars</h2>
+        <p>A long-running webinar series hosted by the UK-Palestine Mental Health Network.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">Webinar Series</div>
-            <h4>Café Palestine — Full Archive</h4>
-            <p>Dozens of webinars featuring Palestinian clinicians, scholars, and activists discussing mental health, resistance, and decolonial practice. Searchable index available.</p>
-            <a href="https://ukpalmhn.com/cafe-palestine/cafe-palestine-index/" target="_blank">Browse Full Archive →</a>
-          </div>
-        </div>
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">Recent — April 2026</div>
-            <h4>Café Palestine 39: Music Therapy Programme for Teachers in Gaza</h4>
-            <p>Introduction to a new online support programme for music teachers in Gaza, developed by the Edward Said National Conservatory of Music in collaboration with international partners.</p>
-          </div>
-        </div>
+      <div class="rli">
+        <a href="https://ukpalmhn.com/cafe-palestine/cafe-palestine-index/" target="_blank" class="rli-item">
+          <h4>Café Palestine — Full Webinar Archive</h4>
+          <p>Dozens of webinars featuring Palestinian clinicians, scholars, and activists discussing mental health, resistance, and decolonial practice. Searchable index available at the UK-PalMHN website.</p>
+        </a>
       </div>
     </section>
 
     <!-- BOOKS -->
-    <section id="books" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Books</h2>
-          <p>Essential reading on Palestinian psychology, trauma, and resistance.</p>
-        </div>
+    <section id="books">
+      <div class="res-section-header">
+        <h2>Books</h2>
+        <p>Essential reading on Palestinian psychology, history, trauma, and resistance.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">New Release</div>
-            <h4>From the Clinic to the Streets: Psychoanalysis for Revolutionary Futures — Lara Sheehi</h4>
-            <p>A landmark work exploring decolonial psychoanalysis and the political responsibilities of the clinical practitioner. Book talk hosted by UK-PalMHN, April 2026.</p>
-          </div>
+
+      <div class="sub-label">Racism, Imperialism, and Colonialism — Foundational Texts</div>
+      <div class="rli">
+        <div class="rli-item"><h4>Freedom is a Constant Struggle: Ferguson, Palestine, and the Foundations of a Movement (2016)</h4><p class="author">Angela Y. Davis</p></div>
+        <div class="rli-item"><h4>The Wretched of the Earth (1961)</h4><p class="author">Frantz Fanon</p></div>
+        <div class="rli-item"><h4>Orientalism (1978)</h4><p class="author">Edward W. Said</p></div>
+      </div>
+
+      <div class="sub-label">Addressing Palestine Specifically</div>
+      <div class="rli">
+        <div class="rli-item"><h4>The Palestine Communist Party 1919-1948: Arab and Jew in the Struggle for Internationalism (2010)</h4><p class="author">Musa Budeiri</p></div>
+        <div class="rli-item"><h4>The Persistence of the Palestinian Question: Essays on Zionism and the Palestinians (2006)</h4><p class="author">Joseph Massad</p></div>
+        <div class="rli-item"><h4>The Politics of Dispossession: The Struggle for Palestinian Self-Determination (1994)</h4><p class="author">Edward Said</p></div>
+        <div class="rli-item"><h4>The Question of Palestine (1979)</h4><p class="author">Edward Said</p></div>
+        <div class="rli-item"><h4>Citizen Strangers: Palestinians and the Birth of Israel's Liberal Settler State (2013)</h4><p class="author">Shira Robinson</p></div>
+      </div>
+
+      <div class="sub-label">History and Conditions Under Israeli Occupation</div>
+      <div class="rli">
+        <div class="rli-item"><h4>I Shall Not Hate: A Gaza Doctor's Journey on the Road to Peace and Human Dignity (2010)</h4><p class="author">Izzeldin Abuelaish</p></div>
+        <div class="rli-item"><h4>The Drone Eats with Me: A Gaza Diary (2014)</h4><p class="author">Atef Abu Saif</p></div>
+        <div class="rli-item"><h4>The Palestinian Nakba 1948: Register of Depopulated Localities in Palestine (2000)</h4><p class="author">Salman H. Abu Sitta</p></div>
+        <div class="rli-item"><h4>Atlas of Palestine 1917-1966 (2010)</h4><p class="author">Salman H. Abu Sitta</p></div>
+        <div class="rli-item"><h4>Gaza Unsilenced (2015)</h4><p class="author">Refaat Alareer</p></div>
+        <div class="rli-item"><h4>One State Condition: Occupation and Democracy in Israel/Palestine (2012)</h4><p class="author">Ariella Azoulay and Adi Ophir</p></div>
+        <div class="rli-item"><h4>Witness in Palestine: A Jewish American Woman in the Occupied Territories (2007)</h4><p class="author">Anna Baltzer</p></div>
+        <div class="rli-item"><h4>Goliath: Life and Loathing in Greater Israel (2013)</h4><p class="author">Max Blumenthal</p></div>
+        <div class="rli-item"><h4>Our Harsh Logic: Israeli Soldiers' Testimonies from the Occupied Territories, 2000-2010 (2012)</h4><p class="author">Breaking the Silence</p></div>
+        <div class="rli-item"><h4>On Palestine (2015)</h4><p class="author">Noam Chomsky and Ilan Pappe</p></div>
+        <div class="rli-item"><h4>Disappearing Palestine: Israel's Experiments in Human Despair (2013)</h4><p class="author">Jonathan Cook</p></div>
+        <div class="rli-item"><h4>The Way to the Spring: Life and Death in Palestine (2016)</h4><p class="author">Ben Erenreich</p></div>
+        <div class="rli-item"><h4>Israel's Occupation (2008)</h4><p class="author">Neve Gordon</p></div>
+        <div class="rli-item"><h4>An Israeli in Palestine: Resisting Dispossession, Redeeming Israel (2008)</h4><p class="author">Jeff Halper</p></div>
+        <div class="rli-item"><h4>War Against the People: Israel, the Palestinians and Global Pacification (2015)</h4><p class="author">Jeff Halper</p></div>
+        <div class="rli-item"><h4>The Punishment of Gaza (2010)</h4><p class="author">Gideon Levy</p></div>
+        <div class="rli-item"><h4>Palestine Inside Out: An Everyday Occupation (2008)</h4><p class="author">Saree Makdisi</p></div>
+        <div class="rli-item"><h4>The Politics of Denial: Israel and the Palestinian Refugee Problem (2003)</h4><p class="author">Nur Masalha</p></div>
+        <div class="rli-item"><h4>The Idea of Israel: A History of Power and Knowledge (2014)</h4><p class="author">Ilan Pappe</p></div>
+        <div class="rli-item"><h4>The Ethnic Cleansing of Palestine (2006)</h4><p class="author">Ilan Pappe</p></div>
+        <div class="rli-item"><h4>A History of Modern Palestine: One Land, Two Peoples (2004)</h4><p class="author">Ilan Pappe</p></div>
+        <div class="rli-item"><h4>Gaza in Crisis: Reflections on Israel's War</h4><p class="author">Ilan Pappe and Noam Chomsky</p></div>
+        <div class="rli-item">
+          <h4>Mental Health &amp; Human Rights in Palestine: The life of Gaza's pioneering psychiatrist Dr. Eyad Sarraj (2022)</h4>
+          <p class="author">Wasseem El Sarraj</p>
+          <p><a href="https://usapalmhn.org/wp-content/uploads/2020/11/Mental-Health-in-Palestine-rqeoxy.pdf" target="_blank" style="color:var(--olive);font-size:12px;font-weight:600;">Download PDF →</a></p>
         </div>
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">Reading Circle</div>
-            <h4>Incarcerated Childhood and the Politics of Unchilding</h4>
-            <p>Currently the subject of an active USAPALMHN reading circle. Explores the systematic deprivation of childhood for Palestinian youth under occupation.</p>
-          </div>
-        </div>
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">Reading Circle — Completed</div>
-            <h4>Psychoanalysis Under Occupation</h4>
-            <p>Explores the practice of psychoanalysis and psychotherapy in the context of Israeli occupation of Palestine. Featured in the 2026 reading circle series.</p>
-          </div>
-        </div>
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <div class="rli-tag">Reading Circle — Completed</div>
-            <h4>Boycott, Divestment, and Sanctions</h4>
-            <p>A foundational text on the BDS movement and its implications for civil society, including professional organizations in mental health.</p>
-          </div>
-        </div>
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <h4>Full Books List</h4>
-            <p>View the complete USAPALMHN curated book list covering Palestinian history, mental health, occupation, and resistance.</p>
-            <a href="https://usapalmhn.org/portfolio-item/books/" target="_blank">View Full List →</a>
-          </div>
-        </div>
+        <div class="rli-item"><h4>Condition Critical: Life and Death in Israel/Palestine (2016)</h4><p class="author">Alice Rothchild</p></div>
+        <div class="rli-item"><h4>Hollow Land: Israel's Architecture of Occupation (2007)</h4><p class="author">Eyal Weizman</p></div>
+        <div class="rli-item"><h4>Israeli Apartheid: A Beginner's Guide (2009)</h4><p class="author">Ben White</p></div>
+      </div>
+
+      <div class="sub-label">The Role of the USA in the Oppression of the Palestinian Community</div>
+      <div class="rli">
+        <div class="rli-item"><h4>Peace not Apartheid (2006)</h4><p class="author">Jimmy Carter</p></div>
+        <div class="rli-item"><h4>Gaza in Crisis: Reflections on the US-Israeli War Against Palestinians (2013)</h4><p class="author">Noam Chomsky and Ilan Pappe</p></div>
+        <div class="rli-item"><h4>Brokers of Deceit: How the US has undermined peace in the Middle East (2013)</h4><p class="author">Rashid Khalidi</p></div>
+        <div class="rli-item"><h4>One Land, Two States: Israel and Palestine as Parallel States (2014)</h4><p class="author">Mark Levine and Matias Mossberg</p></div>
+        <div class="rli-item"><h4>Shattered Hopes: Obama's Failure to Broker Israeli-Palestinian Peace (2013)</h4><p class="author">Josh Ruebner</p></div>
+        <div class="rli-item"><h4>Failing Peace: Gaza and the Palestinian-Israeli Conflict (2007)</h4><p class="author">Sara Roy</p></div>
+        <div class="rli-item"><h4>Peace and Its Discontents: Essays on Palestine in the Middle East Peace Process (1996)</h4><p class="author">Edward Said</p></div>
+      </div>
+
+      <div class="sub-label">The Holocaust and Countering Claims of Anti-Semitism</div>
+      <div class="rli">
+        <div class="rli-item"><h4>The Holocaust Industry (2000)</h4><p class="author">Norman Finkelstein</p></div>
+        <div class="rli-item"><h4>Beyond Chutzpah: On the Misuse of Anti-Semitism and the Abuse of History (2008)</h4><p class="author">Norman Finkelstein</p></div>
+      </div>
+
+      <div class="sub-label">Zionism from the Perspective of Jewish Identity</div>
+      <div class="rli">
+        <div class="rli-item"><h4>Son of the Cypresses: Memories, Reflections and Regrets from a Political Life (2007)</h4><p class="author">Meron Benvenisti</p></div>
+        <div class="rli-item"><h4>States of Denial: Knowing about Atrocities and Suffering (2001)</h4><p class="author">Stanley Cohen</p></div>
+        <div class="rli-item"><h4>Zionism and its Discontents: A Century of Radical Dissent (2014)</h4><p class="author">Ran Greenstein</p></div>
+        <div class="rli-item"><h4>Overcoming Zionism: Creating a Single Democratic State in Israel/Palestine (2007)</h4><p class="author">Joel Kovel</p></div>
+        <div class="rli-item"><h4>The General's Son: Journey of an Israeli in Palestine (2012)</h4><p class="author">Miko Peled</p></div>
+        <div class="rli-item"><h4>The Last Resistance (2007)</h4><p class="author">Jacqueline Rose</p></div>
+        <div class="rli-item"><h4>Survival and Conscience: From the Shadows of Nazi Germany to the Jewish Boat to Gaza (2015)</h4><p class="author">Lilian Rosengarten</p></div>
+      </div>
+
+      <div class="sub-label">Islamophobia</div>
+      <div class="rli">
+        <a href="https://usapalmhn.org/wp-content/uploads/2020/11/haas-institute-islamophobia-reading-list.pdf" target="_blank" class="rli-item">
+          <h4>Haas Institute Islamophobia Reading List</h4>
+          <p>A comprehensive reading list on Islamophobia complete with its own curated resources. PDF download.</p>
+        </a>
       </div>
     </section>
 
     <!-- JOURNAL ARTICLES -->
-    <section id="journals" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Journal Articles</h2>
-          <p>Peer-reviewed research on Palestinian mental health and occupation.</p>
-        </div>
+    <section id="journals">
+      <div class="res-section-header">
+        <h2>Journal Articles</h2>
+        <p>Peer-reviewed research on Palestinian mental health, trauma, and occupation.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item blue-accent">
-          <div class="rli-body">
-            <h4>Browse the Journal Articles Archive</h4>
-            <p>A curated collection of peer-reviewed articles covering trauma, occupation, mental health outcomes, and the psychology of resistance — organized by topic and year.</p>
-            <a href="https://usapalmhn.org/portfolio-item/journal-articles/" target="_blank">Browse Archive →</a>
-          </div>
+
+      <div class="sub-label">Key Journals</div>
+      <div class="rli">
+        <a href="http://www.palestine-studies.org/jps" target="_blank" class="rli-item blue">
+          <h4>The Journal of Palestine Studies</h4>
+          <p>A scholarly journal focusing on broad aspects of the Palestinian situation, published by the Institute for Palestine Studies.</p>
+        </a>
+        <a href="http://www.thelancet.com/health-in-the-occupied-palestinian-territory-2013" target="_blank" class="rli-item blue">
+          <h4>The Lancet — Health in the Occupied Palestinian Territory</h4>
+          <p>Health in Palestine comprehensively discussed in the British medical journal.</p>
+        </a>
+        <a href="https://www.docdroid.net/RvhYtZn/mental-health-in-palestine-country-report.pdf" target="_blank" class="rli-item blue">
+          <h4>Mental Health in Palestine: Country Report (2013)</h4>
+          <p>Mental health needs and services in Palestine summarized. Arab Journal of Psychiatry, 24(2), 174-178.</p>
+          <p class="author">Jabr, S., Morse, M., El Sarraj, W., Awidi, B.</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Eyad El Sarraj — Gaza Community Mental Health Programme</div>
+      <div class="rli">
+        <a href="http://www.tandfonline.com/doi/abs/10.1080/01650250042000294" target="_blank" class="rli-item">
+          <h4>Resiliency Factors Predicting Psychological Adjustment After Political Violence Among Palestinian Children</h4>
+        </a>
+      </div>
+
+      <div class="sub-label">Samah Jabr &amp; Elizabeth Berger</div>
+      <div class="rli">
+        <a href="https://link.springer.com/article/10.1186/s12913-023-10256-6" target="_blank" class="rli-item">
+          <h4>Enhancing Healthcare Providers' Diagnostic and Intervention Skills to Deal with Suicidal Patients at Emergency Departments in Palestinian Hospitals (2023)</h4>
+          <p class="author">Jabr, Mahamid, Hinnawi, et al.</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.46?shared_access_token=I5Ajl9gGKxCVvypFGM0X8FxOt48VBPO10Uv7D6sAgHtJ_kteR2YM4chn-MPGydynF5bM9sls5VjlozkeX873wLoxNb7kc3ArUYO4G9OUCnOowbSKDZJaNCK3nMXamWHRZT6gl0MJs1FcSkezYqyXPA5SVIuHvXFjtjzU4NznTX0%3D" target="_blank" class="rli-item">
+          <h4>An Occupied State of Mind: Clinical Transference and Countertransference Across the Israeli/Palestinian Divide</h4>
+          <p class="author">Samah Jabr and Elizabeth Berger — Journal of Psychoanalysis, Culture, and Society</p>
+        </a>
+        <a href="http://www.bluetoad.com/publication/?i=200453&p=14" target="_blank" class="rli-item">
+          <h4>Mental Health Care in Palestine: Barriers to Excellence (2014)</h4>
+          <p class="author">Jabr, Berger, Morse, Awidi — The Washington Psychiatrist</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Journal of Psychoanalysis, Culture, and Society — Special Issue on Israel/Palestine (2016)</div>
+      <div class="rli">
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.57?shared_access_token=SwbR9MP5n3MQWiVsZrk88lxOt48VBPO10Uv7D6sAgHtLb4Nws3w9GnEdMBf9YBrjCsAExiYAr8E5WhQQRtYIn07JyD2Mr7zidyQQ2t_1jXrccP5XU2TGGrPJGtqhKTWPgjHR2l0FoMMGXzvgP7wRMsow4_FjvTMDMTFJbhscKnA%3D" target="_blank" class="rli-item">
+          <h4>Introduction to Special Issue on Acknowledgment and Accountability in the Israel-Palestinian Conflict</h4>
+          <p class="author">Stephen Frosh</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.60?shared_access_token=nCW_3gs9Xu-Z6o0U32FmrFxOt48VBPO10Uv7D6sAgHt1gkeyAVDzxnksRSvxjyGXYBUqlZ8-SdbV7udLQdFXnyhPykFLQH_l0D0dE8ypIge3rGKtujPnARkYjRj5lMOhrbc-NfeKyutNISsxgp-XoKwA63iJjiQeKcMir51xVuQ%3D" target="_blank" class="rli-item">
+          <h4>Non-Violence as Respect for All Suffering: Thoughts Inspired by Eyad El Sarraj</h4>
+          <p class="author">Jessica Benjamin</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.65?shared_access_token=YE2faQUgmuh4qIAfl4EkcVxOt48VBPO10Uv7D6sAgHufAwScuELnmCQSOqHr1LombTHk7bw-XmSe0LrfbLZkW8GD50yvTmhODEh8dzTTAQ172Jid6r2oocObDXQllX78a7Crr1y6vMqeapJON4iFgmZHoDiVWOU2QAjqicdgSXs%3D" target="_blank" class="rli-item">
+          <h4>Psychoanalysis and Palestine-Israel: A Personal Angle</h4>
+          <p class="author">Fakhry Davids</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.67?shared_access_token=vqrXRc-rIQWP4DffPm9CyFxOt48VBPO10Uv7D6sAgHtW47GRbQWfmK73UqJ3108CcLfIdvpx3oME3Ij9ZuWG45GlyLWmcpra9TavCczZjcFEDD7MgKrU4yWiScRFHBSGW3zrcJod_0KLrv7Ril_s1OiFZzbxXsl2Xlmx5g%3D" target="_blank" class="rli-item">
+          <h4>Trauma as Identity: Accountability in the Intractable Conflict</h4>
+          <p class="author">Nancy Caro Hollander</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.66?shared_access_token=BD6lgI35_bFNbSAELczFfFxOt48VBPO10Uv7D6sAgHvDG4ghAmk1m0Hk4BGGMuT4evJLk_ySgGd5emapXrNvsactjDfIMDWbImU5Y2qf4EPYZgOxA2hY8tR2idqj1ngMCz30RHaG_KcqJFwlVZsjKmzNWtiC_SYf4sGXqqKntxc%3D" target="_blank" class="rli-item">
+          <h4>Enactments of Otherness and Searching for a Third Space in the Palestine-Israel Matrix</h4>
+          <p class="author">Lara Sheehi and Stephen Sheehi</p>
+        </a>
+        <a href="https://link.springer.com/epdf/10.1057/pcs.2015.52?shared_access_token=0Avp45Ym1R9L5lsGO5ISSVxOt48VBPO10Uv7D6sAgHsbavadjdG2CrqjjHQTQERzF127eDa8MqgMpBc9PUkY_qWsahAxqt_ICrtEzN9Buykxv2MsdxOiH583-RTZsfrnaiYsxvSaTsrcWdROQWrgMzvult07kIX7prAbN1H3JwI%3D" target="_blank" class="rli-item">
+          <h4>Assessing the Effects of Reported Torture in the Israeli-Palestinian Context: A Struggle for Psycho-Political Thirdness</h4>
+          <p class="author">Maya Mukamel</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Additional Articles</div>
+      <div class="rli">
+        <a href="http://www.tandfonline.com/doi/abs/10.1080/17441692.2010.551518" target="_blank" class="rli-item">
+          <h4>Human Rights Violations During Israel's Attack on the Gaza Strip: 27 December 2008 to 19 January 2009</h4>
+          <p class="author">Ruchama Marton — Global Public Health</p>
+        </a>
+        <a href="https://www.researchgate.net/publication/230220005_Dehumanization_guilt_and_large_group_dynamics_with_reference_to_the_west_Israel_and_the_Palestinians" target="_blank" class="rli-item">
+          <h4>Dehumanization, Guilt and Large Group Dynamics with Reference to the West, Israel and the Palestinians (2011)</h4>
+          <p class="author">Martin Kemp — British Journal of Psychotherapy</p>
+        </a>
+        <a href="https://www.researchgate.net/publication/282455897_Collusion_as_a_Defense_against_Guilt_Further_Notes_on_the_West%27s_Relationship_with_Israel_and_the_Palestinians" target="_blank" class="rli-item">
+          <h4>Collusion as a Defense Against Guilt: Further Notes on the West's Relationship with Israel and the Palestinians (2015)</h4>
+          <p class="author">Martin Kemp — International Journal of Applied Psychoanalytic Studies</p>
+        </a>
+        <div class="rli-item">
+          <h4>A Model for Community Care in Gaza: Conclusions Drawn from a Community-Based Approach to Mental Health Care in Gaza (2003)</h4>
+          <p class="author">Abdel Hamid Afana — Palestine-Israel Journal, Vol 10, No. 4</p>
+        </div>
+        <a href="http://www.academia.edu/15298554/Sumud_A_Palestinian_Philosophy_of_Confrontation_in_Colonial_Prisons" target="_blank" class="rli-item">
+          <h4>Sumud: A Palestinian Philosophy of Confrontation in Colonial Prisons (2014)</h4>
+          <p class="author">Lena Maeri — South Atlantic Quarterly</p>
+        </a>
+        <div class="rli-item">
+          <h4>The Impact of Men's Detention on the Psychological Wellbeing of Palestinian Women (2016)</h4>
+          <p class="author">Shehadeh, Loots, Vanderfaeillie, Derluyn — Mental Health in Family Medicine</p>
+        </div>
+        <div class="rli-item">
+          <h4>Childhood: A Universalist Perspective for How Israel is Using Child Arrest and Detention to Further its Colonial Settler Project (2015)</h4>
+          <p class="author">Nadera Shalhoub-Kevorkian — International Journal of Applied Psychoanalytic Studies</p>
         </div>
       </div>
     </section>
 
     <!-- OPINION PIECES -->
-    <section id="opinion" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Opinion Pieces & Personal Reflections</h2>
-          <p>Essays and reflections from clinicians, academics, and advocates.</p>
-        </div>
+    <section id="opinion">
+      <div class="res-section-header">
+        <h2>Opinion Pieces &amp; Personal Reflections</h2>
+        <p>Essays and reflections from clinicians, academics, and advocates on clinical ethics, justice, and Palestine.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <h4>Personal Reflections & Opinion Pieces Archive</h4>
-            <p>A collection of op-eds, personal essays, and reflective writing by mental health professionals on the intersection of clinical ethics, justice, and Palestine.</p>
-            <a href="https://usapalmhn.org/portfolio-item/personal-reflections-and-opinion-pieces/" target="_blank">Read Archive →</a>
-          </div>
-        </div>
+
+      <div class="sub-label">Reflections from Gaza — Wasseem El Sarraj</div>
+      <div class="rli">
+        <a href="https://www.newyorker.com/news/news-desk/fathers-sons-gaza" target="_blank" class="rli-item">
+          <h4>Fathers and Sons in Gaza</h4>
+          <p>The New Yorker, July 26, 2014.</p>
+          <p class="author">Wasseem El Sarraj</p>
+        </a>
+      </div>
+
+      <div class="sub-label">USAPALMHN Steering Committee</div>
+      <div class="rli">
+        <a href="https://aapcsw.org/pdf/news/newsletters/AAPCSW_Newsletter_Winter_2014.pdf" target="_blank" class="rli-item">
+          <h4>Praise for Mandela's South Africa but Silence for Palestine (pages 4–8)</h4>
+          <p>AAPCSW Newsletter, Winter 2014.</p>
+          <p class="author">Rebecca Fadil — USAPALMHN Steering Committee</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Dr. Samah Jabr — Psychiatrist, East Jerusalem</div>
+      <div class="rli">
+        <a href="https://www.middleeastmonitor.com/20141219-samah-jabr-the-invisible-damage-of-life-under-the-occupation/" target="_blank" class="rli-item">
+          <h4>The Invisible Damage of Life Under the Occupation — Interview (2014)</h4>
+          <p>Essays describing the emotional, social, and political turmoil imposed by the occupation.</p>
+          <p class="author">Samah Jabr — Middle East Monitor</p>
+        </a>
+        <a href="https://www.middleeastmonitor.com/6-author/samah-jabr/" target="_blank" class="rli-item">
+          <h4>Additional Essays by Samah Jabr</h4>
+          <p>Full archive of essays on occupation, mental health, and resistance.</p>
+          <p class="author">Samah Jabr — Middle East Monitor</p>
+        </a>
+        <a href="https://www.middleeastmonitor.com/20181129-professional-solidarity-with-palestine-a-mental-health-imperative/" target="_blank" class="rli-item">
+          <h4>Professional Solidarity with Palestine: A Mental Health Imperative (2018)</h4>
+          <p>Middle East Monitor, November 29, 2018.</p>
+          <p class="author">Samah Jabr, MD</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Essays by Mental Health Clinicians and Activists</div>
+      <div class="rli">
+        <a href="https://thebaffler.com/salvos/forest-against-the-trees-aziza" target="_blank" class="rli-item">
+          <h4>Forest Against the Trees (2023)</h4>
+          <p class="author">Sarah Aziza — The Baffler</p>
+        </a>
+        <a href="https://thebaffler.com/latest/doomsday-diaries-aziza" target="_blank" class="rli-item">
+          <h4>Doomsday Diaries, October 7–17 (2023)</h4>
+          <p class="author">Sarah Aziza — The Baffler</p>
+        </a>
+        <a href="https://ukpalmhn.com/2018/06/20/a-letter-from-gaza-june-2018-by-hanan-bashir/" target="_blank" class="rli-item">
+          <h4>A Letter from Gaza, June 2018</h4>
+          <p class="author">Hanan Bashir — UK-Palestine Mental Health Network</p>
+        </a>
+        <a href="https://psychoanalyticactivist.com/2017/02/14/the-first-100-days-indefensible/" target="_blank" class="rli-item">
+          <h4>The First Hundred Days: Indefensible</h4>
+          <p class="author">Lama Khouri — The Psychoanalytic Activist</p>
+        </a>
+        <a href="http://mondoweiss.net/2016/12/forced-existence/" target="_blank" class="rli-item">
+          <h4>Forced Existence (2016)</h4>
+          <p>Mondoweiss, December 21, 2016.</p>
+          <p class="author">Ruchama Marton</p>
+        </a>
+        <a href="https://search.proquest.com/openview/339ff205c5611026916cd9301f8b4499/1.pdf?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="rli-item">
+          <h4>Trauma and Identity Development: A Palestinian American Experience</h4>
+          <p class="author">Razan Seikaly</p>
+        </a>
+      </div>
+
+      <div class="sub-label">The Psychoanalytic Activist — Special Edition: 70th Anniversary of the Nakba</div>
+      <div class="rli">
+        <a href="https://psychoanalyticactivist.com/2018/04/03/introduction-to-special-edition-70th-anniversary-of-the-nakba/" target="_blank" class="rli-item">
+          <h4>Introduction to the Special Edition — 70th Anniversary of the Nakba</h4>
+          <p class="author">Lara Sheehi — The Psychoanalytic Activist</p>
+        </a>
+        <a href="https://psychoanalyticactivist.com/2018/04/05/70th-anniversary-of-he-nakba-modifying-some-settings-on-the-smart-phones-camera/" target="_blank" class="rli-item">
+          <h4>Modifying Some Settings on the Smart Phone's Camera</h4>
+          <p class="author">Mustafa Qossoqsi — The Psychoanalytic Activist</p>
+        </a>
+      </div>
+
+      <div class="sub-label">Anti-Semitism, Anti-Jewish Racism, and Anti-Israel Activism</div>
+      <div class="rli">
+        <a href="http://www.buildingequality.us/prejudice/antisemitism/rosenblum/the-past.pdf" target="_blank" class="rli-item">
+          <h4>The Past Didn't Go Anywhere</h4>
+          <p>Exploring the distinctions between antisemitism, anti-Jewish racism, and anti-Israel activism.</p>
+        </a>
+        <a href="https://jewishvoiceforpeace.org/fighting-antisemitism/" target="_blank" class="rli-item">
+          <h4>Fighting Anti-Semitism (2016)</h4>
+          <p class="author">Jewish Voice for Peace</p>
+        </a>
+        <a href="https://qpinblog.wordpress.com/2017/09/24/newly-published-engaging-critics-of-bds/" target="_blank" class="rli-item">
+          <h4>Engaging Critics of BDS</h4>
+          <p class="author">Quaker Palestine Israel Network</p>
+        </a>
       </div>
     </section>
 
     <!-- FILMS & DOCUMENTARIES -->
-    <section id="films" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Films & Documentaries</h2>
-          <p>Visual storytelling on Palestinian life, resistance, and mental health.</p>
-        </div>
+    <section id="films">
+      <div class="res-section-header">
+        <h2>Films &amp; Documentaries</h2>
+        <p>Visual storytelling on Palestinian life, resistance, and mental health.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item red-accent">
-          <div class="rli-body">
-            <div class="rli-tag">Film Series — 2026</div>
-            <h4>"Exiled but Not Erased: The Struggle for Palestinian Refugee Rights"</h4>
-            <p>A two-part film series co-hosted by USA-PalMHN, Eyewitness Palestine, and Badil Resource Center in February 2026. Screened in Texas, Maryland, New York, and online. Raised $1,735 for Badil.</p>
-          </div>
-        </div>
-        <div class="resource-list-item red-accent">
-          <div class="rli-body">
-            <h4>Full Films & Documentaries Archive</h4>
-            <p>Browse the complete list of films and documentaries curated by USAPALMHN covering Palestinian history, displacement, resistance, and culture.</p>
-            <a href="https://usapalmhn.org/portfolio-item/films-and-documentaries/" target="_blank">Browse Archive →</a>
-          </div>
-        </div>
+      <div class="rli">
+        <a href="https://wearenotnumbers.org/" target="_blank" class="rli-item red"><h4>We Are Not Numbers</h4><p>Gaza-based initiative pairing young Palestinian writers with mentors to tell human stories behind the statistics.</p></a>
+        <a href="http://gazaunlocked.org/gaza-unlocked-resources-download" target="_blank" class="rli-item red"><h4>Gaza Unlocked</h4></a>
+        <a href="https://www.youtube.com/watch?v=BcARfW8vff0" target="_blank" class="rli-item"><h4>A Soldier's Story</h4><p class="author">Eran Efrati</p></a>
+        <a href="https://www.youtube.com/watch?v=Pwygicy7Wy8" target="_blank" class="rli-item"><h4>Mark Kaplan Discussing His Documentary About a Forest Funded by South African Jews Covering the Remains of a Palestinian Village</h4></a>
+        <a href="https://www.youtube.com/watch?v=zWaLuVQ_LCc" target="_blank" class="rli-item"><h4>Noam Chomsky Addressing the United Nations, Blasting the US for Supporting Israel</h4></a>
+        <a href="https://www.youtube.com/watch?v=5AJlfW0g2rk" target="_blank" class="rli-item"><h4>Noam Chomsky on the Israel/Palestine Conflict</h4></a>
+        <a href="https://www.youtube.com/watch?v=s4bQtM7q67k" target="_blank" class="rli-item"><h4>Noam Chomsky with Edward Said — On Palestine</h4></a>
+        <a href="https://www.youtube.com/watch?v=cXTfHxxs4_g" target="_blank" class="rli-item"><h4>Oceans of Injustice: Why Does the Media Ignore Palestine?</h4></a>
+        <a href="https://www.youtube.com/watch?v=_msusYXQIfc" target="_blank" class="rli-item"><h4>Letter from Gaza — John Berger Reads Ghassan Kanafani</h4></a>
+        <a href="http://born-equal.net/" target="_blank" class="rli-item"><h4>Born Equal — Testimonies from Families Living Under Occupation</h4></a>
+        <a href="https://www.youtube.com/watch?v=rvMmIkMPijU" target="_blank" class="rli-item"><h4>Earliest Known Photo Images of Palestine and Jerusalem (1837)</h4></a>
+        <a href="https://www.youtube.com/watch?v=Eh0Z1VfYPcE" target="_blank" class="rli-item"><h4>Censored Voices — Film Trailer</h4></a>
+        <a href="https://www.youtube.com/watch?v=2WZ_7Z6vbsg" target="_blank" class="rli-item"><h4>They Do Not Exist</h4><p class="author">Mustafa Abu Ali</p></a>
+        <a href="https://www.youtube.com/watch?v=qUDh-jTa3Go" target="_blank" class="rli-item"><h4>The Nakba of Palestine</h4></a>
+        <a href="https://www.youtube.com/watch?v=sIWvcBzbqVc" target="_blank" class="rli-item"><h4>Israeli Myths and Propaganda</h4></a>
+        <a href="https://972mag.com/war-crimes-and-open-wounds-the-physician-who-took-on-israeli-segregation/129700/" target="_blank" class="rli-item"><h4>Ruchama Marton — Interview</h4></a>
+        <a href="https://kboo.fm/media/64039-mental-health-support-palestinians" target="_blank" class="rli-item"><h4>Dr. Elizabeth Berger — Interview</h4></a>
+        <a href="https://www.youtube.com/watch?v=oleOC-xB-XI" target="_blank" class="rli-item"><h4>Women in Palestine — An Interview with Samah Jabr</h4><p class="author">Directed by Alexandra Dols</p></a>
+        <a href="http://mediaed.org/occupationmovie/" target="_blank" class="rli-item"><h4>The Occupation of the American Mind: Israel's Public Relations War in the US</h4><p>Narrated by Roger Waters</p></a>
+        <a href="https://jewishvoiceforpeace.org/israeli-palestinian-conflict-101/" target="_blank" class="rli-item"><h4>Short Video on Israel/Palestine — Jewish Voice for Peace</h4></a>
+        <a href="http://www.occupation101.com/" target="_blank" class="rli-item"><h4>Occupation 101 — Documentary (Available for Purchase)</h4></a>
+        <a href="https://socialism2018.s3-us-west-2.amazonaws.com/S2018-The%20Arc%20of%20Palestinian%20Resistance.mp3" target="_blank" class="rli-item"><h4>Sumaya Awad Explains Palestinian Resistance, from First Intifada to BDS</h4></a>
+        <a href="https://www.youtube.com/watch?v=mUi3bxsCwUE" target="_blank" class="rli-item"><h4>We Have a Dream to Live Safe — 12-Minute Video</h4><p>Produced by Lajee Center in Aida Camp, Bethlehem</p></a>
+        <a href="https://beyondthefrontlines.com/" target="_blank" class="rli-item"><h4>Beyond the Frontlines: Resistance and Resilience in Palestine</h4><p class="author">Dr. Samah Jabr, directed by Alexandra Dols</p></a>
       </div>
     </section>
 
     <!-- NEWS VENUES -->
-    <section id="news-venues" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>News Venues</h2>
-          <p>Trusted sources for news and analysis on Palestine.</p>
-        </div>
+    <section id="news-venues">
+      <div class="res-section-header">
+        <h2>News Venues</h2>
+        <p>Online news outlets covering Palestine in English — recommended by USAPALMHN.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item blue-accent">
-          <div class="rli-body">
-            <h4>Recommended News Venues</h4>
-            <p>A curated list of news sources, wire services, and independent journalism outlets recommended by USAPALMHN for accurate and contextualized coverage of Palestine.</p>
-            <a href="https://usapalmhn.org/portfolio-item/news-venues/" target="_blank">View News Venues →</a>
-          </div>
-        </div>
+      <div class="rli">
+        <a href="http://www.aljazeera.com/" target="_blank" class="rli-item"><h4>Al Jazeera English</h4></a>
+        <a href="https://electronicintifada.net/" target="_blank" class="rli-item"><h4>Electronic Intifada</h4></a>
+        <a href="http://www.jadaliyya.com/" target="_blank" class="rli-item"><h4>Jadaliyya / Palestine</h4></a>
+        <a href="https://jewishvoiceforpeace.org/january-2018-media-watch-jvp-health-advisory-council/" target="_blank" class="rli-item"><h4>Jewish Voice for Peace Health Advisory Council Media Watch</h4></a>
+        <a href="https://www.middleeastmonitor.com/" target="_blank" class="rli-item"><h4>Middle East Monitor</h4></a>
+        <a href="http://mondoweiss.net/" target="_blank" class="rli-item"><h4>Mondoweiss</h4></a>
+        <a href="http://www.palestinechronicle.com/" target="_blank" class="rli-item"><h4>Palestine Chronicle</h4></a>
+        <a href="https://972mag.com/" target="_blank" class="rli-item"><h4>+972 Magazine</h4></a>
       </div>
     </section>
 
     <!-- ORGANIZATIONS -->
-    <section id="organizations" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Organizations</h2>
-          <p>Allied organizations working on Palestinian rights and mental health.</p>
+    <section id="organizations">
+      <div class="res-section-header">
+        <h2>Organizations</h2>
+        <p>A sampling of organizations involved in furthering human rights for Palestinians.</p>
+      </div>
+
+      <div class="org-group">
+        <div class="org-group-label">Activist Organizations — USA and International</div>
+        <div class="rli">
+          <a href="http://www.nationalsjp.org/" target="_blank" class="rli-item"><h4>Students for Justice in Palestine</h4></a>
+          <a href="https://palestinelegal.org/" target="_blank" class="rli-item"><h4>Palestine Legal</h4></a>
+          <a href="https://jewishvoiceforpeace.org/" target="_blank" class="rli-item"><h4>Jewish Voice for Peace</h4></a>
+          <a href="https://uscpr.org/" target="_blank" class="rli-item"><h4>US Campaign for Palestinian Rights</h4></a>
+          <a href="http://www.icahdusa.org/" target="_blank" class="rli-item"><h4>Israeli Committee Against House Demolitions USA</h4></a>
+          <a href="https://bdsmovement.net/what-is-bds" target="_blank" class="rli-item"><h4>Boycott, Divestment, Sanctions (BDS)</h4></a>
         </div>
       </div>
-      <div class="res-grid-3">
-        <div class="network-card">
-          <h3>Badil Resource Center</h3>
-          <p>A resource center for Palestinian residency and refugee rights. Produces documented reports on ethnic cleansing, displacement, and refugee law.</p>
-          <a href="https://www.badil.org/" target="_blank" class="link-arrow">Visit Badil →</a>
-        </div>
-        <div class="network-card">
-          <h3>Doctors Against Genocide</h3>
-          <p>Organizes monthly advocacy dates on Capitol Hill to demand elected representatives stop funding and supporting genocide. Partners with USA-PalMHN.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-        <div class="network-card">
-          <h3>Eyewitness Palestine</h3>
-          <p>Organizes delegations to Palestine for Americans to witness conditions firsthand. Co-hosts film series and events with USA-PalMHN. 25th anniversary in 2026.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-        <div class="network-card">
-          <h3>Balata Health Center</h3>
-          <p>A health and mental health center in Nablus serving families in the Balata refugee camp. USAPALMHN raises funds to support their operations.</p>
-          <a href="#" class="link-arrow">Support Balata →</a>
-        </div>
-        <div class="network-card">
-          <h3>Social Work for Palestine</h3>
-          <p>Organizes social workers in advocacy for Palestinian rights, including the Drop NASW campaign and calls for the expulsion of the Israeli Union of Social Workers from IFSW.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-        <div class="network-card">
-          <h3>Jewish Voice for Peace — Health Advisory Council</h3>
-          <p>Co-sponsors health-focused events with USA-PalMHN including the "Health Under Siege" webinar series.</p>
-          <a href="#" class="link-arrow">Learn More →</a>
+
+      <div class="org-group">
+        <div class="org-group-label">Advocacy and Direct Services in Palestine</div>
+        <div class="rli">
+          <a href="https://www.gcmhp.ps/" target="_blank" class="rli-item"><h4>Gaza Community Mental Health Program</h4></a>
+          <a href="https://www.unrwausa.org/" target="_blank" class="rli-item"><h4>United Nations Relief and Works Agency USA</h4></a>
+          <a href="http://www.humanitycrew.org/" target="_blank" class="rli-item"><h4>Humanity Crew</h4></a>
+          <a href="http://www.dci-palestine.org/" target="_blank" class="rli-item"><h4>Defense for Children International</h4></a>
+          <a href="https://www.mecaforpeace.org/" target="_blank" class="rli-item"><h4>Middle East Children's Alliance</h4></a>
+          <a href="http://pchrgaza.org/en/" target="_blank" class="rli-item"><h4>Palestinian Center for Human Rights</h4></a>
+          <a href="http://nwttac.dci-palestine.org/" target="_blank" class="rli-item"><h4>No Way to Treat a Child</h4></a>
         </div>
       </div>
-      <div style="margin-top: 28px;">
-        <a href="https://usapalmhn.org/portfolio-item/organizations/" target="_blank" class="btn-olive">View Full Organizations List</a>
+
+      <div class="org-group">
+        <div class="org-group-label">Information and Research Organizations</div>
+        <div class="rli">
+          <a href="https://imeu.org/" target="_blank" class="rli-item"><h4>Institute for Middle East Understanding</h4></a>
+          <a href="https://whoprofits.org/" target="_blank" class="rli-item"><h4>Who Profits?</h4></a>
+          <a href="http://www.ameu.org/" target="_blank" class="rli-item"><h4>Americans for Middle East Understanding</h4></a>
+          <a href="http://mesana.org/" target="_blank" class="rli-item"><h4>Middle East Studies Association</h4></a>
+          <a href="https://www.wrmea.org/" target="_blank" class="rli-item"><h4>The Washington Report for Middle East Affairs</h4></a>
+          <a href="https://interactive.aljazeera.com/aje/PalestineRemix/" target="_blank" class="rli-item"><h4>Palestinian Remix — Al Jazeera Interactive</h4></a>
+          <a href="https://visualizingpalestine.org/#about" target="_blank" class="rli-item"><h4>Visualizing Palestine</h4></a>
+          <a href="https://a4vpe.com/" target="_blank" class="rli-item"><h4>Americans for a Vibrant Palestinian Economy</h4></a>
+        </div>
+      </div>
+
+      <div class="org-group">
+        <div class="org-group-label">Other Organizations</div>
+        <div class="rli">
+          <a href="http://www.breakingthesilence.org.il/" target="_blank" class="rli-item"><h4>Breaking the Silence</h4><p>Israeli organization providing soldiers an opportunity to talk about the occupation.</p></a>
+          <a href="http://www.alqaws.org/about-us" target="_blank" class="rli-item"><h4>Alqaws</h4><p>Palestinian organization providing LGBT advocacy and services.</p></a>
+        </div>
       </div>
     </section>
 
     <!-- BISSALAMEH -->
-    <section id="bissalameh" class="resource-category">
-      <div class="resource-category-header">
-        <div>
-          <h2>Bissalameh</h2>
-          <p>بالسلامة — "Go in peace." A special resource collection.</p>
-        </div>
+    <section id="bissalameh">
+      <div class="res-section-header">
+        <h2>Bissalameh</h2>
+        <p>بالسلامة — "Go in peace." A special resource on healing and resilience.</p>
       </div>
-      <div class="resource-list">
-        <div class="resource-list-item">
-          <div class="rli-body">
-            <h4>Bissalameh Resource Collection</h4>
-            <p>A curated collection of resources for Palestinian mental health professionals, community members, and allies navigating grief, displacement, and collective trauma.</p>
-            <a href="https://usapalmhn.org/portfolio-item/bissalameh/" target="_blank">Explore Resources →</a>
-          </div>
-        </div>
+      <div class="bissalameh-block">
+        <h3>Bissalameh</h3>
+        <p>Due to the attacks on Gaza in the summer of 2021, the Bissalameh team launched a follow-up campaign on Instagram. This campaign offers interviews with mental health clinicians as well as Palestinian public figures in conversations about healing and resilience.</p>
+        <a href="https://www.instagram.com/bissalameh/" target="_blank" class="btn-olive-sm">Explore Bissalameh</a>
       </div>
     </section>
 
@@ -539,84 +749,71 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
-        <div class="footer-logo-mark" style="font-size:10px; font-weight:700; font-family:'DM Sans',sans-serif; color:white; line-height:1.2; text-align:center;">USA<br>PMH</div>
+        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
         <span>USA Palestine<br>Mental Health Network</span>
       </div>
       <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
       <div class="footer-socials">
-        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn" title="Twitter/X">𝕏</a>
-        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn" title="Facebook">f</a>
-        <a href="#" class="social-btn" title="Instagram">ig</a>
+        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn">X</a>
+        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn">ig</a>
       </div>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <a href="about.html">About</a>
-      <a href="index.html#news">Breaking News</a>
-      <a href="index.html#updates">Updates</a>
-      <a href="campaigns.html">"Don't Go" Campaigns</a>
-      <a href="voices.html">Voices on Mental Health</a>
     </div>
     <div class="footer-col">
       <h4>Resources</h4>
       <a href="resources.html#books">Books</a>
-      <a href="resources.html#films">Films & Documentaries</a>
       <a href="resources.html#journals">Journal Articles</a>
+      <a href="resources.html#films">Films &amp; Documentaries</a>
       <a href="resources.html#organizations">Organizations</a>
+      <a href="resources.html#news-venues">News Venues</a>
       <a href="resources.html#international">International Networks</a>
-      <a href="resources.html#cafe-palestine">Café Palestine</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="about.html">About</a>
+      <a href="breaking-news.html">Breaking News</a>
+      <a href="campaigns.html">"Don't Go" Campaigns</a>
+      <a href="voices.html">Voices on Mental Health</a>
+      <a href="crisis-resources.html">Crisis Resources</a>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
       <a href="get-involved.html#join">Join the Network</a>
       <a href="get-involved.html#delegations">Travel to Palestine</a>
       <a href="get-involved.html#how-to-help">How to Help</a>
-      <a href="get-involved.html#donate">Donate</a>
+      <a href="donate.html">Donate</a>
       <a href="about.html#contact">Contact Us</a>
     </div>
   </div>
   <div class="footer-bar">
     <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
     <div class="footer-bar-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Accessibility</a>
+      <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Accessibility</a>
     </div>
   </div>
 </footer>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
-  // Sidebar active link on scroll
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const sidebarLinks = document.querySelectorAll('.res-sidebar a');
+  const sections = document.querySelectorAll('section[id]');
+  const sideLinks = document.querySelectorAll('.res-sidebar a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 140) current = s.id;
-    });
-    sidebarLinks.forEach(a => {
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    sideLinks.forEach(a => {
       a.classList.remove('active');
       if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
   });
 
-  // Language toggle
   let isArabic = false;
   function toggleLang() {
     isArabic = !isArabic;
     const html = document.documentElement;
     const btn = document.querySelector('.lang-toggle');
-    if (isArabic) {
-      html.setAttribute('dir', 'rtl'); html.setAttribute('lang', 'ar');
-      btn.textContent = 'عربي | EN';
-    } else {
-      html.setAttribute('dir', 'ltr'); html.setAttribute('lang', 'en');
-      btn.textContent = 'EN | عربي';
-    }
+    if (isArabic) { html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN'; }
+    else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي'; }
   }
 </script>
 </body>
