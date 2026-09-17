@@ -410,6 +410,8 @@ footer { background: var(--olive-deep); padding: 70px 60px 0; }
 [dir="rtl"] .nav-links { flex-direction: row-reverse; }
 [dir="rtl"] .resource-list-item { border-left: 1px solid rgba(74,107,26,0.14); border-right: 4px solid var(--olive); border-radius: 6px 0 0 6px; }
 [dir="rtl"] .link-arrow { flex-direction: row-reverse; }
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
