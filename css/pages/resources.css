@@ -1,0 +1,162 @@
+/* ============================================================
+   resources.html — page-specific styles
+   Shared components live in css/shared.css
+   ============================================================ */
+
+.res-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 72px 60px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .res-sidebar {
+    position: sticky;
+    top: 100px;
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .res-sidebar-header {
+    background: var(--olive-dark);
+    padding: 14px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .res-sidebar a {
+    display: block;
+    padding: 11px 18px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(74,107,26,0.07);
+    transition: all 0.2s;
+  }
+  .res-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
+  .res-sidebar a.active { background: var(--olive-light); color: var(--olive-dark); font-weight: 600; border-left: 3px solid var(--olive); }
+  .res-sidebar a:last-child { border-bottom: none; }
+
+  /* Content */
+  .res-content { display: flex; flex-direction: column; gap: 64px; }
+
+  /* Section header */
+  .res-section-header {
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 28px;
+  }
+  .res-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .res-section-header p {
+    font-size: 14px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic;
+  }
+
+  /* Resource list item — matches shared.css pattern */
+  .rli { display: flex; flex-direction: column; gap: 10px; }
+  .rli-item {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 22px;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .rli-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
+  .rli-item.red { border-left-color: var(--red); }
+  .rli-item.blue { border-left-color: var(--navy); }
+  .rli-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 3px; line-height: 1.35; }
+  .rli-item p { font-size: 13px; color: var(--text-muted); font-family: 'Source Serif 4', serif; line-height: 1.6; margin: 0; }
+  .rli-item .author { font-size: 12px; color: var(--olive-dark); font-weight: 600; margin-top: 4px; font-family: 'DM Sans', sans-serif; }
+
+  /* Book sub-category label */
+  .sub-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--olive); font-family: 'DM Sans', sans-serif;
+    padding-bottom: 10px; border-bottom: 1px solid var(--olive-light);
+    margin-bottom: 12px; margin-top: 28px;
+  }
+  .sub-label:first-child { margin-top: 0; }
+
+  /* Why We Need Info intro block */
+  .intro-block {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 40px 44px;
+    position: relative; overflow: hidden;
+  }
+  .intro-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .intro-block > * { position: relative; z-index: 1; }
+  .intro-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.85;
+    margin-bottom: 16px;
+  }
+  .intro-block p:last-of-type { margin-bottom: 0; }
+
+  /* Bissalameh block */
+  .bissalameh-block {
+    background: var(--cream-dark);
+    border: 1px solid rgba(74,107,26,0.15);
+    border-left: 5px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 32px 36px;
+  }
+  .bissalameh-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
+  .bissalameh-block p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+
+  /* Network cards grid */
+  .net-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .net-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 24px;
+    transition: all 0.3s;
+  }
+  .net-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .net-card h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.3; }
+  .net-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; font-family: 'Source Serif 4', serif; }
+  .net-card a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; }
+  .net-card a:hover { text-decoration: underline; }
+
+  /* Orgs grouped */
+  .org-group { margin-bottom: 32px; }
+  .org-group-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--olive-light);
+  }
+
+  @media (max-width: 1024px) {
+    .res-layout { grid-template-columns: 1fr; }
+    .res-sidebar { position: static; }
+    .net-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .res-layout { padding: 48px 24px; }
+    .intro-block { padding: 28px 24px; }
+    .bissalameh-block { padding: 24px 20px; }
+  }

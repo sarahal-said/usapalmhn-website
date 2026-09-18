@@ -1,0 +1,135 @@
+/* ============================================================
+   about.html — page-specific styles
+   Shared components live in css/shared.css
+   ============================================================ */
+
+.about-page { max-width: 1140px; margin: 0 auto; padding: 80px 60px; }
+
+  /* Mission section */
+  .mission-block {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 48px 52px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--olive);
+  }
+  .mission-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+  .mission-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    color: #3a4a28;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  /* Aims list */
+  .aims-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .aims-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    background: var(--olive-light);
+    border-radius: 6px;
+    border-left: 4px solid var(--olive);
+  }
+  .aims-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--olive); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .aims-list li p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin: 0; font-family: 'Source Serif 4', serif; }
+
+  /* Section headers */
+  .about-section { margin-bottom: 72px; }
+  .about-section-header {
+    display: flex; align-items: center; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--olive-light);
+    margin-bottom: 32px;
+  }
+  .ash-icon {
+    width: 48px; height: 48px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .ashi-green { background: var(--olive-light); }
+  .ashi-blue { background: rgba(26,58,107,0.1); }
+  .ashi-red { background: rgba(200,40,26,0.08); }
+  .ashi-cream { background: var(--cream-dark); }
+  .about-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--text-dark);
+  }
+  .about-section-header p {
+    font-size: 14px; color: var(--text-muted);
+    font-family: 'Source Serif 4', serif; font-style: italic; margin-top: 4px;
+  }
+
+
+  /* Affiliates grid */
+  .affiliates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .affiliate-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 26px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: all 0.3s;
+  }
+  .affiliate-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .affiliate-flag { font-size: 28px; }
+  .affiliate-card h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+  .affiliate-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-family: 'Source Serif 4', serif; }
+  .affiliate-card a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; margin-top: auto; }
+  .affiliate-card a:hover { text-decoration: underline; }
+
+  /* Anti-semitism statement block */
+  .statement-block {
+    background: var(--cream-dark);
+    border: 1px solid rgba(74,107,26,0.15);
+    border-left: 5px solid var(--navy);
+    border-radius: 0 8px 8px 0;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+  }
+  .statement-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 12px; }
+  .statement-block p { font-size: 15px; color: var(--text-mid); line-height: 1.75; font-family: 'Source Serif 4', serif; }
+
+  /* Contact section */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.15);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .contact-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .contact-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
+  .contact-card a.email { font-size: 15px; color: var(--olive); font-weight: 600; text-decoration: none; }
+
+  @media (max-width: 1024px) {
+    .affiliates-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .about-page { padding: 48px 24px; }
+    .mission-block { padding: 32px 24px; }
+    .affiliates-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }

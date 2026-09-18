@@ -1,61 +1,122 @@
 # USA-Palestine Mental Health Network — Website
 
-Redesigned website for the [USA-Palestine Mental Health Network](https://usapalmhn.org), rebuilt as a modern, fully responsive multi-page static site.
+Redesigned website for the [USA-Palestine Mental Health Network](https://usapalmhn.org), built as a responsive multi-page static site.
 
-## Overview
+Plain HTML, CSS and JavaScript — no frameworks, no build step, no dependencies. It runs on any static host.
 
-This is a static website built with plain HTML, CSS, and JavaScript — no frameworks, build tools, or dependencies required. It can be hosted on any standard web host or static hosting service.
+## Where to make a change
 
-**Key features:**
+This is the part worth reading. Most edits belong in exactly one file.
 
-- Bilingual support — English/Arabic toggle with full RTL (right-to-left) layout switching
-- Responsive design with mobile navigation menu
-- Sticky navigation with active-section highlighting
-- Interactive elements: content filters, tab switchers, accordions, and form validation
-- Consistent design system shared across all pages
+| I want to change… | Edit this |
+|---|---|
+| A nav tab — add, remove, rename, reorder | `js/site.js` → `NAV` |
+| A dropdown under a nav tab | `js/site.js` → `NAV`, the `children` array |
+| A footer link or column | `js/site.js` → `FOOTER_COLUMNS` |
+| Social media links | `js/site.js` → `SOCIALS` |
+| The newsletter block | `js/site.js` → `buildNewsletter()` |
+| Colors, fonts, spacing | `css/shared.css` → the `:root` tokens at the top |
+| A shared component (buttons, cards, nav, footer) | `css/shared.css` |
+| The look of one page only | `css/pages/<page>.css` |
+| Words on one page | that page's `.html` file |
+| **Publish a monthly update** | **`js/data/updates.js`** — add one object to the top |
 
-## Project Structure
+**The nav and footer are not in the HTML files.** They are generated once by `js/site.js` and injected into every page. Change a nav item there and all eight pages update together. This is deliberate — the nav had previously drifted out of sync across pages.
+
+## Project structure
 
 ```
-├── index.html              Homepage
-├── about.html              About the organization
-├── campaigns.html          Campaigns and advocacy
-├── get-involved.html       Volunteer and participation info
-├── resources.html          Mental health resources
-├── voices.html             Community voices and testimonials
-├── assets/
-│   └── logo.png            Site logo
+├── index.html               Homepage
+├── updates.html             Monthly updates, filterable archive
+├── about.html               Mission, aims, Advisory Council, affiliates, contact
+├── campaigns.html           "Don't Go" campaign archive
+├── voices.html              First-person testimony and statements
+├── resources.html           Books, journals, films, organizations
+├── crisis-resources.html    Hotlines, legal help, psychological support
+├── get-involved.html        Join, reading circles, delegations, donate
+├── donate.html              Givebutter donation page
+│
 ├── css/
-│   └── shared.css          Shared styles for all pages
-└── .gitignore
+│   ├── shared.css           Design tokens + every shared component
+│   └── pages/
+│       └── <page>.css       Styles used by one page only
+│
+├── js/
+│   ├── site.js              Nav, footer, newsletter, mobile menu, translation
+│   ├── data/
+│   │   └── updates.js       Every monthly update — the only file you edit to publish one
+│   └── pages/
+│       ├── index.js         Homepage hero slider + animated counters
+│       └── updates.js       Renders, groups and filters the updates
+│
+├── assets/
+│   └── logo.png
+└── README.md
 ```
 
-## Design System
+Every page follows the same shape:
 
-- **Typography:** Playfair Display (headings), Source Serif 4, DM Sans
-- **Color palette:** Olive greens, red, navy, and cream
-- **Visual identity:** Keffiyeh pattern overlays in page heroes
+```html
+<body data-page="about.html">      <!-- tells site.js which tab is active -->
+  <div data-site="nav"></div>
+  …page content…
+  <div data-site="newsletter"></div>
+  <div data-site="footer"></div>
+  <script src="js/site.js"></script>
+</body>
+```
 
-## Running Locally
+## Publishing a monthly update
 
-No installation needed. From the project root, start a simple local server:
+Open `js/data/updates.js` and add an object at the top of the list:
+
+```js
+{
+  date: '2026-10-14',                    // required, YYYY-MM-DD
+  title: 'Café Palestine 42',
+  category: 'event',                     // event | campaign | program | network
+  host: 'UK-Palestine Mental Health Network',
+  when: '4:00–6:00pm UK · 11:00am–1:00pm ET',
+  where: 'Online',
+  body: 'One or two sentences.',
+  link: 'https://example.org/register',  // leave '' and no button appears
+  linkLabel: 'Register'
+}
+```
+
+Save. That's the whole job — `updates.html` sorts by date, splits upcoming from past,
+groups the past by month and wires the category filters on its own. Add `ongoing: true`
+for a campaign with no end date and it moves to the ongoing section instead.
+
+## Arabic translation
+
+Handled by the Google Translate widget, loaded from `js/site.js`. There is no second copy of the text to maintain — pressing **EN | عربي** sets a `googtrans` cookie and reloads, and Google translates the page. The cookie is site-wide, so Arabic persists as visitors move between pages.
+
+- Right-to-left layout rules live under `[dir="rtl"]` in `css/shared.css`.
+- To keep a string untranslated — a brand name, for instance — add `class="notranslate"` to its element.
+- The language button appears in the top bar on desktop and inside the hamburger menu on phones.
+
+## Design system
+
+- **Typography:** Playfair Display (headings), Source Serif 4 (body copy), DM Sans (UI)
+- **Color:** olive greens, red, navy, cream — all defined as CSS variables in `css/shared.css`
+- **Visual identity:** keffiyeh pattern overlays in page heroes
+
+## Running locally
+
+From the project root:
 
 ```bash
 python3 -m http.server 3000
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+Then open <http://localhost:3000>.
 
-
-## Editing Content
-
-- Each page is a standalone HTML file — edit text directly in the corresponding file.
-- Bilingual text uses `data-en` and `data-ar` attributes on elements. To update translated content, edit both attributes on the same element.
-- Shared styles (colors, fonts, layout) live in `css/shared.css`. Changes there apply site-wide.
+A local server is required — opening the `.html` files directly with `file://` will not work, because the browser blocks the shared script from loading.
 
 ## Deployment
 
-Upload all files and folders (preserving the structure above) to any static web host. No server-side configuration is required.
+Push to the connected repository; the host rebuilds automatically. Upload preserves the folder structure above. No server-side configuration is needed.
 
 ---
 

@@ -9,335 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/shared.css">
-<style>
-  .voices-page-layout {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 48px;
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 72px 60px;
-    align-items: start;
-  }
-
-  /* Sidebar */
-  .voices-sidebar {
-    position: sticky;
-    top: 100px;
-    background: white;
-    border: 1px solid rgba(74,107,26,0.14);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .voices-sidebar-header {
-    background: var(--olive-dark);
-    padding: 14px 18px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .voices-sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(74,107,26,0.07);
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .voices-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
-  .voices-sidebar a.active {
-    background: var(--olive-light);
-    color: var(--olive-dark);
-    font-weight: 600;
-    border-left: 3px solid var(--olive);
-  }
-  .voices-sidebar a:last-child { border-bottom: none; }
-
-  /* Content area */
-  .voices-content { display: flex; flex-direction: column; gap: 72px; }
-
-  /* Section header */
-  .voices-section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--olive-light);
-    margin-bottom: 32px;
-  }
-  .vsh-icon {
-    width: 48px; height: 48px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
-  }
-  .vsh-green { background: var(--olive-light); }
-  .vsh-red { background: rgba(200,40,26,0.08); }
-  .vsh-blue { background: rgba(26,58,107,0.08); }
-  .vsh-dark { background: var(--olive-deep); }
-  .vsh-cream { background: var(--cream-dark); }
-  .voices-section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.2;
-  }
-  .voices-section-header p {
-    font-size: 14px;
-    color: var(--text-muted);
-    font-family: 'Source Serif 4', serif;
-    font-style: italic;
-    margin-top: 4px;
-    line-height: 1.6;
-  }
-
-  /* Voice article card */
-  .voice-article {
-    background: white;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-  .voice-article:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-  .va-accent { height: 4px; }
-  .va-green { background: var(--olive); }
-  .va-red { background: var(--red); }
-  .va-blue { background: var(--navy); }
-  .va-body { padding: 24px; }
-  .va-tag {
-    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
-  }
-  .vt-green { background: var(--olive-light); color: var(--olive-dark); }
-  .vt-red { background: rgba(200,40,26,0.1); color: var(--red); }
-  .vt-blue { background: rgba(26,58,107,0.1); color: var(--navy); }
-  .vt-dark { background: rgba(40,57,13,0.12); color: var(--olive-deep); }
-  .va-date { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.3px; }
-  .voice-article h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-    line-height: 1.35;
-  }
-  .voice-article p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 18px;
-    font-family: 'Source Serif 4', serif;
-    font-style: italic;
-  }
-  .va-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(74,107,26,0.1);
-    margin-top: 4px;
-  }
-  .va-avatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: white; flex-shrink: 0;
-  }
-  .av-green { background: var(--olive); }
-  .av-red { background: var(--red); }
-  .av-blue { background: var(--navy); }
-  .va-author-info { font-size: 12px; color: var(--text-muted); }
-  .va-author-info strong { display: block; font-size: 13px; color: var(--text-dark); font-weight: 600; }
-
-  /* Articles grid */
-  .voices-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .voices-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-
-  /* Statement list item */
-  .statement-item {
-    background: white;
-    border: 1px solid rgba(74,107,26,0.14);
-    border-left: 4px solid var(--olive);
-    border-radius: 0 8px 8px 0;
-    padding: 20px 24px;
-    margin-bottom: 14px;
-    transition: all 0.2s;
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-  }
-  .statement-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
-  .statement-item.red { border-left-color: var(--red); }
-  .statement-item.blue { border-left-color: var(--navy); }
-  .si-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .si-body h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .si-body p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-family: 'Source Serif 4', serif; }
-  .si-body a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 6px; }
-  .si-body a:hover { text-decoration: underline; }
-  .si-tag {
-    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
-    background: var(--olive-light); color: var(--olive-dark); margin-bottom: 6px;
-  }
-  .si-tag.red { background: rgba(200,40,26,0.1); color: var(--red); }
-
-  /* Featured quote block */
-  .featured-quote {
-    background: var(--olive-deep);
-    border-radius: 8px;
-    padding: 40px 44px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .featured-quote::before {
-    content: '\201C';
-    position: absolute;
-    top: -10px; left: 20px;
-    font-family: 'Playfair Display', serif;
-    font-size: 120px;
-    color: rgba(255,255,255,0.07);
-    line-height: 1;
-  }
-  .featured-quote blockquote {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-  }
-  .fq-cite { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
-  .fq-avatar {
-    width: 40px; height: 40px; border-radius: 50%; background: var(--olive);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700; color: white; flex-shrink: 0;
-  }
-  .fq-cite cite { font-style: normal; font-size: 13px; color: rgba(255,255,255,0.6); }
-  .fq-cite cite strong { display: block; color: rgba(255,255,255,0.88); font-size: 14px; margin-bottom: 2px; }
-
-  /* Pledge banner */
-  .pledge-banner {
-    background: var(--red);
-    border-radius: 8px;
-    padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .pledge-banner-icon { font-size: 36px; flex-shrink: 0; }
-  .pledge-banner h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; font-weight: 700; margin-bottom: 6px; }
-  .pledge-banner p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
-  .pledge-btn { margin-left: auto; flex-shrink: 0; }
-
-  /* Psychoanalytic Activist */
-  .activist-card {
-    background: var(--olive-dark);
-    border-radius: 8px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .activist-card::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
-      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
-  }
-  .activist-card > * { position: relative; z-index: 1; }
-  .activist-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: white; margin-bottom: 12px; }
-  .activist-card p { font-size: 15px; color: rgba(255,255,255,0.72); font-family: 'Source Serif 4', serif; font-style: italic; line-height: 1.75; margin-bottom: 24px; }
-
-  /* We Are Not Numbers */
-  .wann-card {
-    background: white;
-    border: 1px solid rgba(74,107,26,0.18);
-    border-radius: 8px;
-    padding: 32px 36px;
-    display: flex;
-    gap: 28px;
-    align-items: flex-start;
-  }
-  .wann-icon { font-size: 48px; flex-shrink: 0; }
-  .wann-body h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
-  .wann-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
-
-  @media (max-width: 1024px) {
-    .voices-page-layout { grid-template-columns: 1fr; gap: 32px; }
-    .voices-sidebar { position: static; }
-    .voices-grid-3 { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .voices-page-layout { padding: 48px 24px; }
-    .voices-grid-3, .voices-grid-2 { grid-template-columns: 1fr; }
-    .pledge-banner { flex-direction: column; text-align: center; }
-    .pledge-btn { margin-left: 0; }
-    .wann-card { flex-direction: column; gap: 16px; }
-    .featured-quote { padding: 28px 24px; }
-    .featured-quote blockquote { font-size: 17px; }
-  }
-</style>
+<link rel="stylesheet" href="css/pages/voices.css">
 </head>
-<body>
+<body data-page="voices.html">
 
-<!-- NAV -->
-<div class="nav-wrapper">
-  <nav class="nav-top">
-    <a href="index.html" class="nav-logo">
-      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
-      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
-    </a>
-    <div class="nav-org-name">USA Palestine Mental Health Network</div>
-    <div class="nav-top-right">
-      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
-      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <nav class="nav-bottom">
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="index.html#news">Breaking News</a></li>
-      <li><a href="index.html#updates">Updates</a></li>
-      <li><a href="campaigns.html">"Don't Go"</a></li>
-      <li><a href="voices.html" class="active">Voices</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="get-involved.html#donate">Donate</a></li>
-    </ul>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="about.html" onclick="toggleMenu()">About</a>
-    <a href="index.html#news" onclick="toggleMenu()">Breaking News</a>
-    <a href="index.html#updates" onclick="toggleMenu()">Updates</a>
-    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
-    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
-    <a href="resources.html" onclick="toggleMenu()">Resources</a>
-    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
-    <a href="get-involved.html#donate" onclick="toggleMenu()">Donate</a>
-  </div>
-</div>
+<div data-site="nav"></div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -360,7 +36,7 @@
 <div class="voices-page-layout">
 
   <!-- SIDEBAR -->
-  <aside class="voices-sidebar">
+  <aside class="voices-sidebar" data-scrollspy>
     <div class="voices-sidebar-header">Voices Library</div>
     <a href="#about-voices" class="active"> About</a>
     <a href="#gaza"> Voices on Gaza</a>
@@ -461,7 +137,7 @@
             <span class="va-tag vt-dark">In Memoriam</span>
             <div class="va-date">October 14, 2023</div>
             <h3>In Memoriam: Yousef Mahar Dawas</h3>
-            <p>A tribute to Yousef Mahar Dawas, killed on October 14, 2023 — shared through We Are Not Numbers and members of the USAPALMHN steering committee.</p>
+            <p>A tribute to Yousef Mahar Dawas, killed on October 14, 2023 — shared through We Are Not Numbers and members of the network.</p>
             <a href="https://usapalmhn.org/portfolio-item/in-memoriam-yousef-mahar-dawas/" target="_blank" class="link-arrow">Read →</a>
             <div class="va-author">
               <div class="va-avatar av-red">WN</div>
@@ -476,7 +152,7 @@
             <span class="va-tag vt-red">Gaza</span>
             <div class="va-date">October 26, 2023</div>
             <h3>A Voice from a Young Journalist in Gaza</h3>
-            <p>An audio recording received by a USAPALMHN Steering Committee member from a young journalist documenting conditions in Gaza in the early weeks of the bombardment.</p>
+            <p>An audio recording received by a member of the network from a young journalist documenting conditions in Gaza in the early weeks of the bombardment.</p>
             <a href="https://usapalmhn.org/portfolio-item/a-voice-from-a-young-journalist-in-gaza-october-26-2023/" target="_blank" class="link-arrow">Read →</a>
             <div class="va-author">
               <div class="va-avatar av-red">GJ</div>
@@ -753,7 +429,7 @@
           <div class="si-tag">Statement</div>
           <h4>Statement on Anti-Semitism</h4>
           <p>USAPALMHN's statement clarifying the distinction between anti-Zionism and antisemitism, and affirming the network's commitment to opposing all forms of racial and ethnic hatred.</p>
-          <a href="https://usapalmhn.org/statement-on-anti-semitism/" target="_blank">Read Statement →</a>
+          <a href="statement-on-anti-semitism.html">Read Statement →</a>
         </div>
       </div>
 
@@ -762,101 +438,9 @@
   </main>
 </div>
 
-<!-- NEWSLETTER -->
-<section id="newsletter">
-  <h2 data-en="Stay Connected with the Network" data-ar="ابق على تواصل مع الشبكة">Stay Connected with the Network</h2>
-  <p data-en="Clinical updates, new resources, and network statements — delivered to your inbox." data-ar="التحديثات السريرية والموارد الجديدة وبيانات الشبكة — يتم تسليمها إلى بريدك الوارد.">Clinical updates, new resources, and network statements — delivered to your inbox.</p>
-  <div class="newsletter-form">
-    <input type="email" placeholder="your@email.com" />
-    <button type="button">Subscribe</button>
-  </div>
-  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
-</section>
+<div data-site="newsletter"></div>
+<div data-site="footer"></div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo">
-        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
-        <span>USA Palestine<br>Mental Health Network</span>
-      </div>
-      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
-      <div class="footer-socials">
-        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn" title="Twitter/X">𝕏</a>
-        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn" title="Facebook">f</a>
-        <a href="#" class="social-btn" title="Instagram">ig</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <a href="about.html">About</a>
-      <a href="index.html#news">Breaking News</a>
-      <a href="index.html#updates">Updates</a>
-      <a href="campaigns.html">"Don't Go" Campaigns</a>
-      <a href="voices.html">Voices on Mental Health</a>
-    </div>
-    <div class="footer-col">
-      <h4>Voices</h4>
-      <a href="voices.html#gaza">Voices on Gaza</a>
-      <a href="voices.html#west-bank">Voices from the West Bank</a>
-      <a href="voices.html#diaspora">Voices from the Diaspora</a>
-      <a href="voices.html#pledge">MH Workers Pledge</a>
-      <a href="voices.html#statements">Statements</a>
-    </div>
-    <div class="footer-col">
-      <h4>Get Involved</h4>
-      <a href="get-involved.html#join">Join the Network</a>
-      <a href="get-involved.html#delegations">Travel to Palestine</a>
-      <a href="get-involved.html#how-to-help">How to Help</a>
-      <a href="get-involved.html#donate">Donate</a>
-      <a href="about.html#contact">Contact Us</a>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
-    <div class="footer-bar-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Accessibility</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-
-  // Sidebar active on scroll
-  const headings = document.querySelectorAll('section[id]');
-  const sideLinks = document.querySelectorAll('.voices-sidebar a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    headings.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 140) current = s.id;
-    });
-    sideLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-    });
-  });
-
-  let isArabic = false;
-  function toggleLang() {
-    isArabic = !isArabic;
-    const html = document.documentElement;
-    const btn = document.querySelector('.lang-toggle');
-    if (isArabic) {
-      html.setAttribute('dir', 'rtl'); html.setAttribute('lang', 'ar');
-      btn.textContent = 'عربي | EN';
-      document.querySelectorAll('[data-ar]').forEach(el => { el.textContent = el.dataset.ar; });
-    } else {
-      html.setAttribute('dir', 'ltr'); html.setAttribute('lang', 'en');
-      btn.textContent = 'EN | عربي';
-      document.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset.en; });
-    }
-  }
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,126 @@
+/* ============================================================
+   donate.html — page-specific styles
+   Shared components live in css/shared.css
+   ============================================================ */
+
+.donate-page { max-width: 860px; margin: 0 auto; padding: 80px 60px; }
+
+  /* Primary donate block */
+  .donate-primary {
+    background: var(--olive-deep);
+    border-radius: 8px;
+    padding: 52px 56px;
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .donate-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
+      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
+  }
+  .donate-primary > * { position: relative; z-index: 1; }
+  .donate-primary h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .donate-primary p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    max-width: 580px;
+    margin: 0 auto 32px;
+    font-style: italic;
+  }
+  .donate-primary .givebutter-btn {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 16px 44px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 16px;
+  }
+  .donate-primary .givebutter-btn:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .donate-primary .givebutter-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Tax info block */
+  .tax-block {
+    background: var(--olive-light);
+    border: 1px solid rgba(74,107,26,0.2);
+    border-left: 5px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .tax-block h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text-dark); margin-bottom: 10px; }
+  .tax-block p { font-size: 15px; color: var(--text-mid); line-height: 1.8; font-family: 'Source Serif 4', serif; }
+  .tax-block strong { color: var(--olive-dark); }
+
+  /* Gift acceptance policy */
+  .policy-block {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 32px 36px;
+    margin-bottom: 48px;
+  }
+  .policy-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 14px; }
+  .policy-block p { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-family: 'Source Serif 4', serif; }
+
+  /* Other ways section */
+  .section-divider {
+    text-align: center;
+    margin: 56px 0 40px;
+    position: relative;
+  }
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px; background: rgba(74,107,26,0.2);
+  }
+  .section-divider span {
+    position: relative; z-index: 1;
+    background: var(--cream);
+    padding: 0 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--text-dark);
+  }
+
+  /* Other ways to give */
+  .other-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .other-way-card {
+    background: white;
+    border: 1px solid rgba(74,107,26,0.14);
+    border-radius: 8px;
+    padding: 28px;
+    transition: all 0.3s;
+  }
+  .other-way-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+  .other-way-card h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text-dark); margin-bottom: 10px; }
+  .other-way-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; font-family: 'Source Serif 4', serif; }
+
+  @media (max-width: 768px) {
+    .donate-page { padding: 48px 24px; }
+    .donate-primary { padding: 36px 24px; }
+    .other-ways { grid-template-columns: 1fr; }
+    .policy-block, .tax-block { padding: 24px 20px; }
+  }

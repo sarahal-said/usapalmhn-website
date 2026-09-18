@@ -1,7 +1,9 @@
 /* ============================================================
    USAPALMHN — Shared Stylesheet
-   Used by: index.html, resources.html, voices.html,
-            campaigns.html, about.html, get-involved.html
+   ------------------------------------------------------------
+   Loaded by every page. Holds the design tokens and every
+   shared component (nav, buttons, cards, newsletter, footer).
+   Styles that belong to a single page live in css/pages/.
    ============================================================ */
 
 /* TOKENS */
@@ -378,7 +380,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
 footer { background: var(--olive-deep); padding: 70px 60px 0; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
 .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.footer-logo-mark { width: 40px; height: 40px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 11px; }
+.footer-logo-mark { width: 44px; height: 44px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+.footer-logo-mark img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
 .footer-logo span { font-family: 'Playfair Display', serif; font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 600; line-height: 1.25; }
 .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 24px; font-family: 'Source Serif 4', serif; font-style: italic; max-width: 260px; }
 .footer-socials { display: flex; gap: 10px; }
@@ -424,7 +427,7 @@ body { top: 0 !important; }
   .nav-org-name { display: none; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .lang-toggle { display: none; }
+  .nav-top-right .lang-toggle { display: none; }
   .page-hero { padding: 60px 24px 50px; }
   .breadcrumb { padding: 12px 24px; }
   .news-grid { grid-template-columns: 1fr; }
@@ -436,4 +439,123 @@ body { top: 0 !important; }
   .resource-cta-banner { flex-direction: column; text-align: center; padding: 32px 24px; }
   footer { padding: 50px 24px 0; }
   #newsletter { padding: 60px 24px; }
+}
+
+/* ============================================================
+   NAV DROPDOWN  (Resources > Crisis Resources)
+   Add a `children` array in js/site.js to create another one.
+   ============================================================ */
+.nav-links li.has-sub { position: relative; }
+.sub-caret { font-size: 9px; margin-left: 6px; opacity: 0.75; }
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  background: var(--olive-dark);
+  list-style: none;
+  padding: 6px 0;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  z-index: 1001;
+}
+.nav-links li.has-sub:hover .nav-submenu,
+.nav-links li.has-sub:focus-within .nav-submenu { display: block; }
+.nav-submenu li a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  border-bottom: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-submenu li a:hover,
+.nav-submenu li a.active { background: rgba(255,255,255,0.12); color: white; }
+
+/* ── Mobile menu extras ── */
+.mobile-menu a.mobile-sub {
+  padding-left: 44px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.mobile-menu a.mobile-sub::before {
+  content: '\2013';
+  margin-right: 8px;
+  color: var(--olive);
+}
+.lang-toggle-mobile {
+  display: none;
+  margin: 14px 24px 18px;
+  width: calc(100% - 48px);
+  padding: 11px;
+  font-size: 14px;
+}
+
+/* ============================================================
+   ADVISORY COUNCIL CARDS (about.html)
+   ============================================================ */
+.council-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.council-card {
+  background: white;
+  border: 1px solid rgba(74,107,26,0.15);
+  border-left: 4px solid var(--olive);
+  border-radius: 0 8px 8px 0;
+  padding: 24px 26px;
+  transition: all 0.3s;
+}
+.council-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.council-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 2px; line-height: 1.3;
+}
+.council-credentials {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+  color: var(--olive); font-family: 'DM Sans', sans-serif; margin-bottom: 10px;
+}
+.council-card p {
+  font-size: 13.5px; color: var(--text-muted); line-height: 1.7;
+  font-family: 'Source Serif 4', serif; margin: 0;
+}
+.council-location {
+  display: block; margin-top: 10px; font-size: 12px;
+  color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-style: normal;
+}
+
+/* ── RTL adjustments for the additions above ── */
+[dir="rtl"] .nav-submenu { left: auto; right: 0; }
+[dir="rtl"] .council-card {
+  border-left: 1px solid rgba(74,107,26,0.15);
+  border-right: 4px solid var(--olive);
+  border-radius: 8px 0 0 8px;
+}
+[dir="rtl"] .mobile-menu a.mobile-sub { padding-left: 24px; padding-right: 44px; }
+
+/* ── Responsive for the additions above ── */
+@media (max-width: 1024px) {
+  .council-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .council-grid { grid-template-columns: 1fr; }
+  .lang-toggle-mobile { display: block; }
+}
+
+/* ── Mobile nav: keep the top bar inside the viewport ──
+   The logo, wordmark, Join button and hamburger together measured
+   442px, so every page scrolled sideways on a phone. ── */
+@media (max-width: 768px) {
+  .nav-top { padding: 10px 16px; gap: 10px; }
+  .nav-logo { gap: 8px; flex-shrink: 1; min-width: 0; }
+  .nav-logo img { height: 36px; }
+  .nav-logo-text { font-size: 12.5px; }
+  .nav-top-right { gap: 10px; }
+  .btn-join { padding: 9px 13px; font-size: 11px; letter-spacing: 0.5px; white-space: nowrap; }
+}
+@media (max-width: 400px) {
+  .nav-logo-text { font-size: 11.5px; }
+  .btn-join { padding: 8px 10px; font-size: 10.5px; }
 }

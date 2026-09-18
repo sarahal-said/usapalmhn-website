@@ -9,209 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/shared.css">
-<style>
-  .res-layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 48px;
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 72px 60px;
-    align-items: start;
-  }
-
-  /* Sidebar */
-  .res-sidebar {
-    position: sticky;
-    top: 100px;
-    background: white;
-    border: 1px solid rgba(74,107,26,0.14);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .res-sidebar-header {
-    background: var(--olive-dark);
-    padding: 14px 18px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .res-sidebar a {
-    display: block;
-    padding: 11px 18px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(74,107,26,0.07);
-    transition: all 0.2s;
-  }
-  .res-sidebar a:hover { background: var(--olive-light); color: var(--olive-dark); }
-  .res-sidebar a.active { background: var(--olive-light); color: var(--olive-dark); font-weight: 600; border-left: 3px solid var(--olive); }
-  .res-sidebar a:last-child { border-bottom: none; }
-
-  /* Content */
-  .res-content { display: flex; flex-direction: column; gap: 64px; }
-
-  /* Section header */
-  .res-section-header {
-    padding-bottom: 14px;
-    border-bottom: 2px solid var(--olive-light);
-    margin-bottom: 28px;
-  }
-  .res-section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px; font-weight: 700; color: var(--text-dark);
-    margin-bottom: 4px;
-  }
-  .res-section-header p {
-    font-size: 14px; color: var(--text-muted);
-    font-family: 'Source Serif 4', serif; font-style: italic;
-  }
-
-  /* Resource list item — matches shared.css pattern */
-  .rli { display: flex; flex-direction: column; gap: 10px; }
-  .rli-item {
-    background: white;
-    border: 1px solid rgba(74,107,26,0.14);
-    border-left: 4px solid var(--olive);
-    border-radius: 0 6px 6px 0;
-    padding: 16px 22px;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: block;
-  }
-  .rli-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateX(4px); }
-  .rli-item.red { border-left-color: var(--red); }
-  .rli-item.blue { border-left-color: var(--navy); }
-  .rli-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 3px; line-height: 1.35; }
-  .rli-item p { font-size: 13px; color: var(--text-muted); font-family: 'Source Serif 4', serif; line-height: 1.6; margin: 0; }
-  .rli-item .author { font-size: 12px; color: var(--olive-dark); font-weight: 600; margin-top: 4px; font-family: 'DM Sans', sans-serif; }
-
-  /* Book sub-category label */
-  .sub-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--olive); font-family: 'DM Sans', sans-serif;
-    padding-bottom: 10px; border-bottom: 1px solid var(--olive-light);
-    margin-bottom: 12px; margin-top: 28px;
-  }
-  .sub-label:first-child { margin-top: 0; }
-
-  /* Why We Need Info intro block */
-  .intro-block {
-    background: var(--olive-deep);
-    border-radius: 8px;
-    padding: 40px 44px;
-    position: relative; overflow: hidden;
-  }
-  .intro-block::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px),
-      repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 10px);
-  }
-  .intro-block > * { position: relative; z-index: 1; }
-  .intro-block p {
-    font-family: 'Source Serif 4', serif;
-    font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.85;
-    margin-bottom: 16px;
-  }
-  .intro-block p:last-of-type { margin-bottom: 0; }
-
-  /* Bissalameh block */
-  .bissalameh-block {
-    background: var(--cream-dark);
-    border: 1px solid rgba(74,107,26,0.15);
-    border-left: 5px solid var(--olive);
-    border-radius: 0 8px 8px 0;
-    padding: 32px 36px;
-  }
-  .bissalameh-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
-  .bissalameh-block p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; font-family: 'Source Serif 4', serif; }
-
-  /* Network cards grid */
-  .net-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .net-card {
-    background: white;
-    border: 1px solid rgba(74,107,26,0.15);
-    border-radius: 8px;
-    padding: 24px;
-    transition: all 0.3s;
-  }
-  .net-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
-  .net-card h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.3; }
-  .net-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; font-family: 'Source Serif 4', serif; }
-  .net-card a { font-size: 13px; color: var(--olive); font-weight: 600; text-decoration: none; }
-  .net-card a:hover { text-decoration: underline; }
-
-  /* Orgs grouped */
-  .org-group { margin-bottom: 32px; }
-  .org-group-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--text-muted); font-family: 'DM Sans', sans-serif;
-    margin-bottom: 12px; padding-bottom: 8px;
-    border-bottom: 1px solid var(--olive-light);
-  }
-
-  @media (max-width: 1024px) {
-    .res-layout { grid-template-columns: 1fr; }
-    .res-sidebar { position: static; }
-    .net-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 768px) {
-    .res-layout { padding: 48px 24px; }
-    .intro-block { padding: 28px 24px; }
-    .bissalameh-block { padding: 24px 20px; }
-  }
-</style>
+<link rel="stylesheet" href="css/pages/resources.css">
 </head>
-<body>
+<body data-page="resources.html">
 
-<!-- NAV -->
-<div class="nav-wrapper">
-  <nav class="nav-top">
-    <a href="index.html" class="nav-logo">
-      <img src="assets/logo.png" alt="USA Palestine Mental Health Network Logo">
-      <span class="nav-logo-text">USA Palestine<br>Mental Health Network</span>
-    </a>
-    <div class="nav-org-name">USA Palestine Mental Health Network</div>
-    <div class="nav-top-right">
-      <button class="lang-toggle" onclick="toggleLang()">EN | عربي</button>
-      <a href="get-involved.html#join" class="btn-join">Join the Network</a>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <nav class="nav-bottom">
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="breaking-news.html">Breaking News</a></li>
-      <li><a href="updates.html">Updates</a></li>
-      <li><a href="campaigns.html">"Don't Go"</a></li>
-      <li><a href="voices.html">Voices</a></li>
-      <li><a href="resources.html" class="active">Resources</a></li>
-      <li><a href="crisis-resources.html">Crisis Resources</a></li>
-      <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="donate.html">Donate</a></li>
-    </ul>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="about.html" onclick="toggleMenu()">About</a>
-    <a href="breaking-news.html" onclick="toggleMenu()">Breaking News</a>
-    <a href="updates.html" onclick="toggleMenu()">Updates</a>
-    <a href="campaigns.html" onclick="toggleMenu()">"Don't Go" Campaigns</a>
-    <a href="voices.html" onclick="toggleMenu()">Voices on Mental Health</a>
-    <a href="resources.html" onclick="toggleMenu()">Resources</a>
-    <a href="crisis-resources.html" onclick="toggleMenu()">Crisis Resources</a>
-    <a href="get-involved.html" onclick="toggleMenu()">Get Involved</a>
-    <a href="donate.html" onclick="toggleMenu()">Donate</a>
-  </div>
-</div>
+<div data-site="nav"></div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -232,7 +34,7 @@
 <div class="res-layout">
 
   <!-- SIDEBAR -->
-  <aside class="res-sidebar">
+  <aside class="res-sidebar" data-scrollspy>
     <div class="res-sidebar-header">Resource Library</div>
     <a href="#why" class="active">Why We Need Information</a>
     <a href="#international">International Networks</a>
@@ -524,7 +326,7 @@
         </a>
       </div>
 
-      <div class="sub-label">USAPALMHN Steering Committee</div>
+      <div class="sub-label">From the Network</div>
       <div class="rli">
         <a href="https://aapcsw.org/pdf/news/newsletters/AAPCSW_Newsletter_Winter_2014.pdf" target="_blank" class="rli-item">
           <h4>Praise for Mandela's South Africa but Silence for Palestine (pages 4–8)</h4>
@@ -733,88 +535,9 @@
   </main>
 </div>
 
-<!-- NEWSLETTER -->
-<section id="newsletter">
-  <h2>Stay Connected with the Network</h2>
-  <p>Clinical updates, new resources, and network statements — delivered to your inbox.</p>
-  <div class="newsletter-form">
-    <input type="email" placeholder="your@email.com" />
-    <button type="button">Subscribe</button>
-  </div>
-  <p class="fine-print">You can unsubscribe anytime. We respect your privacy.</p>
-</section>
+<div data-site="newsletter"></div>
+<div data-site="footer"></div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo">
-        <div class="footer-logo-mark" style="font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;color:white;line-height:1.2;text-align:center;">USA<br>PMH</div>
-        <span>USA Palestine<br>Mental Health Network</span>
-      </div>
-      <p class="footer-tagline">A 100% volunteer-led network of U.S. mental health professionals in solidarity with Palestinian communities since 2016.</p>
-      <div class="footer-socials">
-        <a href="https://twitter.com/UsaPalMhn" target="_blank" class="social-btn">X</a>
-        <a href="https://www.facebook.com/USA-Palestine-Mental-Health-Network-794365367408972" target="_blank" class="social-btn">f</a>
-        <a href="https://www.instagram.com/us_pmhn/" target="_blank" class="social-btn">ig</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Resources</h4>
-      <a href="resources.html#books">Books</a>
-      <a href="resources.html#journals">Journal Articles</a>
-      <a href="resources.html#films">Films &amp; Documentaries</a>
-      <a href="resources.html#organizations">Organizations</a>
-      <a href="resources.html#news-venues">News Venues</a>
-      <a href="resources.html#international">International Networks</a>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <a href="about.html">About</a>
-      <a href="breaking-news.html">Breaking News</a>
-      <a href="campaigns.html">"Don't Go" Campaigns</a>
-      <a href="voices.html">Voices on Mental Health</a>
-      <a href="crisis-resources.html">Crisis Resources</a>
-    </div>
-    <div class="footer-col">
-      <h4>Get Involved</h4>
-      <a href="get-involved.html#join">Join the Network</a>
-      <a href="get-involved.html#delegations">Travel to Palestine</a>
-      <a href="get-involved.html#how-to-help">How to Help</a>
-      <a href="donate.html">Donate</a>
-      <a href="about.html#contact">Contact Us</a>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <p>© 2026 USA Palestine Mental Health Network. All rights reserved.</p>
-    <div class="footer-bar-links">
-      <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Accessibility</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-
-  const sections = document.querySelectorAll('section[id]');
-  const sideLinks = document.querySelectorAll('.res-sidebar a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
-    sideLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-    });
-  });
-
-  let isArabic = false;
-  function toggleLang() {
-    isArabic = !isArabic;
-    const html = document.documentElement;
-    const btn = document.querySelector('.lang-toggle');
-    if (isArabic) { html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); btn.textContent = 'عربي | EN'; }
-    else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); btn.textContent = 'EN | عربي'; }
-  }
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>
