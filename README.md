@@ -2,8 +2,6 @@
 
 Redesigned website for the [USA-Palestine Mental Health Network](https://usapalmhn.org), built as a responsive multi-page static site.
 
-Plain HTML, CSS and JavaScript — no frameworks, no build step, no dependencies. It runs on any static host.
-
 ## Where to make a change
 
 This is the part worth reading. Most edits belong in exactly one file.
@@ -29,7 +27,7 @@ This is the part worth reading. Most edits belong in exactly one file.
 ├── index.html               Homepage
 ├── updates.html             Monthly updates, filterable archive
 ├── about.html               Mission, aims, Advisory Council, affiliates, contact
-├── campaigns.html           "Don't Go" campaign archive
+├── campaigns.html           Campaign archive
 ├── voices.html              First-person testimony and statements
 ├── resources.html           Books, journals, films, organizations
 ├── crisis-resources.html    Hotlines, legal help, psychological support
